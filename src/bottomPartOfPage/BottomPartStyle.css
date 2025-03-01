@@ -1,0 +1,7 @@
+.bottomBox {
+  background-color: #fcc419;
+  border-top: 4px solid #ffe600;
+  display: flex;
+  flex-direction: row;
+
+}

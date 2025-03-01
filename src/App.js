@@ -2,11 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 import './topPartOfPage/TopPartOfPage.jsx'
 import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
+import BottomPart from "./bottomPartOfPage/BottomPart";
 
 function App() {
   return(
     <div className="App">
+      <div className="App-header">
       <TopPartOfPage />
+      </div>
+      <div className="footer">
+      <BottomPart />
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
-import Login from '../assets/topPartOfPage/profilePic.svg'
-import Cart from '../assets/topPartOfPage/cartLogo.png'
-import Logo from '../assets/topPartOfPage/LogoV2.svg'
-import './style.css'
+import Login from '../assets/logos/profilePic.svg'
+import Cart from '../assets/logos/cartLogo.png'
+import Logo from '../assets/logos/logoV2.svg'
+import './TopPartStyle.css'
 
 function topPartOfPage() {
   return (

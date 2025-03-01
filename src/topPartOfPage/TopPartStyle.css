@@ -1,5 +1,4 @@
 .topPartBox {
-  position: absolute;
   top: 0;
   right: 0;
   width: 100vw;
@@ -20,9 +19,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: end;
   width: 100%;
   right: 0;
-  justify-content: space-between;
   padding-right: 30px;
   padding-top: 20px;
 }
@@ -31,6 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: auto;
   width: 100%;
   height: 100%;
   padding-top: 10px;
@@ -38,10 +38,9 @@
 }
 
 #SearchField input {
-  margin-left: 80px;
-  width: 100%;
-  max-width: 600px;
-  min-width: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
   padding: 10px 90px;
   border-radius: 40px;
   font-size: 35px;
@@ -76,7 +75,7 @@
 }
 
 .pageSelector {
-  position: absolute;
+  justify-content: end;
   display: flex;
   flex-direction: row;
   right: 30px;
@@ -84,20 +83,13 @@
   gap: 40px;
 }
 
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: 1s;
-}
-
 .cartLoginBt {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px; /* Set fixed width */
-  height: 100px; /* Set fixed height */
-  padding: 0; /* Remove padding */
+  width: 100px;
+  height: 100px;
+  padding: 0;
   margin: 0;
   border-radius: 50%;
   box-sizing: border-box;
@@ -109,10 +101,10 @@ button {
   padding: 5px;
   align-items: center;
   justify-content: center;
-  width: 90px;  /* Set a fixed width */
-  height: 90px; /* Set a fixed height */
-  border: 4px solid transparent; /* Keeps space for the border */
-  box-sizing: border-box; /* Ensures border doesn't change size */
+  width: 90px;
+  height: 90px;
+  border: 4px solid transparent;
+  box-sizing: border-box;
   transition: background 0.3s, border-color 0.3s;
 }
 
@@ -152,4 +144,11 @@ button {
   margin: -4px;
   padding: calc(0.6em + 4px) calc(1.2em + 4px);
   box-shadow: 0 10px 0 -4px #fff9db;
+}
+
+.homeLogo img {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  object-fit: contain;
 }
