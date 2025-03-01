@@ -1,6 +1,6 @@
-import Login from './images/profilePic.svg'
-import Cart from './images/cartLogo.png'
-import Logo from './images/LogoV2.svg'
+import Login from '../assets/topPartOfPage/profilePic.svg'
+import Cart from '../assets/topPartOfPage/cartLogo.png'
+import Logo from '../assets/topPartOfPage/LogoV2.svg'
 import './style.css'
 
 function topPartOfPage() {

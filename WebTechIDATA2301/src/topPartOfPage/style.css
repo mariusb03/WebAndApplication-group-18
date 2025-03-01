@@ -22,7 +22,7 @@
   align-items: center;
   width: 100%;
   right: 0;
-  gap: 175px;
+  justify-content: space-between;
   padding-right: 30px;
   padding-top: 20px;
 }
@@ -41,6 +41,7 @@
   margin-left: 80px;
   width: 100%;
   max-width: 600px;
+  min-width: auto;
   padding: 10px 90px;
   border-radius: 40px;
   font-size: 35px;
@@ -70,7 +71,7 @@
   flex-direction: row;
   align-items: center;
   background-color: transparent;
-  gap: 20px;
+  justify-content: space-between;
   padding-right: 0;
 }
 
@@ -99,7 +100,7 @@ button {
   padding: 0; /* Remove padding */
   margin: 0;
   border-radius: 50%;
-  box-sizing: border-box; /* Ensures border doesn't change size */
+  box-sizing: border-box;
 }
 
 .cartLoginBt button {
@@ -127,7 +128,7 @@ button {
 .pageSelectorButton {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  font-size: 17px;
+  font-size: clamp(8px , 2vw, 17px);
   font-weight: bold;
   font-family: Inter, Arial, sans-serif;
   border-left: 4px solid transparent;
