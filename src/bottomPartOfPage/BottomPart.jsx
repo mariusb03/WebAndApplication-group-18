@@ -1,4 +1,4 @@
-import Logo from '../assets/logos/logoV2.svg'
+import Logo from '../assets/logos/homeLogo.svg'
 import './BottomPartStyle.css'
 
 function BottomPart() {

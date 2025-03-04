@@ -53,7 +53,7 @@
 }
 
 #SearchField input::placeholder {
-  color: black;
+  color: #a9a9a9;
   opacity: 1;
 }
 
@@ -78,6 +78,7 @@
   justify-content: end;
   display: flex;
   flex-direction: row;
+  padding-top: 2%;
   right: 30px;
   bottom: 0;
   gap: 40px;
