@@ -51,7 +51,7 @@
 /*
   add the styling for the search field
   1. general styling for the search field
-  2. styling for the input field
+  2. styling for the inside field
   3. styling for the placeholder text
 */
 #SearchField {
@@ -86,8 +86,11 @@
 /*
   add the styling for the login and cart buttons
   1.layout for the login and cart buttons
-  2. styling for the buttons when it is not active or hovered over
-  3
+  2.styling for the box that holds the cart and login buttons
+  3.styling for the cart and login buttons when inactive
+  4.styling for the cart and login buttons when hovered and active
+  5.re-size the images in the login and login buttons
+  6.re-size the cart and cart buttons
 */
 #LoginAndCartButtons {
   display: flex;
@@ -185,26 +188,45 @@
   box-shadow: 0 10px 0 -4px #fff9db;
 }
 
+/*
+  change the styling for window sizes smaller than 960px
+  1. hide the page selector
+  2. re-size the logo
+  3. add padding to the search field
+  4. change the direction of the cart and login buttons
+  5. re-size the input field in the search field
+  6. add padding and set the position of the cart and login buttons to the right side of the screen
+  7. add padding to the search field
+*/
 @media (max-width: 960px) {
   .pageSelector {
     display: none;
   }
+
   .homeLogo {
     width: 80%;
   }
+
   .searchAndPageSelector {
     padding-bottom: 3%;
   }
+
   .searchLoginAndCart {
     flex-direction: column-reverse;
     padding: 5%;
     gap: 10px;
   }
+
   #SearchField input {
     width: 80%;
   }
-  .cartLoginBt {
 
+  #LoginAndCartButtons {
+    align-self: flex-end;
+    padding-right: 5%;
   }
 
+  #SearchField {
+    padding-right: 5%;
+  }
 }
