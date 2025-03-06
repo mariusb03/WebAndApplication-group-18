@@ -1,24 +1,46 @@
+/*
+  add styling for and structure for the top part
+*/
 .topPartBox {
   top: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
+  margin: 0;
   display: flex;
-  flex-direction: row;
   border-bottom: 4px solid #ffe600;
   background: #fcc419;
-  box-shadow:0 0 5px 0 rgb(113, 113, 113);
+  box-shadow: 0 0 5px 0 rgb(113, 113, 113);
+  position: relative;
 }
 
+/*
+  edd the size and padding to the logo
+*/
 .homeLogo {
-  height: 200px;
-  padding-left: 30px;
-  padding-top: 10px;
+  width: 100%;
+  height: 100%;
+  padding-left: 1%;
+  padding-top: 1%;
 }
 
-.buttonAndSearchField {
+/*
+  add the general styling for the search filed, login and cart buttons and the page selector
+ */
+.searchAndPageSelector {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 1%;
+  margin-top: auto;
+}
+
+
+/*
+  add the styling, size and padding for the search field, cart and login buttons.
+*/
+.searchLoginAndCart {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: end;
   width: 100%;
   right: 0;
@@ -26,24 +48,28 @@
   padding-top: 20px;
 }
 
-.searchAndPageSelector {
+/*
+  add the styling for the search field
+  1. general styling for the search field
+  2. styling for the input field
+  3. styling for the placeholder text
+*/
+#SearchField {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin-top: auto;
-  width: 100%;
-  height: 100%;
-  padding-top: 10px;
-  padding-right: 50px;
+  flex-grow: 1;
+  margin-right: 0;
 }
 
 #SearchField input {
   margin-left: 5%;
   margin-right: 5%;
-  width: 90%;
-  padding: 10px 90px;
+  width: 60%;
+  padding: 1% 5%;
   border-radius: 40px;
-  font-size: 35px;
+  font-size: 2em;
+  min-height: 50px;
   font-style: normal;
   color: black;
   border-color: transparent;
@@ -57,39 +83,27 @@
   opacity: 1;
 }
 
-#SearchField {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  margin-right: 0;
-}
-
+/*
+  add the styling for the login and cart buttons
+  1.layout for the login and cart buttons
+  2. styling for the buttons when it is not active or hovered over
+  3
+*/
 #LoginAndCartButtons {
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: transparent;
-  justify-content: space-between;
   padding-right: 0;
-}
-
-.pageSelector {
-  justify-content: end;
-  display: flex;
-  flex-direction: row;
-  padding-top: 2%;
-  right: 30px;
-  bottom: 0;
-  gap: 40px;
+  gap: 0.5em;
 }
 
 .cartLoginBt {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 6em;
+  height: 6em;
   padding: 0;
   margin: 0;
   border-radius: 50%;
@@ -102,8 +116,8 @@
   padding: 5px;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 90px;
+  width: 6em;
+  height: 6em;
   border: 4px solid transparent;
   box-sizing: border-box;
   transition: background 0.3s, border-color 0.3s;
@@ -118,10 +132,35 @@
   border: 4px solid #ffe600;
 }
 
+.cartLoginBt img[alt="login"] {
+  width: 80px;
+}
+
+.cartLoginBt img[alt="cart"] {
+  width: 80px;
+}
+
+/*
+  add the styling for the page selector
+  1. layout and structure for the page selector section
+  2. styling for the buttons in the page selector when not hovered or active
+  3. add styling when hovered
+  4. add styling when active
+*/
+.pageSelector {
+  justify-content: end;
+  display: flex;
+  flex-direction: row;
+  padding-top: 2%;
+  right: 30px;
+  bottom: 0;
+  gap: 40px;
+}
+
 .pageSelectorButton {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  font-size: clamp(8px , 2vw, 17px);
+  font-size: 100%;
   font-weight: bold;
   font-family: Inter, Arial, sans-serif;
   border-left: 4px solid transparent;
@@ -141,15 +180,31 @@
   outline: none;
   border-color: #ffe600;
   background-color: #fff9db;
-  z-index: 10;
-  margin: -4px;
+  margin: -3px;
   padding: calc(0.6em + 4px) calc(1.2em + 4px);
   box-shadow: 0 10px 0 -4px #fff9db;
 }
 
-.homeLogo img {
-  width: 100%;
-  height: auto;
-  padding: 0;
-  object-fit: contain;
+@media (max-width: 960px) {
+  .pageSelector {
+    display: none;
+  }
+  .homeLogo {
+    width: 80%;
+  }
+  .searchAndPageSelector {
+    padding-bottom: 3%;
+  }
+  .searchLoginAndCart {
+    flex-direction: column-reverse;
+    padding: 5%;
+    gap: 10px;
+  }
+  #SearchField input {
+    width: 80%;
+  }
+  .cartLoginBt {
+
+  }
+
 }

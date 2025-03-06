@@ -1,8 +1,14 @@
 import Login from '../assets/logos/profilePic.svg'
-import Cart from '../assets/logos/cartLogo.png'
+import Cart from '../assets/logos/cartLogo.svg'
 import Logo from '../assets/logos/homeLogo.svg'
 import './TopPartStyle.css'
 
+
+/**cals all the functions that are needed to create the top part of the page, and returns the complete
+ * top part of the function
+ *
+ * @returns {JSX.Element}
+ */
 function topPartOfPage() {
   return (
     <div className={"topPartBox"}>
@@ -15,6 +21,10 @@ function topPartOfPage() {
   )
 }
 
+/**add the logo on the left side of the top part of the page
+ *
+ * @returns {JSX.Element}
+ */
 function logo() {
   return (
     <button className="homeLogoButton">
@@ -23,9 +33,14 @@ function logo() {
   )
 }
 
+/**adds the search field, login and cart buttons in the top center of the top part of the page.
+ * Above the page selector buttons
+ *
+ * @returns {JSX.Element}
+ */
 function searchLoginAndCart() {
   return (
-    <div className="buttonAndSearchField">
+    <div className="searchLoginAndCart">
       <div id="SearchField">
         <input type="text" placeholder="Search" />
       </div>
@@ -47,6 +62,11 @@ function searchLoginAndCart() {
   )
 }
 
+/**adds the page selector buttons in the bottom center of the top part of the page.
+ * Bellow the search field, login and cart buttons
+ *
+ * @returns {JSX.Element}
+ */
 function pageSelector() {
   return (
     <div className="pageSelector">
