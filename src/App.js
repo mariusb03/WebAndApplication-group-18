@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import './topPartOfPage/TopPartOfPage.jsx'
 import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
+import CourseColumBox from "./courseColumBox/CourseColumBox";
 import BottomPart from "./bottomPartOfPage/BottomPart";
 
 function App() {
@@ -10,6 +10,11 @@ function App() {
       <div className="App-header">
       <TopPartOfPage />
       </div>
+      <div className="App-body">
+        <div className="CourseColumBox">
+          <CourseColumBox />
+        </div>
+      </div>
       <div className="footer">
       <BottomPart />
       </div>
@@ -17,7 +22,8 @@ function App() {
   )
 }
 
-function App1() {
+/*
+function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -37,5 +43,6 @@ function App1() {
     </div>
   );
 }
+*/
 
 export default App;

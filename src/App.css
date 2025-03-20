@@ -1,10 +1,11 @@
 .App {
   text-align: center;
-  background-color: #fff9db;
-  min-height: 100vmin;
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: space-between;
+  column-gap: 50px;
+  background-color: #fff9db;
 }
 
 button {
