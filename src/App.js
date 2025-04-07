@@ -4,18 +4,16 @@ import './topPartOfPage/TopPartOfPage.jsx'
 import 'react-refresh/runtime';
 import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
 import BottomPart from "./bottomPartOfPage/BottomPart";
+import HeroCarousel from './heroCarousel/HeroCarousel';
 
 function App() {
-  return(
-    <div className="App">
-      <div className="App-header">
-      <TopPartOfPage />
-      </div>
-      <div className="footer">
-      <BottomPart />
-      </div>
-    </div>
-  )
+    return (
+        <div className="App">
+            <TopPartOfPage />
+            <HeroCarousel />
+            <BottomPart />
+        </div>
+    );
 }
 
 function App1() {

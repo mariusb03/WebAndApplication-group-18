@@ -1,6 +1,13 @@
 .bottomBox {
+  height: 220px;
   display: flex;
   flex-direction: row;
   background-color: #fcc419;
   border-top: 4px solid #ffe600;
+}
+
+@media (max-width: 960px) {
+  .homeLogo {
+    width: 80%;
+  }
 }
