@@ -2,6 +2,7 @@ import Login from '../assets/logos/profilePic.svg'
 import Cart from '../assets/logos/cartLogo.svg'
 import Logo from '../assets/logos/homeLogo.svg'
 import './TopPartStyle.css'
+import 'react-refresh/runtime';
 
 
 /**cals all the functions that are needed to create the top part of the page, and returns the complete

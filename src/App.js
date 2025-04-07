@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './topPartOfPage/TopPartOfPage.jsx'
+import 'react-refresh/runtime';
 import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
 import BottomPart from "./bottomPartOfPage/BottomPart";
 
