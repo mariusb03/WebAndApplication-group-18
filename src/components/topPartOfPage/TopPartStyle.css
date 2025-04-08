@@ -1,0 +1,200 @@
+.topPartBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fcc419;
+  padding: 0 2%;
+  height: 140px;
+  border-bottom: 4px solid #ffe600;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.homeLogo {
+  height: 120px;
+  width: auto;
+}
+
+.searchFieldCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#SearchField input {
+  width: 60%;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  background: #fff9db;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navButtons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 2rem;
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Inter, Arial, sans-serif;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.navButton:hover {
+  background: #fff9db;
+  border: 2px solid #ffe600;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 2.5rem;
+  background: #fff9db;
+  border: 2px solid #ffe600;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  z-index: 100;
+}
+
+.dropdownMenu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.dropdownMenu button:hover {
+  background: #ffe600;
+}
+
+#LoginAndCartButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1.5rem;
+}
+
+.cartLoginBt {
+  width: 4em;
+  height: 4em;
+}
+
+.cartLoginBt img {
+  width: 100%;
+}
+
+/* Background overlay when search is active */
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+/* Makes top part float above overlay */
+.topPartBox {
+  position: relative;
+  z-index: 10;
+}
+
+/* Optional: style change when search is focused */
+.topPartBox.blurred {
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Related box under search */
+.relatedCoursesBox {
+  position: absolute;
+  top: 110%;
+  width: 60%;
+  background: #fff9db;
+  border: 2px solid #ffe600;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+.relatedCoursesBox p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.relatedCoursesBox ul {
+  margin: 0;
+  padding-left: 1rem;
+  list-style-type: none;
+}
+
+.relatedCoursesBox li {
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.relatedCoursesBox li:hover {
+  background: #ffe600;
+}
+
+/*
+  change the styling for window sizes smaller than 960px
+  1. hide the page selector
+  2. re-size the logo
+  3. add padding to the search field
+  4. change the direction of the cart and login buttons
+  5. re-size the input field in the search field
+  6. add padding and set the position of the cart and login buttons to the right side of the screen
+  7. add padding to the search field
+*/
+@media (max-width: 960px) {
+  .pageSelector {
+    display: none;
+  }
+
+  .homeLogo {
+    width: 80%;
+  }
+
+  .searchAndPageSelector {
+    padding-bottom: 3%;
+  }
+
+  .searchLoginAndCart {
+    flex-direction: column-reverse;
+    padding: 5%;
+    gap: 10px;
+  }
+
+  #SearchField input {
+    width: 80%;
+  }
+
+  #LoginAndCartButtons {
+    align-self: flex-end;
+    padding-right: 5%;
+  }
+
+  #SearchField {
+    padding-right: 5%;
+  }
+}

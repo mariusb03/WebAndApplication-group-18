@@ -3,7 +3,8 @@ import Slider from 'react-slick';
 import './CarouselStyle.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import personTakingCourse from '../assets/carouselPictures/personTakingCourse.jpg';
+import personTakingCourse from '../../assets/carouselPictures/personTakingCourse.jpg';
+import { Link } from 'react-router-dom';
 
 const slides = [
     {

@@ -1,6 +1,6 @@
-import Logo from '../assets/logos/homeLogo.svg'
+import Logo from '../../assets/logos/homeLogo.svg'
 import './BottomPartStyle.css'
-import 'react-refresh/runtime';
+import { Link } from 'react-router-dom';
 
 function BottomPart() {
   return (

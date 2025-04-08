@@ -1,22 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-import './topPartOfPage/TopPartOfPage.jsx'
 import 'react-refresh/runtime';
-import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
-import BottomPart from "./bottomPartOfPage/BottomPart";
-import HeroCarousel from './heroCarousel/HeroCarousel';
+import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
+import BottomPart from "./components/bottomPartOfPage/BottomPart";
+import HeroCarousel from './components/heroCarousel/HeroCarousel';
+import LandingPage from './pages/LandingPage';
+import AllCoursesPage from './pages/AllCoursesPage';
+import AboutUsPage from './pages/AboutUsPage';
+import NotFound from './pages/NotFound';
 
 function App() {
     return (
         <div className="App">
             <TopPartOfPage />
-            <HeroCarousel />
+            <LandingPage />
+            <AllCoursesPage />
+            <AboutUsPage />
+            <NotFound />
             <BottomPart />
         </div>
     );
 }
 
-function App1() {
+
+
+
+function App2() {
   return (
     <div className="App">
       <header className="App-header">
