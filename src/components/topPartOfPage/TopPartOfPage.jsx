@@ -4,6 +4,7 @@ import Cart from '../../assets/logos/cartLogo.svg';
 import Logo from '../../assets/logos/homeLogo.svg';
 import './TopPartStyle.css';
 import 'react-refresh/runtime';
+import {Link} from "react-router-dom";
 
 const courseSuggestions = [
     'Web Development',
@@ -67,9 +68,9 @@ function TopPartOfPage() {
 
             <div className={`topPartBox ${isSearchFocused ? 'blurred' : ''}`}>
                 {/* Logo */}
-                <button className="homeLogoButton">
+                <Link to="/" className="homeLogoButton">
                     <img src={Logo} className="homeLogo" alt="logo" />
-                </button>
+                </Link>
 
                 {/* Search Field */}
                 <div id="SearchField" className="searchFieldCenter" ref={searchRef}>
@@ -102,24 +103,26 @@ function TopPartOfPage() {
                         </button>
                         {dropdownOpen && (
                             <div className="dropdownMenu">
-                                <button>Information Technologies</button>
-                                <button>Digital Marketing</button>
-                                <button>Business and Entrepreneurship</button>
-                                <button>Data Science and Analytics</button>
+                                <Link to="/courses/it">Information Technologies</Link>
+                                <Link to="/courses/marketing">Digital Marketing</Link>
+                                <Link to="/courses/business">Business and Entrepreneurship</Link>
+                                <Link to="/courses/data">Data Science and Analytics</Link>
                             </div>
                         )}
                     </div>
-                    <button className="navButton">About Us</button>
+                    <Link to="/about" className="navButton">About Us</Link>
                 </div>
 
                 {/* Login / Cart */}
                 <div id="LoginAndCartButtons">
-                    <div className="cartLoginBt">
+                    <Link to="/login" className="cartLoginBt">
                         <button><img src={Login} alt="login" /></button>
-                    </div>
-                    <div className="cartLoginBt">
+                    </Link>
+
+                    <Link to="/cart" className="cartLoginBt"> {/* assuming a /cart route later */}
                         <button><img src={Cart} alt="cart" /></button>
-                    </div>
+                    </Link>
+
                 </div>
             </div>
         </>

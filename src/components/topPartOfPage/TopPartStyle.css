@@ -54,6 +54,28 @@
   border: 2px solid #ffe600;
 }
 
+.navButton,
+.navButton:link,
+.navButton:visited {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Inter, Arial, sans-serif;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  text-decoration: none; /* 👈 removes underline */
+  color: black;           /* 👈 makes it match your theme */
+  transition: background 0.2s, color 0.2s;
+}
+
+.navButton:hover {
+  background: #fff9db;
+  border: 2px solid #ffe600;
+  color: #d18f00;
+}
+
 .dropdown {
   position: relative;
 }
@@ -80,6 +102,22 @@
 }
 
 .dropdownMenu button:hover {
+  background: #ffe600;
+}
+
+/* Style <Link> elements inside dropdown */
+.dropdownMenu a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem 1rem;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+/* On hover */
+.dropdownMenu a:hover {
   background: #ffe600;
 }
 
