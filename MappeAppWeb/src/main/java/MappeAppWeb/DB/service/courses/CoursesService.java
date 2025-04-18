@@ -1,4 +1,4 @@
-package MappeAppWeb.DB.server.courses;
+package MappeAppWeb.DB.service.courses;
 
 import MappeAppWeb.DB.model.CoursesDB.Courses;
 import MappeAppWeb.DB.model.CoursesDB.Topics;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CoursesServer {
+public class CoursesService {
   @Autowired
   private CoursesRepository coursesRepository;
 
