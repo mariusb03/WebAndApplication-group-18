@@ -1,5 +1,5 @@
 import './App.css';
-import 'react-refresh/runtime';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
@@ -14,12 +14,13 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import CartPage from "./pages/CartPage/CartPage";
 
+import 'react-refresh/runtime';
+
 function App() {
     return (
         <div className="App">
             <Router>
                 <TopPartOfPage />
-
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/courses/:category" element={<AllCoursesPage />} />

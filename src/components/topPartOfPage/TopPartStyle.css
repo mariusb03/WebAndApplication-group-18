@@ -33,7 +33,7 @@
 .navButtons {
   display: flex;
   align-items: center;
-  gap: 1rem;
+
   margin-left: 2rem;
 }
 
@@ -128,6 +128,45 @@
   margin-left: 1.5rem;
 }
 
+.searchIconButton:hover {
+  background-color: #fff9db;
+  border: 2px solid #ffe600;
+}
+
+.search-popup {
+  background: #fff9db;
+  border: 2px solid #ffe600;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Style the buttons inside the cartLoginBt on focus/active */
+.cartLoginBt button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4em;
+  height: 4em;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s, border 0.3s;
+  cursor: pointer;
+}
+
+.cartLoginBt button:hover,
+.cartLoginBt button:focus,
+.cartLoginBt button:active {
+  background-color: #fff9db; /* light yellow when hovered, focused or active */
+  outline: none;
+  border: 2px solid #ffe600; /* optional: adds a small visible border */
+}
+
 .cartLoginBt {
   width: 4em;
   height: 4em;
@@ -144,15 +183,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent */
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Makes top part float above overlay */
 .topPartBox {
   position: relative;
-  z-index: 10;
 }
 
 /* Optional: style change when search is focused */

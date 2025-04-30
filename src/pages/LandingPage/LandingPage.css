@@ -1,5 +1,7 @@
 .landing-container {
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .landing-header h1 {

@@ -4,6 +4,8 @@
     border-bottom: 4px solid #ffe600;
     border-top: 4px solid #ffe600;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .carousel-slide {
@@ -28,7 +30,7 @@
 
 .carousel-content h1 {
     font-size: 1.8rem; /* was 2.5rem */
-    margin-bottom: 0.5rem;
+
 }
 
 .carousel-content p {

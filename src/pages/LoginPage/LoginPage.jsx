@@ -1,5 +1,7 @@
 import React from 'react';
 import './LoginPage.css';
+import { Link } from 'react-router-dom';
+import registerPage from "../RegisterPage/RegisterPage";
 
 const LoginPage = () => {
     return (
@@ -19,8 +21,13 @@ const LoginPage = () => {
                     </div>
 
                     <div className="login-buttons">
+
+                        <Link to="/register">
                         <button type="button" className="btn register">Register</button>
+                        </Link>
+
                         <button type="submit" className="btn login">Log in</button>
+
                     </div>
                 </form>
             </div>
