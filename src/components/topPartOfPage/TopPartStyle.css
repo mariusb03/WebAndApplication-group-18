@@ -1,138 +1,88 @@
+/* Container for top section */
 .topPartBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #fcc419;
-  padding: 0 2%;
+  padding: 0 1rem;
   height: 140px;
   border-bottom: 4px solid #ffe600;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.homeLogo {
-  height: 120px;
-  width: auto;
-}
-
-.searchFieldCenter {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-#SearchField input {
-  width: 60%;
-  padding: 0.5em 1em;
-  border-radius: 25px;
-  border: none;
-  font-size: 1rem;
-  background: #fff9db;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navButtons {
-  display: flex;
-  align-items: center;
-
-  margin-left: 2rem;
-}
-
-.navButton {
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  font-family: Inter, Arial, sans-serif;
-  padding: 0.5em 1em;
-  border-radius: 10px;
-  transition: background 0.2s;
-}
-
-.navButton:hover {
-  background: #fff9db;
-  border: 2px solid #ffe600;
-}
-
-.navButton,
-.navButton:link,
-.navButton:visited {
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  font-family: Inter, Arial, sans-serif;
-  padding: 0.5em 1em;
-  border-radius: 10px;
-  text-decoration: none; /* 👈 removes underline */
-  color: black;           /* 👈 makes it match your theme */
-  transition: background 0.2s, color 0.2s;
-}
-
-.navButton:hover {
-  background: #fff9db;
-  border: 2px solid #ffe600;
-  color: #d18f00;
-}
-
-.dropdown {
   position: relative;
 }
 
-.dropdownMenu {
-  position: absolute;
-  top: 2.5rem;
-  background: #fff9db;
-  border: 2px solid #ffe600;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-  z-index: 100;
+/* Logo styling */
+.homeLogo {
+  height: 120px;
+  width: auto;
+  padding-top: 1rem;
 }
 
-.dropdownMenu button {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-family: Inter, Arial, sans-serif;
-}
-
-.dropdownMenu button:hover {
-  background: #ffe600;
-}
-
-/* Style <Link> elements inside dropdown */
-.dropdownMenu a {
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem 1rem;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 1rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-
-/* On hover */
-.dropdownMenu a:hover {
-  background: #ffe600;
-}
-
+/* Right-side icon group */
 #LoginAndCartButtons {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-left: 1.5rem;
+  gap: 1rem;
 }
 
-.searchIconButton:hover {
+/* Reusable icon button base */
+.cartLoginBt,
+.searchIconButton {
+  width: 4em;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartLoginBt button,
+.searchIconButton {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartLoginBt button:hover,
+.cartLoginBt button:focus,
+.cartLoginBt button:active,
+.searchIconButton:hover,
+.searchIconButton:focus,
+.searchIconButton:active {
   background-color: #fff9db;
   border: 2px solid #ffe600;
+  outline: none;
 }
 
+/* Icon images inside buttons */
+.cartLoginBt img,
+.searchIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Popup overlay background */
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Search popup container */
 .search-popup {
   background: #fff9db;
   border: 2px solid #ffe600;
@@ -145,134 +95,19 @@
   text-align: center;
 }
 
-/* Style the buttons inside the cartLoginBt on focus/active */
-.cartLoginBt button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4em;
-  height: 4em;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  transition: background-color 0.3s, border 0.3s;
-  cursor: pointer;
-}
-
-.cartLoginBt button:hover,
-.cartLoginBt button:focus,
-.cartLoginBt button:active {
-  background-color: #fff9db; /* light yellow when hovered, focused or active */
-  outline: none;
-  border: 2px solid #ffe600; /* optional: adds a small visible border */
-}
-
-.cartLoginBt {
-  width: 4em;
-  height: 4em;
-}
-
-.cartLoginBt img {
-  width: 100%;
-}
-
-/* Background overlay when search is active */
-.overlay-blur {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent */
-  z-index: 99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Makes top part float above overlay */
-.topPartBox {
-  position: relative;
-}
-
-/* Optional: style change when search is focused */
+/* Optional blurred state for top bar */
 .topPartBox.blurred {
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-/* Related box under search */
-.relatedCoursesBox {
-  position: absolute;
-  top: 110%;
-  width: 60%;
-  background: #fff9db;
-  border: 2px solid #ffe600;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  z-index: 20;
-}
-
-.relatedCoursesBox p {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.relatedCoursesBox ul {
-  margin: 0;
-  padding-left: 1rem;
-  list-style-type: none;
-}
-
-.relatedCoursesBox li {
-  padding: 0.4rem;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.relatedCoursesBox li:hover {
-  background: #ffe600;
-}
-
-/*
-  change the styling for window sizes smaller than 960px
-  1. hide the page selector
-  2. re-size the logo
-  3. add padding to the search field
-  4. change the direction of the cart and login buttons
-  5. re-size the input field in the search field
-  6. add padding and set the position of the cart and login buttons to the right side of the screen
-  7. add padding to the search field
-*/
+/* Responsive layout changes */
 @media (max-width: 960px) {
-  .pageSelector {
-    display: none;
-  }
-
   .homeLogo {
     width: 80%;
   }
 
-  .searchAndPageSelector {
-    padding-bottom: 3%;
-  }
-
-  .searchLoginAndCart {
-    flex-direction: column-reverse;
-    padding: 5%;
-    gap: 10px;
-  }
-
-  #SearchField input {
-    width: 80%;
-  }
-
   #LoginAndCartButtons {
-    align-self: flex-end;
-    padding-right: 5%;
-  }
-
-  #SearchField {
-    padding-right: 5%;
+    gap: 1rem;
+    padding-right: 1rem;
   }
 }

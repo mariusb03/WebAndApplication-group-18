@@ -1,6 +1,5 @@
 .landing-container {
     text-align: center;
-    padding: 0;
     margin: 0;
 }
 
@@ -8,10 +7,73 @@
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 2rem;
+    margin-top: 0; /* Remove unwanted spacing */
     line-height: 1.4;
     color: #000;
 }
 
 .landing-header span {
-    color: #d18f00; /* accent color */
+    color: #d18f00;
+}
+
+.landing-search-section {
+    margin-top: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-search-section input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 500px;
+}
+
+.landing-search-section button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    border: none;
+    background-color: #ffe600;
+    cursor: pointer;
+}
+
+.browse-button {
+    background-color: #fcc419;
+    margin-top: 0.5rem;
+}
+
+.search-suggestion-popup {
+    position: absolute;
+    top: 100%;
+    margin-top: 0.5rem;
+    background: #fff9db;
+    border: 2px solid #ffe600;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    z-index: 10;
+    padding: 1rem;
+}
+
+.search-suggestion-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-suggestion-popup li {
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-suggestion-popup li:hover {
+    background: #ffe600;
 }
