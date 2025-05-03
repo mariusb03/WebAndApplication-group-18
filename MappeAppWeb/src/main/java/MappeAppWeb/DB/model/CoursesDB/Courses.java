@@ -1,5 +1,6 @@
 package MappeAppWeb.DB.model.CoursesDB;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import java.util.Set;
 public class Courses {
   @Id
   @GeneratedValue
-  private int course_id;
+  private Integer Id;
   private String title;
   private String difficulty;
   private String session;
@@ -33,7 +34,7 @@ public class Courses {
   private Set<Topics> topics = new HashSet<>();
 
   @ManyToMany(mappedBy = "courses")
-  private Set<CourseProviders> courseProviders = new HashSet<>();
+  private Set<Providers> providers = new HashSet<>();
 
   /**
    * default constructor for courses
@@ -44,9 +45,8 @@ public class Courses {
   /**
    * create a course
    */
-  public Courses(int id, String title, String level, String session, double size,
+  public Courses( String title, String level, String session, double size,
                  int hoursPerWeek, String relatedCourses, int price, String description, String Category) {
-    this.course_id = id;
     this.title = title;
     this.difficulty = level;
     this.session = session;
@@ -62,8 +62,8 @@ public class Courses {
    * get the id of the course
    * @return id
    */
-  public int getCourse_id() {
-      return course_id;
+  public int getId() {
+      return Id;
   }
 
   /**
@@ -107,27 +107,19 @@ public class Courses {
   }
 
   /**
-   * get the topics of the course
-   * @return topics
-   */
-  public Set<Topics> getTopics() {
-    return topics;
-  }
-
-  /**
    * get the course providers of the course
    * @return courseProviders
    */
-  public Set<CourseProviders> getCourseProviders() {
-      return courseProviders;
+  public Set<Providers> getProviders() {
+      return providers;
   }
 
   /**
    * set the id of the course
    * @param id
    */
-  public void setCourse_id(int id) {
-      this.course_id = id;
+  public void setId(int id) {
+      this.Id = id;
   }
 
   /**
@@ -180,18 +172,31 @@ public class Courses {
 
   /**
    * set the course providers of the course
-   * @param courseProviders
+   * @param providers
    */
-  public void setCourseProviders(Set<CourseProviders> courseProviders) {
-    this.courseProviders = courseProviders;
+  public void setProviders(Set<Providers> providers) {
+    this.providers = providers;
   }
 
   /**
    * set topics of the course
    * @param topics
    */
+  /**
   public void addTopics(Topics topics) {
     this.topics.add(topics);
-    topics.getCourses().add(this);
+    topics.getRelatedCourses().add(this);
+  }
+   */
+
+  /**
+   * checks if the course is valid
+   * @return true if valid, false if not
+   */
+  @JsonIgnore
+  public boolean isValid() {
+    return (Id == 0 || Id > 0) && !"".equals(title) && !"".equals(difficulty)
+        && !"".equals(session) && (size == 0 || size > 0) && (hoursPerWeek == 0 || hoursPerWeek > 0)
+        && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description);
   }
 }

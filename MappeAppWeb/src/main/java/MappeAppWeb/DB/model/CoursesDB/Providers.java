@@ -14,7 +14,7 @@ import java.util.Set;
  * Entity class for course providers.
  */
 @Entity
-public class CourseProviders {
+public class Providers {
   @Id
   @GeneratedValue
   private int providers_id;
@@ -29,7 +29,7 @@ public class CourseProviders {
   @JsonIgnore
   private Set<Courses> courses = new HashSet<>();
 
-  public CourseProviders() {
+  public Providers() {
   }
 
   /**
@@ -37,7 +37,7 @@ public class CourseProviders {
    *
    * @param course_providers The id of the course provider
    */
-  public CourseProviders(int course_providers, String name) {
+  public Providers(int course_providers, String name) {
     this.providers_id = course_providers;
     this.name = name;
   }
@@ -47,7 +47,7 @@ public class CourseProviders {
    *
    * @return The id of the course provider
    */
-  public int getProviders_id() {
+  public int getId() {
       return providers_id;
   }
 
@@ -65,7 +65,7 @@ public class CourseProviders {
    *
    * @param id
    */
-  public void setProviders_id(int id) {
+  public void setId(int id) {
     this.providers_id = id;
   }
 

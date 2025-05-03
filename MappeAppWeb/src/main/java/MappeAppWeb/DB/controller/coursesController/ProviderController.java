@@ -1,29 +1,33 @@
-package MappeAppWeb.DB.service.courses;
+package MappeAppWeb.DB.controller.coursesController;
 
-import MappeAppWeb.DB.model.CoursesDB.CourseProviders;
+import MappeAppWeb.DB.model.CoursesDB.Providers;
+import MappeAppWeb.DB.service.courses.ProviderService;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Service
-public class CourseProviderService {
+@RestController
+@RequestMapping("/providers")
+public class ProviderController {
   @Autowired
-  private CourseProviderService service;
+  private ProviderService service;
 
   /**
    * Retrieves all course providers from the database.
    *
    * @return An iterable collection of all course providers.
    */
-  @GetMapping
-  public Iterable<CourseProviders> getAllCourseProviders() {
+  @GetMapping("/getAll")
+  public Iterable<Providers> getAll() {
     return this.service.getAll();
   }
 
@@ -33,29 +37,10 @@ public class CourseProviderService {
    * @param id The ID of the course provider to retrieve.
    * @return The course provider with the specified ID.
    */
-  @GetMapping("/{id}")
-  public ResponseEntity<CourseProviders> getCourseProvider(@PathVariable int id) {
-    ResponseEntity<CourseProviders> response;
-    CourseProviders provider = this.service.getByID(id);
-    if (provider != null) {
-      response = ResponseEntity.ok(provider);
-    } else {
-      response = ResponseEntity.notFound().build();
-    }
-    return response;
-  }
-
-  /**
-   * Retrieves course providers by their name.
-   *
-   * @param name The name of the course provider to retrieve.
-   *
-   * @return course provider with the specified name.
-   */
-  @GetMapping("/{name}")
-  public ResponseEntity<CourseProviders> getCourseProviderByName(@PathVariable String name) {
-    ResponseEntity<CourseProviders> response;
-    CourseProviders provider = this.service.getByName(name);
+  @GetMapping("/getById/{id}")
+  public ResponseEntity<Optional<Providers>> getById(@PathVariable int id) {
+    ResponseEntity<Optional<Providers>> response;
+    Optional<Providers> provider = this.service.getByID(id);
     if (provider != null) {
       response = ResponseEntity.ok(provider);
     } else {
@@ -69,8 +54,8 @@ public class CourseProviderService {
    *
    * @param provider The course provider to add.
    */
-  @PostMapping
-  public ResponseEntity<String> addProvider(@RequestBody CourseProviders provider) {
+  @PostMapping("/add")
+  public ResponseEntity<String> add(@RequestBody Providers provider) {
     ResponseEntity<String> response;
     if (this.service.add(provider)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -83,8 +68,8 @@ public class CourseProviderService {
   /**
    * Deletes a course provider from the database.
    */
-  @DeleteMapping("/{id}")
-  public ResponseEntity<String> deleteProvider(@PathVariable int id) {
+  @DeleteMapping("/delete/{id}")
+  public ResponseEntity<String> delete(@PathVariable int id) {
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -97,19 +82,19 @@ public class CourseProviderService {
   /**
    * Update a course provider in the database.
    *
-   * @param id of the course provider to update
-   * @param name of the course provider
+   * @param provider the provider object to update
    *
    * @return 200 OK if update was successful, 400 BAD REQUEST if not
    */
-  @PutMapping("/{id}")
-  public ResponseEntity<String> updateProvider (@PathVariable int id, @RequestBody CourseProviders name) {
+  @PutMapping("/update/{id}")
+  public ResponseEntity<String> update(@PathVariable Providers provider) {
     ResponseEntity<String> response;
-    if (this.service.update(id, name)) {
+    if (this.service.update(provider)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
     return response;
   }
+
 }

@@ -17,8 +17,8 @@ import java.util.Set;
 public class Topics {
   @Id
   @GeneratedValue
-  private Integer topic_id;
-  private String topic;
+  private Integer topicID;
+  private String topicName;
 
   @ManyToMany
   @JoinTable(
@@ -37,55 +37,47 @@ public class Topics {
    * @param topic    The name of the topic
    */
   public Topics( int topicID, String topic) {
-    this.topic_id = topic_id;
-    this.topic = topic;
+    this.topicID = topicID;
+    this.topicName = topic;
   }
 
   /**
    * Get the id of the topic.
    * @return topic_id
    */
-  public Integer getTopic_id() {
-    return topic_id;
+  public Integer getID() {
+    return topicID;
   }
 
   /**
    * Set the id of the topic.
    * @param topic_id The id of the topic
    */
-  public void setTopic_id(Integer topic_id) {
-    this.topic_id = topic_id;
+  public void setID(Integer topic_id) {
+    this.topicID = topic_id;
   }
 
   /**
    * Get the name of the topic.
    * @return topic
    */
-  public String getTopic() {
-    return topic;
+  public String getTopicName() {
+    return topicName;
   }
 
   /**
    * Set the name of the topic.
    * @param topic The name of the topic
    */
-  public void setTopic(String topic) {
-    this.topic = topic;
-  }
-
-  /**
-   * Get the courses that are related to this topic.
-   * @return courses
-   */
-  public Set<Courses> getCourses() {
-    return courses;
+  public void setTopicName(String topic) {
+    this.topicName = topic;
   }
 
   /**
    * Set the courses that are related to this topic.
    * @param courses The courses that are related to this topic
    */
-  public void setCourses(Set<Courses> courses) {
+  public void setRelatedCourses(Set<Courses> courses) {
     this.courses = courses;
   }
 }

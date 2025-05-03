@@ -1,11 +1,2 @@
-MappeAppWeb\DB\tool\CoursesInitializer.class
-MappeAppWeb\DB\repository\coursesRepository\CourseProvidersRepository.class
-MappeAppWeb\DB\server\courses\CoursesServer.class
-MappeAppWeb\mapAppWebApplication.class
-MappeAppWeb\DB\model\CoursesDB\Topics.class
-MappeAppWeb\DB\server\courses\CourseProviderServer.class
-MappeAppWeb\DB\server\courses\TopicServer.class
-MappeAppWeb\DB\repository\coursesRepository\CoursesRepository.class
-MappeAppWeb\DB\model\CoursesDB\CourseProviders.class
-MappeAppWeb\DB\model\CoursesDB\Courses.class
-MappeAppWeb\DB\repository\coursesRepository\TopicRepository.class
+MappeAppWeb\DB\controller\coursesController\ControllerCommonResponse.class
+MappeAppWeb\DB\controller\coursesController\CoursesController.class
