@@ -1,8 +1,10 @@
-package mappeappweb.db.controller.coursesController;
+package mappeappweb.db.controller.coursescontroller;
 
-import mappeappweb.db.model.CoursesDB.Topics;
-import mappeappweb.db.service.courses.TopicService;
 import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Topics;
+import mappeappweb.db.service.courses.TopicService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for managing topics.
+ */
 @RestController
 @RequestMapping("/topics")
 public class TopicsController {
+  private final Logger logger = LoggerFactory.getLogger("TopicsController");
   @Autowired
   private TopicService service;
 
@@ -28,6 +34,7 @@ public class TopicsController {
    */
   @GetMapping("/getAll")
   public Iterable<Topics> getAll() {
+    logger.info("Retrieving all topics");
     return this.service.getAll();
   }
 
@@ -38,9 +45,10 @@ public class TopicsController {
    * @return topic with the specified ID.
    */
   @GetMapping("/getById/{id}")
-  public ResponseEntity<Optional<Topics>> getByID(@PathVariable int id) {
+  public ResponseEntity<Optional<Topics>> getById(@PathVariable int id) {
+    logger.info("Retrieving topic with ID: {}", id);
     ResponseEntity<Optional<Topics>> response;
-    Optional<Topics> topic = this.service.getByID(id);
+    Optional<Topics> topic = this.service.getById(id);
     if (topic != null) {
       response = ResponseEntity.ok(topic);
     } else {
@@ -56,6 +64,7 @@ public class TopicsController {
    */
   @PostMapping("/add")
   public ResponseEntity<String> add(@RequestBody Topics topic) {
+    logger.info("Adding new topic: {}", topic);
     ResponseEntity<String> response;
     if (this.service.add(topic)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -70,6 +79,7 @@ public class TopicsController {
    */
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> delete(@PathVariable int id) {
+    logger.info("Deleting topic with ID: {}", id);
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -88,6 +98,7 @@ public class TopicsController {
    */
   @PutMapping("/Update/{id}")
   public ResponseEntity<String> update(@PathVariable Topics topics) {
+    logger.info("Updating topic: {}", topics);
     ResponseEntity<String> response;
     if (this.service.update(topics)) {
       response = new ResponseEntity<>(HttpStatus.OK);

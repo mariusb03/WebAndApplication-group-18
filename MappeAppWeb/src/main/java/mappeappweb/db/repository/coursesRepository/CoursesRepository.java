@@ -1,6 +1,6 @@
 package mappeappweb.db.repository.coursesRepository;
 
-import mappeappweb.db.model.CoursesDB.Courses;
+import mappeappweb.db.model.coursesdb.Courses;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -8,8 +8,4 @@ import org.springframework.data.repository.CrudRepository;
  * Spring will auto-generate necessary methods.
  */
 public interface CoursesRepository extends CrudRepository<Courses, Integer> {
-
-  //List<Courses> findByTopicNameContainingIgnoreCase(String topic);
-
-  //List<Courses> findByProviderNameContainingIgnoreCase(String provider);
 }

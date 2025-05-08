@@ -1,13 +1,17 @@
 package mappeappweb.db.service.courses;
 
-import mappeappweb.db.model.CoursesDB.Providers;
-import mappeappweb.db.repository.coursesRepository.ProvidersRepository;
 import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Providers;
+import mappeappweb.db.repository.coursesRepository.ProvidersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing providers.
+ * This class contains methods to perform CRUD operations on providers.
+ */
 @Service
 public class ProviderService {
   private final Logger logger = LoggerFactory.getLogger("ProviderService");
@@ -16,9 +20,9 @@ public class ProviderService {
   private ProvidersRepository repository;
 
   /**
-   * Get all providers
+   * Get all providers.
    *
-   * @return All Topics
+   * @return All Topics.
    */
   public Iterable<Providers> getAll() {
     logger.info("Fetching all providers");
@@ -27,53 +31,66 @@ public class ProviderService {
   }
 
   /**
-   * Get a provider by ID
+   * Get a provider by ID.
    *
-   * @param Id
-   * @return providers
+   * @param id the ID of the provider to fetch.
+   * @return providers.
    */
-  public Optional<Providers> getByID(int Id) {
-    logger.info("Fetching topic by ID {}", Id);
+  public Optional<Providers> getById(int id) {
+    logger.info("Fetching topic by ID {}", id);
 
-    return repository.findById(Id);
+    return repository.findById(id);
   }
 
   /**
-   * add a providers to the database
-   * @param providers
+   * Add a new provider.
+   *
+   * @param providers the provider to add.
+   * @return true if the addition was successful, false otherwise.
    */
   public boolean add(Providers providers) {
     logger.info("Adding topic {}", providers);
 
+    boolean success = false;
     try {
       repository.save(providers);
-      return true;
+      success = true;
+      logger.info("Provider added successfully");
     } catch (Exception e) {
-      return false;
+      logger.error("Error adding provider: {}", e.getMessage());
     }
+    return success;
   }
 
   /**
-   * Delete a providers by ID
-   * @param id
+   * Delete a provider by ID.
+   *
+   * @param id the ID of the provider to delete.
+   * @return true if the deletion was successful, false otherwise.
    */
   public boolean delete(int id) {
     logger.info("Deleting providers with ID {}", id);
 
+    boolean success = false;
     try {
       repository.deleteById(id);
-      return true;
+      success = true;
+      logger.info("Provider with ID {} deleted successfully", id);
     } catch (Exception e) {
-      return false;
+      logger.error("Error deleting provider with ID {}: {}", id, e.getMessage());
     }
+    return success;
   }
 
+
   /**
-   * Update a providers by ID
-   * @param providers
+   * Update a provider.
+   *
+   * @param providers the provider to update.
+   * @return true if the update was successful, false otherwise.
    */
   public boolean update(Providers providers) {
-    int id = providers.getProviders_id();
+    int id = providers.getProvidersId();
 
     boolean success = false;
 

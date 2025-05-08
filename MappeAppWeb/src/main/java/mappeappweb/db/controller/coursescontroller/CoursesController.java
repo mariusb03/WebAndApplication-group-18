@@ -1,8 +1,10 @@
-package mappeappweb.db.controller.coursesController;
+package mappeappweb.db.controller.coursescontroller;
 
-import mappeappweb.db.model.CoursesDB.Courses;
-import mappeappweb.db.service.courses.CoursesService;
 import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Courses;
+import mappeappweb.db.service.courses.CoursesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for managing courses.
+ */
 @RestController
 @RequestMapping("/courses")
 public class CoursesController {
+  private final Logger logger = LoggerFactory.getLogger("CoursesController");
   @Autowired
   private CoursesService service;
 
@@ -28,6 +34,7 @@ public class CoursesController {
    */
   @GetMapping("/getAll")
   public Iterable<Courses> getAll() {
+    logger.info("Retrieving all courses");
     return this.service.getAll();
   }
 
@@ -38,9 +45,10 @@ public class CoursesController {
    * @return courses with the specified ID.
    */
   @GetMapping("/getById/{id}")
-  public ResponseEntity<Optional<Courses>> getByID(@PathVariable int id) {
+  public ResponseEntity<Optional<Courses>> getById(@PathVariable int id) {
+    logger.info("Retrieving course with ID: {}", id);
     ResponseEntity<Optional<Courses>> response;
-    Optional<Courses> courses = this.service.getByID(id);
+    Optional<Courses> courses = this.service.getbyid(id);
     if (courses != null) {
       response = ResponseEntity.ok(courses);
     } else {
@@ -56,6 +64,7 @@ public class CoursesController {
    */
   @PostMapping("/add")
   public ResponseEntity<String> addCourse(@RequestBody Courses courses)  {
+    logger.info("Adding new course: {}", courses);
     ResponseEntity<String> response;
     if (this.service.add(courses)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -67,13 +76,15 @@ public class CoursesController {
 
   /**
    * Adds a topic to a course.
+   *
    * @param courseId of the course that will associate with the topic
    * @param topicId of the topic that will be associated with the course
    * @return ResponseEntity with a message indicating success or failure
    */
   @PostMapping("/{courseId}/topics/{topicId}")
-  public ResponseEntity<String> addTopicToCourse
-      (@PathVariable Integer courseId, @PathVariable Integer topicId) {
+  public ResponseEntity<String> addTopicToCourse(@PathVariable Integer courseId,
+                                                  @PathVariable Integer topicId) {
+    logger.info("Adding topic with ID: {} to course with ID: {}", topicId, courseId);
     service.addTopicToCourse(courseId, topicId);
     return ResponseEntity.ok("Topic added to course");
   }
@@ -81,13 +92,15 @@ public class CoursesController {
 
   /**
    * Adds a provider to a course.
+   *
    * @param courseId of the course that will associate with the topic
    * @param providerId of the provider that will be associated with the course
    * @return ResponseEntity with a message indicating success or failure
    */
   @PostMapping("/{courseId}/provider/{providerId}")
-  public ResponseEntity<String> addProviderToCourse
-  (@PathVariable Integer courseId, @PathVariable Integer providerId) {
+  public ResponseEntity<String> addProviderToCourse(@PathVariable Integer courseId,
+                                                    @PathVariable Integer providerId) {
+    logger.info("Adding provider with ID: {} to course with ID: {}", providerId, courseId);
     service.addProviderToCourse(courseId, providerId);
     return ResponseEntity.ok("Provider added to course");
   }
@@ -97,6 +110,7 @@ public class CoursesController {
    */
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> delete(@PathVariable int id) {
+    logger.info("Deleting course with ID: {}", id);
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -115,6 +129,7 @@ public class CoursesController {
    */
   @PutMapping("/Update/{id}")
   public ResponseEntity<String> update(@PathVariable Courses course) {
+    logger.info("Updating course with ID: {}", course);
     ResponseEntity<String> response;
     if (this.service.update(course)) {
       response = new ResponseEntity<>(HttpStatus.OK);

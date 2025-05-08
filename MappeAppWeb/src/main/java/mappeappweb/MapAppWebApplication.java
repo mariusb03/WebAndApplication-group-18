@@ -7,14 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Main entrypoint for the application.
  */
 @SpringBootApplication
-public class ApplicationStarter {
+public class MapAppWebApplication {
 
   /**
    * Main method to run the application.
    *
-   * @param args command line arguments
+   * @param args command line arguments.
    */
   public static void main(String[] args) {
-    SpringApplication.run(ApplicationStarter.class, args);
+    SpringApplication.run(MapAppWebApplication.class, args);
   }
 }

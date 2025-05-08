@@ -1,7 +1,12 @@
-package mappeappweb.db.controller.coursesController;
+package mappeappweb.db.controller.coursescontroller;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+/**
+ * This class is used to create HTTP responses for the controller.
+ * It is not allowed to instantiate this class.
+ */
 public class ControllerCommonResponse {
 
   /**

@@ -1,6 +1,6 @@
 package mappeappweb.db.repository.coursesRepository;
 
-import mappeappweb.db.model.CoursesDB.Providers;
+import mappeappweb.db.model.coursesdb.Providers;
 import org.springframework.data.repository.CrudRepository;
 
 /**

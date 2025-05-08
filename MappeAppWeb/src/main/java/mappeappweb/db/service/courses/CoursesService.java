@@ -1,12 +1,12 @@
 package mappeappweb.db.service.courses;
 
-import mappeappweb.db.model.CoursesDB.Courses;
-import mappeappweb.db.model.CoursesDB.Providers;
-import mappeappweb.db.model.CoursesDB.Topics;
+import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Courses;
+import mappeappweb.db.model.coursesdb.Providers;
+import mappeappweb.db.model.coursesdb.Topics;
 import mappeappweb.db.repository.coursesRepository.CoursesRepository;
 import mappeappweb.db.repository.coursesRepository.ProvidersRepository;
 import mappeappweb.db.repository.coursesRepository.TopicRepository;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +37,16 @@ public class CoursesService {
    */
   @Transactional
   public void addTopicToCourse(Integer courseId, Integer topicId) {
+    logger.info("Adding topic to course: topicId={}, courseId={}", topicId, courseId);
     Courses course = courseRepo.findById(courseId)
         .orElseThrow(() -> new RuntimeException("Course not found"));
     Topics topic = topicRepo.findById(topicId)
         .orElseThrow(() -> new RuntimeException("Topic not found"));
 
     course.getTopics().add(topic);
-    courseRepo.save(course);  // Persist the relationship
+    courseRepo.save(course);
+
+    logger.info("Topic added to course: topicId={}, courseId={}", topicId, courseId);
   }
 
   /**
@@ -52,16 +55,19 @@ public class CoursesService {
    * @param courseId The ID of the course.
    * @param providerId The ID of the provider.
    */
-    @Transactional
-    public void addProviderToCourse(Integer courseId, Integer providerId) {
-      Courses course = courseRepo.findById(courseId)
-          .orElseThrow(() -> new RuntimeException("Course not found"));
-      Providers provider = providerRepo.findById(providerId)
-          .orElseThrow(() -> new RuntimeException("provider not found"));
+  @Transactional
+  public void addProviderToCourse(Integer courseId, Integer providerId) {
+    logger.info("Adding provider to course: providerId={}, courseId={}", providerId, courseId);
+    Courses course = courseRepo.findById(courseId)
+        .orElseThrow(() -> new RuntimeException("Course not found"));
+    Providers provider = providerRepo.findById(providerId)
+        .orElseThrow(() -> new RuntimeException("provider not found"));
 
-      course.getProviders().add(provider);
-      courseRepo.save(course);  // Persist the relationship
-    }
+    course.getProviders().add(provider);
+    courseRepo.save(course);
+
+    logger.info("Provider added to course: providerId={}, courseId={}", providerId, courseId);
+  }
 
   /**
    * Get all Courses.
@@ -75,55 +81,68 @@ public class CoursesService {
   }
 
   /**
-   * Get a course by ID.
-   * @param Id The ID of the course to retrieve.
-   * @return Topics.
+   * Get all topics.
+   *
+   * @param id The ID of the course.
+   * @return All topics.
    */
-  public Optional<Courses> getByID(int Id) {
-    logger.info("Fetching topic by ID {}", Id);
+  public Optional<Courses> getbyid(int id) {
+    logger.info("Fetching topic by ID {}", id);
 
-    return courseRepo.findById(Id);
+    return courseRepo.findById(id);
   }
 
+
   /**
-   * add a course to the database.
+   * Add a new course.
+   *
    * @param course The course to add.
+   * @return true if the course was added successfully, false otherwise.
    */
   public boolean add(Courses course) {
-    logger.info("Adding topic {}", course);
+    logger.info("Adding course{}", course);
 
+    boolean success = false;
     try {
       courseRepo.save(course);
-      return true;
+      success = true;
+      logger.info("Course added successfully: {}", course);
     } catch (Exception e) {
-      return false;
+      logger.error("Error adding course: {}", course);
     }
+    return success;
   }
 
   /**
    * Delete a course by ID.
+   *
    * @param id The ID of the course to delete.
+   * @return true if the course was deleted successfully, false otherwise.
    */
   public boolean delete(int id) {
     logger.info("Deleting topic with ID {}", id);
 
+    boolean success = false;
     try {
       courseRepo.deleteById(id);
-      return true;
+      success = true;
+      logger.info("Course deleted successfully: {}", id);
     } catch (Exception e) {
-      return false;
+      logger.error("Error deleting course: {}", id);
     }
+    return success;
   }
 
   /**
-   * Update a course by ID.
+   * Update a course.
+   *
    * @param course The course to update.
+   * @return true if the course was updated successfully, false otherwise.
    */
   public boolean update(Courses course) {
-    int id = course.getCourse_Id();
+    int id = course.getCourseId();
 
     boolean success = false;
-
     try {
       if (courseRepo.existsById(id)) {
         courseRepo.deleteById(id);
@@ -133,8 +152,6 @@ public class CoursesService {
         logger.info("Updating topic with ID {}", id);
       } else {
         logger.warn("Topic with ID {} not found for update", id);
-
-        success = false;
       }
     } catch (Exception e) {
       throw new RuntimeException(e);

@@ -1,8 +1,10 @@
-package mappeappweb.db.controller.coursesController;
+package mappeappweb.db.controller.coursescontroller;
 
-import mappeappweb.db.model.CoursesDB.Providers;
-import mappeappweb.db.service.courses.ProviderService;
 import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Providers;
+import mappeappweb.db.service.courses.ProviderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for managing course providers.
+ */
 @RestController
 @RequestMapping("/providers")
 public class ProviderController {
+  private final Logger logger = LoggerFactory.getLogger("ProviderController");
   @Autowired
   private ProviderService service;
 
@@ -28,6 +34,7 @@ public class ProviderController {
    */
   @GetMapping("/getAll")
   public Iterable<Providers> getAll() {
+    logger.info("Retrieving all course providers");
     return this.service.getAll();
   }
 
@@ -39,8 +46,9 @@ public class ProviderController {
    */
   @GetMapping("/getById/{id}")
   public ResponseEntity<Optional<Providers>> getById(@PathVariable int id) {
+    logger.info("Retrieving course provider with ID: {}", id);
     ResponseEntity<Optional<Providers>> response;
-    Optional<Providers> provider = this.service.getByID(id);
+    Optional<Providers> provider = this.service.getById(id);
     if (provider != null) {
       response = ResponseEntity.ok(provider);
     } else {
@@ -56,6 +64,7 @@ public class ProviderController {
    */
   @PostMapping("/add")
   public ResponseEntity<String> add(@RequestBody Providers provider) {
+    logger.info("Adding new course provider: {}", provider);
     ResponseEntity<String> response;
     if (this.service.add(provider)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -70,6 +79,7 @@ public class ProviderController {
    */
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> delete(@PathVariable int id) {
+    logger.info("Deleting course provider with ID: {}", id);
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
@@ -88,6 +98,7 @@ public class ProviderController {
    */
   @PutMapping("/update/{id}")
   public ResponseEntity<String> update(@PathVariable Providers provider) {
+    logger.info("Updating course provider: {}", provider);
     ResponseEntity<String> response;
     if (this.service.update(provider)) {
       response = new ResponseEntity<>(HttpStatus.OK);

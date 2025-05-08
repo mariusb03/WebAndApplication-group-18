@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import mappeappweb.db.model.CoursesDB.Courses;
-import mappeappweb.db.model.CoursesDB.Providers;
-import mappeappweb.db.model.CoursesDB.Topics;
+import mappeappweb.db.model.coursesdb.Courses;
+import mappeappweb.db.model.coursesdb.Providers;
+import mappeappweb.db.model.coursesdb.Topics;
 import mappeappweb.db.repository.coursesRepository.CoursesRepository;
 import mappeappweb.db.repository.coursesRepository.ProvidersRepository;
 import mappeappweb.db.repository.coursesRepository.TopicRepository;
@@ -39,11 +39,15 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
   @Override
   @Transactional
   public void onApplicationEvent(ApplicationReadyEvent event) {
+    if (coursesRepository.count() > 0) {
+      logger.info("Courses already initialized. Skipping initialization.");
+      return;
+    }
+
     initializeCourses();
     initializeTopics();
     initializeProviders();
     initializeCourseTopicRelations();
-    initializeCourseProviderRelations();
   }
 
   /**
@@ -68,6 +72,8 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
     providersRepository.saveAll(List.of(
         ntnu, asf, pearson, oracle, microsoft, amazon, adobe, apple, google, bi, uio, uib
     ));
+
+    logger.info("provider initialized to database");
   }
 
   /**
@@ -111,6 +117,8 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
         dataDrivenOptimization, imageProcessing, python, machineLearning, programming, dataScience,
         neuralNetworks, databricks
     ));
+
+    logger.info("Topics initialized to database");
   }
 
   /**
@@ -340,6 +348,8 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
         awsCloudPractitioner, seo, socialMediaMarketing, businessStrategy, mlBasicsPython,
         imageRecognition, databricksFundamentals
     ));
+
+    logger.info("Courses initialized to database");
   }
 
   /**
@@ -347,6 +357,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
    */
   @Transactional
   public void initializeCourseTopicRelations() {
+    logger.info("Initializing course-topic relations in the database...");
     Map<Integer, List<Integer>> courseToTopicMap = Map.ofEntries(
         Map.entry(1, List.of(1, 2, 3, 24)),
         Map.entry(2, List.of(4, 5, 6)),
@@ -378,6 +389,8 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
       course.getTopics().addAll((Collection<? extends Topics>) topics);
       coursesRepository.save(course);
     }
+
+    logger.info("Course-Topics relation initialized to database");
   }
 
   /**
@@ -385,6 +398,8 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
    */
   @Transactional
   public void initializeCourseProviderRelations() {
+    logger.info("Initializing course-provider relations in the database...");
+
     Map<Integer, List<Integer>> courseToTopicMap = Map.ofEntries(
         Map.entry(1, List.of(1, 4)),
         Map.entry(2, List.of(1, 2, 3)),
@@ -416,5 +431,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
       course.getProviders().addAll((Collection<? extends Providers>) providers);
       coursesRepository.save(course);
     }
+
+    logger.info("Course-provider relation initialized to database");
   }
 }

@@ -1,13 +1,17 @@
 package mappeappweb.db.service.courses;
 
-import mappeappweb.db.model.CoursesDB.Topics;
-import mappeappweb.db.repository.coursesRepository.TopicRepository;
 import java.util.Optional;
+import mappeappweb.db.model.coursesdb.Topics;
+import mappeappweb.db.repository.coursesRepository.TopicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing topics in the database.
+ * This class contains business logic related to topics.
+ */
 @Service
 public class TopicService {
   private final Logger logger = LoggerFactory.getLogger("TopicService");
@@ -16,9 +20,9 @@ public class TopicService {
   private TopicRepository repository;
 
   /**
-   * Get all topics
+   * Get all topics.
    *
-   * @return All Topics
+   * @return All Topics.
    */
   public Iterable<Topics> getAll() {
     logger.info("Fetching all topics");
@@ -27,52 +31,69 @@ public class TopicService {
   }
 
   /**
-   * Get a topic by ID
-   * @param ID
+   * Get a topic by id.
+   *
+   * @param id id of the topic.
+   *
    * @return Topics
    */
-  public Optional<Topics> getByID(int ID) {
-    logger.info("Fetching topic by ID {}", ID);
+  public Optional<Topics> getById(int id) {
+    logger.info("Fetching topic by id {}", id);
 
-    return repository.findById(ID);
+    return repository.findById(id);
   }
 
   /**
-   * add a topic to the database
-   * @param topic
+   * add a topic to the database.
+   *
+   * @param topic the topic to add.
    */
   public boolean add(Topics topic) {
     logger.info("Adding topic {}", topic);
 
+    boolean success = false;
     try {
       repository.save(topic);
-      return true;
-    } catch (Exception e) {
-      return false;
+      success = true;
+
+      logger.info("Added topic {}", topic);
+    } catch (Exception ignored) {
+      logger.error("Failed to add topic {}", topic);
     }
+
+    return success;
   }
 
   /**
-   * Delete a topic by ID
-   * @param id
+   * Delete a topic from the database.
+   *
+   * @param id the id of the topic to delete.
+   * @return true if the topic was deleted, false if not.
    */
   public boolean delete(int id) {
     logger.info("Deleting topic with ID {}", id);
 
+    boolean deleted = false;
     try {
       repository.deleteById(id);
-        return true;
-    } catch (Exception e) {
-      return false;
+      deleted = true;
+
+      logger.info("Deleted topic with ID {}", id);
+    } catch (Exception ignored) {
+      logger.error("Failed to delete topic with ID {}", id);
     }
+    return deleted;
   }
 
+
   /**
-   * Update a topic by ID
-   * @param topics
+   * Update a topic in the database.
+   *
+   * @param topics the topic to update.
+   * @return true if the topic was updated, false if not.
    */
   public boolean update(Topics topics) {
-    int id = topics.getID();
+    int id = topics.getid();
 
     boolean success = false;
 

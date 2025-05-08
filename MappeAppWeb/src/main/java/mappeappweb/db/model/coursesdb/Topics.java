@@ -1,4 +1,4 @@
-package mappeappweb.db.model.CoursesDB;
+package mappeappweb.db.model.coursesdb;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,43 +15,49 @@ import java.util.Set;
 public class Topics {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
-  private Integer topic_id;
+  private Integer topicId;
   private String topicName;
 
   @ManyToMany(mappedBy = "topics")
   private Set<Courses> courses = new HashSet<>();
 
+  /**
+   * default constructor for topics.
+   */
   public Topics() {}
 
   /**
    * Create a topic.
    *
-   * @param topic    The name of the topic
+   * @param topic The name of the topic
    */
-  public Topics( int topicID, String topic) {
-    this.topic_id = topicID;
+  public Topics(int topicId, String topic) {
+    this.topicId = topicId;
     this.topicName = topic;
   }
 
   /**
    * Get the id of the topic.
-   * @return topic_id
+   *
+   * @return topic_id.
    */
-  public Integer getID() {
-    return topic_id;
+  public Integer getid() {
+    return topicId;
   }
 
   /**
    * Set the id of the topic.
-   * @param topic_id The id of the topic
+   *
+   * @param topicId The id of the topic
    */
-  public void setID(Integer topic_id) {
-    this.topic_id = topic_id;
+  public void setId(Integer topicId) {
+    this.topicId = topicId;
   }
 
   /**
    * Get the name of the topic.
-   * @return topic
+   *
+   * @return topic.
    */
   public String getTopicName() {
     return topicName;
@@ -59,6 +65,7 @@ public class Topics {
 
   /**
    * Set the name of the topic.
+   *
    * @param topic The name of the topic
    */
   public void setTopicName(String topic) {
@@ -67,6 +74,7 @@ public class Topics {
 
   /**
    * Set the courses that are related to this topic.
+   *
    * @param courses The courses that are related to this topic
    */
   public void setRelatedCourses(Set<Courses> courses) {
