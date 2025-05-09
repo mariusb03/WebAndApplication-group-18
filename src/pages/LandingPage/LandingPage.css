@@ -77,3 +77,23 @@
 .search-suggestion-popup li:hover {
     background: #ffe600;
 }
+
+.landing-browse-section {
+    margin-top: 1.5rem;
+}
+
+.browse-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #fcc419;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    transition: background-color 0.3s;
+}
+
+.browse-button:hover {
+    background-color: #ffe600;
+}

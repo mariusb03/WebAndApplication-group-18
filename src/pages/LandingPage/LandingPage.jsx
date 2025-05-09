@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroCarousel from '../../components/heroCarousel/HeroCarousel';
-import './LandingPage.css'; // We'll add this next
-
+import './LandingPage.css';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
     return (
@@ -15,6 +15,11 @@ const LandingPage = () => {
 
             <HeroCarousel />
 
+            <div className="landing-browse-section">
+                <Link to="/courses" className="browse-button">
+                    Browse Courses
+                </Link>
+            </div>
         </div>
     );
 };
