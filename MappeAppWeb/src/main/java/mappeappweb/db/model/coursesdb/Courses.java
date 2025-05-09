@@ -23,7 +23,7 @@ public class Courses {
   private String title;
   private String difficulty;
   private String session;
-  private double size;
+  private Double size;
   private int hoursPerWeek;
   private String relatedCourses;
   private int price;
@@ -81,7 +81,7 @@ public class Courses {
    * @return id of the course.
    */
   public Integer getCourseId() {
-    return courseId;
+    return this.courseId;
   }
 
   /**
@@ -90,7 +90,7 @@ public class Courses {
    * @return title of the course.
    */
   public String getTitle() {
-    return title;
+    return this.title;
   }
 
   /**
@@ -99,7 +99,7 @@ public class Courses {
    * @return difficulty
    */
   public String getDifficulty() {
-    return difficulty;
+    return this.difficulty;
   }
 
   /**
@@ -108,7 +108,7 @@ public class Courses {
    * @return session
    */
   public String getSession() {
-    return session;
+    return this.session;
   }
 
   /**
@@ -117,7 +117,34 @@ public class Courses {
    * @return size.
    */
   public double getSize() {
-    return size;
+    return this.size;
+  }
+
+  /**
+   * get the hours per week of the course.
+   *
+   * @return hoursPerWeek.
+   */
+  public int getHoursPerWeek() {
+    return this.hoursPerWeek;
+  }
+
+  /**
+   * get the related courses of the course.
+   *
+   * @return relatedCourses.
+   */
+  public String getRelatedCourses() {
+    return this.relatedCourses;
+  }
+
+  /**
+   * get the price of the course.
+   *
+   * @return price.
+   */
+  public int getPrice() {
+    return this.price;
   }
 
   /**
@@ -126,7 +153,14 @@ public class Courses {
    * @return description.
    */
   public String getDescription() {
-    return description;
+    return this.description;
+  }
+
+  /**
+   * get the category of the course.
+   */
+  public String getCategory() {
+    return this.category;
   }
 
   /**
@@ -135,7 +169,7 @@ public class Courses {
    * @return courseProviders.
    */
   public Set<Providers> getProviders() {
-    return providers;
+    return this.providers;
   }
 
   /**
@@ -144,7 +178,7 @@ public class Courses {
    * @return topics.
    */
   public Set<Topics> getTopics() {
-    return topics;
+    return this.topics;
   }
 
   /**
@@ -184,6 +218,42 @@ public class Courses {
   }
 
   /**
+   * set size of the course.
+   *
+   * @param size of the course.
+   */
+  public void setSize(Double size) {
+    this.size = size;
+  }
+
+  /**
+   * set the hours per week of the course.
+   *
+   * @param hoursPerWeek of the course.
+   */
+  public void setHoursPerWeek(int hoursPerWeek) {
+    this.hoursPerWeek = hoursPerWeek;
+  }
+
+  /**
+   * set the related courses of the course.
+   *
+   * @param relatedCourses of the course.
+   */
+  public void setRelatedCourses(String relatedCourses) {
+    this.relatedCourses = relatedCourses;
+  }
+
+  /**
+   * set the price of the course.
+   *
+   * @param price of the course.
+   */
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
+  /**
    * set the description of the course.
    *
    * @param description of the course.
@@ -193,12 +263,10 @@ public class Courses {
   }
 
   /**
-   * set the size of the course.
-   *
-   * @param size of the course
+   * set the category of the course.
    */
-  public void setSize(double size) {
-    this.size = size;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
   /**
@@ -225,9 +293,10 @@ public class Courses {
    * @return true if valid, false if not.
    */
   @JsonIgnore
-  public boolean isValid() {
-    return (courseId == 0 || courseId > 0) && !"".equals(title) && !"".equals(difficulty)
+  public boolean isValid(Courses course) {
+    return (courseId != null || courseId > 0) && !"".equals(title) && !"".equals(difficulty)
         && !"".equals(session) && (size == 0 || size > 0) && (hoursPerWeek == 0 || hoursPerWeek > 0)
-        && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description);
+        && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description)
+        && (category != null || !"".equals(category));
   }
 }

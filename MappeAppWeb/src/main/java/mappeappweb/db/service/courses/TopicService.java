@@ -52,13 +52,17 @@ public class TopicService {
     logger.info("Adding topic {}", topic);
 
     boolean success = false;
-    try {
-      repository.save(topic);
-      success = true;
+    if (topic.isValid(topic)) {
+      try {
+        repository.save(topic);
+        success = true;
 
-      logger.info("Added topic {}", topic);
-    } catch (Exception ignored) {
-      logger.error("Failed to add topic {}", topic);
+        logger.info("Added topic {}", topic);
+      } catch (Exception ignored) {
+        logger.error("Failed to add topic {}", topic);
+      }
+    } else {
+      logger.error("Invalid topic {}", topic);
     }
 
     return success;
@@ -89,29 +93,24 @@ public class TopicService {
   /**
    * Update a topic in the database.
    *
+   * @param id the id of the topic to update.
    * @param topics the topic to update.
+   *
    * @return true if the topic was updated, false if not.
    */
-  public boolean update(Topics topics) {
-    int id = topics.getid();
+  public boolean update(Topics topics, Integer id) {
+    logger.info("Updating topic with ID {}", id);
 
-    boolean success = false;
-
-    try {
-      if (repository.existsById(id)) {
-        repository.deleteById(id);
-        repository.save(topics);
-        success = true;
-
-        logger.info("Updating topic with ID {}", id);
+    return repository.findById(id).map(existing -> {
+      if (topics.isValid(existing)) {
+        existing.setTopicName(topics.getTopicName());
+        repository.save(existing);
+        logger.info("Updated course with ID {}", id);
+        return true;
       } else {
-        logger.warn("Topic with ID {} not found for update", id);
-
-        success = false;
+        logger.error("Failed to update course with ID {}", id);
+        return false;
       }
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-    return success;
+    }).orElse(false);
   }
 }

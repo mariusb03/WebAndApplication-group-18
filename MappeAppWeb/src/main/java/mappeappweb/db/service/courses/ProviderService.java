@@ -52,12 +52,14 @@ public class ProviderService {
     logger.info("Adding topic {}", providers);
 
     boolean success = false;
-    try {
-      repository.save(providers);
-      success = true;
-      logger.info("Provider added successfully");
-    } catch (Exception e) {
-      logger.error("Error adding provider: {}", e.getMessage());
+    if (providers.isValid(providers)) {
+      try {
+        repository.save(providers);
+        success = true;
+        logger.info("Provider added successfully");
+      } catch (Exception e) {
+        logger.error("Error adding provider: {}", e.getMessage());
+      }
     }
     return success;
   }
@@ -89,26 +91,17 @@ public class ProviderService {
    * @param providers the provider to update.
    * @return true if the update was successful, false otherwise.
    */
-  public boolean update(Providers providers) {
-    int id = providers.getProvidersId();
-
-    boolean success = false;
-
-    try {
-      if (repository.existsById(id)) {
-        repository.deleteById(id);
-        repository.save(providers);
-        success = true;
-
-        logger.info("Updating providers with ID {}", id);
+  public boolean update(Providers providers, Integer id) {
+    return repository.findById(id).map(existing -> {
+      if (providers.isValid(existing)) {
+        existing.setName(providers.getName());
+        repository.save(existing);
+        logger.info("Updated course with ID {}", id);
+        return true;
       } else {
-        logger.warn("providers with ID {} not found for update", id);
-
-        success = false;
+        logger.error("Invalid course data");
+        return false;
       }
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-    return success;
+    }).orElse(false);
   }
 }

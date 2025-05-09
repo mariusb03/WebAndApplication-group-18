@@ -1,5 +1,6 @@
 package mappeappweb.db.controller.coursescontroller;
 
+import jakarta.websocket.server.PathParam;
 import java.util.Optional;
 import mappeappweb.db.model.coursesdb.Providers;
 import mappeappweb.db.service.courses.ProviderService;
@@ -92,15 +93,16 @@ public class ProviderController {
   /**
    * Update a course provider in the database.
    *
+   * @param id the ID of the course provider to update
    * @param provider the provider object to update
    *
    * @return 200 OK if update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/update/{id}")
-  public ResponseEntity<String> update(@PathVariable Providers provider) {
+  public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Providers provider) {
     logger.info("Updating course provider: {}", provider);
     ResponseEntity<String> response;
-    if (this.service.update(provider)) {
+    if (this.service.update(provider, id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

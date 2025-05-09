@@ -66,7 +66,7 @@ public class TopicsController {
   public ResponseEntity<String> add(@RequestBody Topics topic) {
     logger.info("Adding new topic: {}", topic);
     ResponseEntity<String> response;
-    if (this.service.add(topic)) {
+    if (this.service.add(topic) && topic.isValid(topic)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -92,15 +92,16 @@ public class TopicsController {
   /**
    * Update a topic in the database.
    *
-   * @param topics The topic object to update.
+   * @param id The ID of the topic to update.
+   * @param topic The topic object to update.
    *
    * @return 200 OK if update was successful, 400 BAD REQUEST if not
    */
-  @PutMapping("/Update/{id}")
-  public ResponseEntity<String> update(@PathVariable Topics topics) {
-    logger.info("Updating topic: {}", topics);
+  @PutMapping("/update/{id}")
+  public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Topics topic) {
+    logger.info("Updating topic: {}", topic);
     ResponseEntity<String> response;
-    if (this.service.update(topics)) {
+    if (this.service.update(topic, id) && topic.isValid(topic)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

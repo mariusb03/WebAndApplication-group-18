@@ -103,12 +103,14 @@ public class CoursesService {
     logger.info("Adding course{}", course);
 
     boolean success = false;
-    try {
-      courseRepo.save(course);
-      success = true;
-      logger.info("Course added successfully: {}", course);
-    } catch (Exception e) {
-      logger.error("Error adding course: {}", course);
+    if (course.isValid(course)) {
+      try {
+        courseRepo.save(course);
+        success = true;
+        logger.info("Course added successfully: {}", course);
+      } catch (Exception e) {
+        logger.error("Error adding course: {}", course);
+      }
     }
     return success;
   }
@@ -139,23 +141,25 @@ public class CoursesService {
    * @param course The course to update.
    * @return true if the course was updated successfully, false otherwise.
    */
-  public boolean update(Courses course) {
-    int id = course.getCourseId();
-
-    boolean success = false;
-    try {
-      if (courseRepo.existsById(id)) {
-        courseRepo.deleteById(id);
-        courseRepo.save(course);
-        success = true;
-
-        logger.info("Updating topic with ID {}", id);
+  public boolean update(Courses course, Integer id) {
+    return courseRepo.findById(id).map(existing -> {
+      if (course.isValid(existing)) {
+        existing.setTitle(course.getTitle());
+        existing.setDifficulty(course.getDifficulty());
+        existing.setSession(course.getSession());
+        existing.setSize(course.getSize());
+        existing.setHoursPerWeek(course.getHoursPerWeek());
+        existing.setRelatedCourses(course.getRelatedCourses());
+        existing.setPrice(course.getPrice());
+        existing.setDescription(course.getDescription());
+        existing.setCategory(course.getCategory());
+        courseRepo.save(existing);
+        logger.info("Updated course with ID {}", id);
+        return true;
       } else {
-        logger.warn("Topic with ID {} not found for update", id);
+        logger.error("Course with ID {} is not valid", id);
+        return false;
       }
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-    return success;
+    }).orElse(false);
   }
 }

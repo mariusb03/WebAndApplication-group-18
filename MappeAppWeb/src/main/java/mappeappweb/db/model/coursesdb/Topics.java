@@ -80,4 +80,11 @@ public class Topics {
   public void setRelatedCourses(Set<Courses> courses) {
     this.courses = courses;
   }
+
+  /**
+   * method for checking if the topic is valid.
+   */
+  public boolean isValid(Topics topic) {
+    return topicName != null && !topicName.isEmpty() && topicName.isBlank();
+  }
 }

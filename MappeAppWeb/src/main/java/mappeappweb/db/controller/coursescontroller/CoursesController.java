@@ -123,15 +123,16 @@ public class CoursesController {
   /**
    * Update a course in the database.
    *
+   * @param id The ID of the course to update.
    * @param course The course object to update.
    *
    * @return 200 OK if update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/Update/{id}")
-  public ResponseEntity<String> update(@PathVariable Courses course) {
+  public ResponseEntity<String> update(@PathVariable Integer id ,@RequestBody Courses course) {
     logger.info("Updating course with ID: {}", course);
     ResponseEntity<String> response;
-    if (this.service.update(course)) {
+    if (this.service.update(course, id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
       response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
