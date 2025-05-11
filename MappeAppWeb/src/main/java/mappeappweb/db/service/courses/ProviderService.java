@@ -49,7 +49,7 @@ public class ProviderService {
    * @return true if the addition was successful, false otherwise.
    */
   public boolean add(Providers providers) {
-    logger.info("Adding topic {}", providers);
+    logger.info("Adding provider {}", providers);
 
     boolean success = false;
     if (providers.isValid(providers)) {
@@ -74,12 +74,16 @@ public class ProviderService {
     logger.info("Deleting providers with ID {}", id);
 
     boolean success = false;
-    try {
-      repository.deleteById(id);
-      success = true;
-      logger.info("Provider with ID {} deleted successfully", id);
-    } catch (Exception e) {
-      logger.error("Error deleting provider with ID {}: {}", id, e.getMessage());
+    if (repository.existsById(id)) {
+      try {
+        repository.deleteById(id);
+        logger.info("Deleted topic with ID {}", id);
+        success = true;
+      } catch (Exception e) {
+        logger.error("Failed to delete topic with ID {}", id);
+      }
+    } else {
+      logger.warn("Topic with ID {} does not exist", id);
     }
     return success;
   }

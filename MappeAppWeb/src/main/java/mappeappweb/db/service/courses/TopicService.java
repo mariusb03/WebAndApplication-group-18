@@ -1,5 +1,6 @@
 package mappeappweb.db.service.courses;
 
+import java.util.List;
 import java.util.Optional;
 import mappeappweb.db.model.coursesdb.Topics;
 import mappeappweb.db.repository.coursesRepository.TopicRepository;
@@ -46,25 +47,21 @@ public class TopicService {
   /**
    * add a topic to the database.
    *
-   * @param topic the topic to add.
+   * @param topicToAdd the topic to add.
    */
-  public boolean add(Topics topic) {
-    logger.info("Adding topic {}", topic);
+  public boolean add(Topics topicToAdd) {
+    logger.info("Adding topic {}", topicToAdd);
 
     boolean success = false;
-    if (topic.isValid(topic)) {
+    if (topicToAdd.isValid(topicToAdd)) {
       try {
-        repository.save(topic);
+        repository.save(topicToAdd);
         success = true;
-
-        logger.info("Added topic {}", topic);
-      } catch (Exception ignored) {
-        logger.error("Failed to add topic {}", topic);
+        logger.info("Provider added successfully");
+      } catch (Exception e) {
+        logger.error("Error adding provider: {}", e.getMessage());
       }
-    } else {
-      logger.error("Invalid topic {}", topic);
     }
-
     return success;
   }
 
@@ -77,16 +74,19 @@ public class TopicService {
   public boolean delete(int id) {
     logger.info("Deleting topic with ID {}", id);
 
-    boolean deleted = false;
-    try {
-      repository.deleteById(id);
-      deleted = true;
-
-      logger.info("Deleted topic with ID {}", id);
-    } catch (Exception ignored) {
-      logger.error("Failed to delete topic with ID {}", id);
+    boolean success = false;
+    if (repository.existsById(id)) {
+      try {
+        repository.deleteById(id);
+        logger.info("Deleted topic with ID {}", id);
+        success = true;
+      } catch (Exception e) {
+        logger.error("Failed to delete topic with ID {}", id);
+      }
+    } else {
+      logger.warn("Topic with ID {} does not exist", id);
     }
-    return deleted;
+    return success;
   }
 
 

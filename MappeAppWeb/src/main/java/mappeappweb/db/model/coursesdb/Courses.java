@@ -60,10 +60,9 @@ public class Courses {
   /**
    * create a course.
    */
-  public Courses(Integer courseId, String title, String level, String session, double size,
+  public Courses(String title, String level, String session, double size,
                  int hoursPerWeek, String relatedCourses, int price,
                  String description, String category) {
-    this.courseId = courseId;
     this.title = title;
     this.difficulty = level;
     this.session = session;
@@ -293,8 +292,8 @@ public class Courses {
    * @return true if valid, false if not.
    */
   @JsonIgnore
-  public boolean isValid(Courses course) {
-    return (courseId != null || courseId > 0) && !"".equals(title) && !"".equals(difficulty)
+  public boolean isValid() {
+    return  !"".equals(title) && !"".equals(difficulty)
         && !"".equals(session) && (size == 0 || size > 0) && (hoursPerWeek == 0 || hoursPerWeek > 0)
         && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description)
         && (category != null || !"".equals(category));

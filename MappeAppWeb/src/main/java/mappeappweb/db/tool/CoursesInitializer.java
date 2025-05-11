@@ -127,7 +127,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
   public void initializeCourses() {
     logger.info("Initializing courses to database...");
 
-    Courses realTimeProgrammingJava = new Courses(1, "Real-Time Programming in Java",
+    Courses realTimeProgrammingJava = new Courses("Real-Time Programming in Java",
         "Expert", "June 3 rd – June 28th", 7.5, 40,
         "Java SE 17 Programmer Professional", 61999,
         "Embark on a transformative learning experience with our expert-level online "
@@ -143,7 +143,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "to new heights and stay ahead in the ever-evolving landscape of real-time systems "
             + "with our comprehensive and immersive course.",
         "Information Technology Courses");
-    Courses sql = new Courses(2, "Introduction to SQL Essentials", "Beginner",
+    Courses sql = new Courses("Introduction to SQL Essentials", "Beginner",
         "June 10th – June 28th", 2, 20,
         "SQL Fundamentals", 28322,
         "Dive into the fundamentals of database management with our beginner-level "
@@ -160,7 +160,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "this course offers an accessible entry point into the world of SQL, setting the "
             + "stage for your future success in data-driven environments.",
         "Information Technology Courses");
-    Courses webAppWithDotNet = new Courses(3, "Creating Web Application with .Net",
+    Courses webAppWithDotNet = new Courses("Creating Web Application with .Net",
         "Beginner", "Aug 5^th – Aug 16^th", 4, 40,
         ".Net Developer Fundamentals", 8156,
         "Embark on your journey into web development with our beginner-level online "
@@ -179,7 +179,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "development with .NET, setting you on a path to create dynamic and engaging online "
             + "experiences.",
          "Information Technology Courses");
-    Courses azureFundamentals = new Courses(4, "Azure Fundamentals", "Beginner",
+    Courses azureFundamentals = new Courses("Azure Fundamentals", "Beginner",
         "Aug 5th – Aug 30th", 2, 10,
         "AZ-900 Azure Fundamentals", 6114,
         "Embark on your cloud computing journey with our beginner-level online course, "
@@ -197,7 +197,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "of cloud computing. Join us on this educational journey and unlock the potential "
             + "of cloud technology with Azure Fundamentals.",
         "Information Technology Courses");
-    Courses azureAdministration = new Courses(5, "Azure Administration",
+    Courses azureAdministration = new Courses("Azure Administration",
         "Intermediate", "Sep 2nd – Dec 20th", 4, 5,
         "AZ-104 Microsoft Certified Cloud Administrator", 12228,
          "Elevate your cloud expertise with our intermediate-level online course,"
@@ -217,7 +217,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
              + "Certified Cloud Administrator status. Join us on this transformative journey "
              + "towards advanced Azure proficiency.",
         "Information Technology Courses");
-    Courses awsCloudPractitioner = new Courses(6, "AWS Cloud Practitioner",
+    Courses awsCloudPractitioner = new Courses("AWS Cloud Practitioner",
         "Beginner", "September 9th – September 20th", 2, 20,
         "CLF-C02 AWS Certified Cloud Practitioner", 4173,
         "Discover the fundamentals of cloud computing in our beginner-level online "
@@ -234,7 +234,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "services. Join us in this educational journey, and initiate your AWS Cloud "
             + "Practitioner certification with assurance and proficiency.",
         "Information Technology Courses");
-    Courses seo = new Courses(7, "Search Engine Optimization", "Intermediate",
+    Courses seo = new Courses("Search Engine Optimization", "Intermediate",
         "Aug 5th – Auth 30th", 2, 4, "SEO Wizard",
         340124,
         "Deepen your expertise in the digital landscape with our intermediate-level "
@@ -252,7 +252,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + " of SEO with confidence and success. Join us and elevate your digital presence with"
             + " our intermediate-level SEO course",
         "Digital Marketing Courses");
-    Courses socialMediaMarketing = new Courses(8, "Social Media Marketing",
+    Courses socialMediaMarketing = new Courses("Social Media Marketing",
         "Intermediate", "Aug 5th – Auth 30th", 2, 4,
         "Certified Social Alchemist", 340124,
         "Elevate your digital marketing prowess with our intermediate-level online "
@@ -271,7 +271,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "of social media marketing with confidence and proficiency. Join us and amplify "
             + "your social media marketing expertise with our intermediate-level course.",
         "Digital Marketing Courses");
-    Courses businessStrategy = new Courses(9, "Business Strategy", "Beginner",
+    Courses businessStrategy = new Courses("Business Strategy", "Beginner",
         "June 3rd – November 29th", 10, 10,
         "Certified Strategic Business Architect (CSBA)", 15000,
         "Master the art of strategic thinking with our expert-level online course, "
@@ -289,7 +289,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "Join us in this transformative learning journey and elevate your strategic acumen "
             + "to new heights.",
         "Business and Entrepreneurship Courses");
-    Courses mlBasicsPython = new Courses(10, "Machine Learning Basics with Python",
+    Courses mlBasicsPython = new Courses("Machine Learning Basics with Python",
         "Beginner", "Aug 19th – Augh 30th", 2, 10,
         "Machine Learning Fundamentals", 60000,
         "Embark on your journey into the exciting realm of artificial intelligence "
@@ -307,7 +307,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + " and demystify the basics of machine learning with Python in this accessible and "
             + "empowering course.",
         "Data Science and Analytics Course");
-    Courses imageRecognition = new Courses(11, "Image Recognition",
+    Courses imageRecognition = new Courses("Image Recognition",
         "Intermediate", "Sep 2nd – Sep 27th", 4, 20,
         "Machine Vision Associate", 90000,
         "Deepen your expertise in the realm of artificial intelligence with our "
@@ -325,7 +325,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
             + "and unlock the potential of image recognition with Python, advancing your "
             + "proficiency in the exciting field of artificial intelligence",
         "Data Science and Analytics Course");
-    Courses databricksFundamentals = new Courses(12, "Databricks Fundamentals",
+    Courses databricksFundamentals = new Courses("Databricks Fundamentals",
         "Beginner", "Aug 19th – Augh 30th", 2, 10,
         "Databricks Practitioner", 60000,
         "Embark on your data journey with our beginner-level online course,"

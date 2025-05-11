@@ -49,7 +49,7 @@ public class TopicsController {
     logger.info("Retrieving topic with ID: {}", id);
     ResponseEntity<Optional<Topics>> response;
     Optional<Topics> topic = this.service.getById(id);
-    if (topic != null) {
+    if (topic.isPresent()) {
       response = ResponseEntity.ok(topic);
     } else {
       response = ResponseEntity.notFound().build();
@@ -66,10 +66,10 @@ public class TopicsController {
   public ResponseEntity<String> add(@RequestBody Topics topic) {
     logger.info("Adding new topic: {}", topic);
     ResponseEntity<String> response;
-    if (this.service.add(topic) && topic.isValid(topic)) {
+    if (this.service.add(topic)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("Failed to add topic.", HttpStatus.BAD_REQUEST);
     }
     return response;
   }
@@ -84,7 +84,7 @@ public class TopicsController {
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      response = new ResponseEntity<>("Failed to delete topic.", HttpStatus.NOT_FOUND);
     }
     return response;
   }
@@ -104,7 +104,7 @@ public class TopicsController {
     if (this.service.update(topic, id) && topic.isValid(topic)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("Failed to update topic.", HttpStatus.BAD_REQUEST);
     }
     return response;
   }

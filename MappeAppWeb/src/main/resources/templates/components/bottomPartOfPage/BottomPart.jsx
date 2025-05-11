@@ -1,6 +1,5 @@
 import Logo from '../assets/logos/homeLogo.svg'
 import './BottomPartStyle.css'
-import 'react-refresh/runtime';
 
 function BottomPart() {
   return (

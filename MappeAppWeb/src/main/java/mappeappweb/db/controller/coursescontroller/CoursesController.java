@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/courses")
 public class CoursesController {
+  private ControllerCommonResponse response;
   private final Logger logger = LoggerFactory.getLogger("CoursesController");
   @Autowired
   private CoursesService service;
@@ -48,8 +49,8 @@ public class CoursesController {
   public ResponseEntity<Optional<Courses>> getById(@PathVariable int id) {
     logger.info("Retrieving course with ID: {}", id);
     ResponseEntity<Optional<Courses>> response;
-    Optional<Courses> courses = this.service.getbyid(id);
-    if (courses != null) {
+    Optional<Courses> courses = this.service.getById(id);
+    if (courses.isPresent()) {
       response = ResponseEntity.ok(courses);
     } else {
       response = ResponseEntity.notFound().build();
@@ -67,9 +68,11 @@ public class CoursesController {
     logger.info("Adding new course: {}", courses);
     ResponseEntity<String> response;
     if (this.service.add(courses)) {
-      response = new ResponseEntity<>(HttpStatus.OK);
+      response = new ResponseEntity<>("Course added", HttpStatus.OK);
+    } else if (courses.isValid()) {
+      response = new ResponseEntity<>("wrong value in a filed", HttpStatus.BAD_REQUEST);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("Failed to add course", HttpStatus.BAD_REQUEST);
     }
     return response;
   }
@@ -77,7 +80,7 @@ public class CoursesController {
   /**
    * Adds a topic to a course.
    *
-   * @param courseId of the course that will associate with the topic
+   * @param courseId of course, that will associate with the topic
    * @param topicId of the topic that will be associated with the course
    * @return ResponseEntity with a message indicating success or failure
    */
@@ -85,7 +88,12 @@ public class CoursesController {
   public ResponseEntity<String> addTopicToCourse(@PathVariable Integer courseId,
                                                   @PathVariable Integer topicId) {
     logger.info("Adding topic with ID: {} to course with ID: {}", topicId, courseId);
-    service.addTopicToCourse(courseId, topicId);
+    try {
+      service.addTopicToCourse(courseId, topicId);
+    } catch (IllegalArgumentException e) {
+      logger.error("Failed to add topic to course: {}", e.getMessage());
+      return ResponseEntity.badRequest().body("Invalid course or topic ID");
+    }
     return ResponseEntity.ok("Topic added to course");
   }
 
@@ -93,7 +101,7 @@ public class CoursesController {
   /**
    * Adds a provider to a course.
    *
-   * @param courseId of the course that will associate with the topic
+   * @param courseId of course, that will associate with the provider
    * @param providerId of the provider that will be associated with the course
    * @return ResponseEntity with a message indicating success or failure
    */
@@ -101,7 +109,12 @@ public class CoursesController {
   public ResponseEntity<String> addProviderToCourse(@PathVariable Integer courseId,
                                                     @PathVariable Integer providerId) {
     logger.info("Adding provider with ID: {} to course with ID: {}", providerId, courseId);
-    service.addProviderToCourse(courseId, providerId);
+    try {
+      service.addProviderToCourse(courseId, providerId);
+    } catch (IllegalArgumentException e) {
+      logger.error("Failed to add provider to course: {}", e.getMessage());
+      return ResponseEntity.badRequest().body("Invalid course or provider ID");
+    }
     return ResponseEntity.ok("Provider added to course");
   }
 
@@ -113,9 +126,9 @@ public class CoursesController {
     logger.info("Deleting course with ID: {}", id);
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
-      response = new ResponseEntity<>(HttpStatus.OK);
+      response = new ResponseEntity<>("Course deleted", HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      response = new ResponseEntity<>("Could not delete course",HttpStatus.NOT_FOUND);
     }
     return response;
   }
@@ -133,9 +146,9 @@ public class CoursesController {
     logger.info("Updating course with ID: {}", course);
     ResponseEntity<String> response;
     if (this.service.update(course, id)) {
-      response = new ResponseEntity<>(HttpStatus.OK);
+      response = new ResponseEntity<>("Course updated", HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("Could not update course", HttpStatus.BAD_REQUEST);
     }
     return response;
   }

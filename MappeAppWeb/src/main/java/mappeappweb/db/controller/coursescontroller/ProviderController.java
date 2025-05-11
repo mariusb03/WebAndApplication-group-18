@@ -50,7 +50,7 @@ public class ProviderController {
     logger.info("Retrieving course provider with ID: {}", id);
     ResponseEntity<Optional<Providers>> response;
     Optional<Providers> provider = this.service.getById(id);
-    if (provider != null) {
+    if (provider.isPresent()) {
       response = ResponseEntity.ok(provider);
     } else {
       response = ResponseEntity.notFound().build();
@@ -70,7 +70,7 @@ public class ProviderController {
     if (this.service.add(provider)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("failed to add provider", HttpStatus.BAD_REQUEST);
     }
     return response;
   }
@@ -85,7 +85,7 @@ public class ProviderController {
     if (this.service.delete(id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      response = new ResponseEntity<>("Failed to delete provider", HttpStatus.NOT_FOUND);
     }
     return response;
   }
@@ -105,7 +105,7 @@ public class ProviderController {
     if (this.service.update(provider, id)) {
       response = new ResponseEntity<>(HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      response = new ResponseEntity<>("Failed to update provider", HttpStatus.BAD_REQUEST);
     }
     return response;
   }

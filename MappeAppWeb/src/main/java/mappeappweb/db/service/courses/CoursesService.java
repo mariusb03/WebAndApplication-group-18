@@ -28,6 +28,7 @@ public class CoursesService {
 
   @Autowired
   private ProvidersRepository providerRepo;
+  private CoursesRepository coursesRepository;
 
   /**
    * Add a topic to a course.
@@ -86,7 +87,7 @@ public class CoursesService {
    * @param id The ID of the course.
    * @return All topics.
    */
-  public Optional<Courses> getbyid(int id) {
+  public Optional<Courses> getById(int id) {
     logger.info("Fetching topic by ID {}", id);
 
     return courseRepo.findById(id);
@@ -100,16 +101,16 @@ public class CoursesService {
    * @return true if the course was added successfully, false otherwise.
    */
   public boolean add(Courses course) {
-    logger.info("Adding course{}", course);
+    logger.info("Adding course {}", course);
 
     boolean success = false;
-    if (course.isValid(course)) {
+    if (course.isValid()) {
       try {
         courseRepo.save(course);
         success = true;
-        logger.info("Course added successfully: {}", course);
+        logger.info("Provider added successfully");
       } catch (Exception e) {
-        logger.error("Error adding course: {}", course);
+        logger.error("Error adding provider: {}", e.getMessage());
       }
     }
     return success;
@@ -125,12 +126,16 @@ public class CoursesService {
     logger.info("Deleting topic with ID {}", id);
 
     boolean success = false;
-    try {
-      courseRepo.deleteById(id);
-      success = true;
-      logger.info("Course deleted successfully: {}", id);
-    } catch (Exception e) {
-      logger.error("Error deleting course: {}", id);
+    if (courseRepo.existsById(id)) {
+      try {
+        courseRepo.deleteById(id);
+        logger.info("Deleted topic with ID {}", id);
+        success = true;
+      } catch (Exception e) {
+        logger.error("Failed to delete topic with ID {}", id);
+      }
+    } else {
+      logger.warn("Topic with ID {} does not exist", id);
     }
     return success;
   }
@@ -143,7 +148,7 @@ public class CoursesService {
    */
   public boolean update(Courses course, Integer id) {
     return courseRepo.findById(id).map(existing -> {
-      if (course.isValid(existing)) {
+      if (course.isValid()) {
         existing.setTitle(course.getTitle());
         existing.setDifficulty(course.getDifficulty());
         existing.setSession(course.getSession());

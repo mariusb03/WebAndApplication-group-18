@@ -12,7 +12,7 @@ public class ControllerCommonResponse {
   /**
    * Not allowed to instantiate the class.
    */
-  private ControllerCommonResponse() {
+  ControllerCommonResponse() {
   }
 
   /**

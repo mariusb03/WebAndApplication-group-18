@@ -41,7 +41,7 @@ public class Topics {
    *
    * @return topic_id.
    */
-  public Integer getid() {
+  public Integer getId() {
     return topicId;
   }
 
@@ -85,6 +85,6 @@ public class Topics {
    * method for checking if the topic is valid.
    */
   public boolean isValid(Topics topic) {
-    return topicName != null && !topicName.isEmpty() && topicName.isBlank();
+    return topicName != null && !topicName.isEmpty() && !topicName.isBlank();
   }
 }
