@@ -1,6 +1,5 @@
-package mappeappweb.db.controller.coursescontroller;
+package mappeappweb.db.controller.course;
 
-import jakarta.websocket.server.PathParam;
 import java.util.Optional;
 import mappeappweb.db.model.coursesdb.Providers;
 import mappeappweb.db.service.courses.ProviderService;

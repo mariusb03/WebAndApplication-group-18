@@ -1,4 +1,4 @@
-package mappeappweb.db.controller.coursescontroller;
+package mappeappweb.db.controller.course;
 
 import java.util.Optional;
 import mappeappweb.db.model.coursesdb.Courses;

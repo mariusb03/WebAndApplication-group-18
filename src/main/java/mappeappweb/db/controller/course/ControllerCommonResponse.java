@@ -1,4 +1,4 @@
-package mappeappweb.db.controller.coursescontroller;
+package mappeappweb.db.controller.course;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
