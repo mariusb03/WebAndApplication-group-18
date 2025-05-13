@@ -12,8 +12,8 @@
 	<groupId>no.ntnu</groupId>
 	<artifactId>lib-website-monolith</artifactId>
 	<version>1.0.0</version>
-	<name>Monolith site</name>
-	<description>Library website demo - the monolith version with static server-side rendered responses</description>
+	<name>CoursePage</name>
+	<description>Course website school project</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
