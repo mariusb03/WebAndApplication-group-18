@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from '../../context/CartContext';
 import Login from '../../assets/logos/profilePic.svg';
 import Cart from '../../assets/logos/cartLogo.svg';
 import Logo from '../../assets/logos/homeLogo.svg';
 import SearchIcon from '../../assets/logos/search symbol.png';
 import './TopPartStyle.css';
 import 'react-refresh/runtime';
-import {Link} from "react-router-dom";
 
 const courseSuggestions = [
     'Web Development',
@@ -24,10 +25,12 @@ function TopPartOfPage() {
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [isSearchFocused, setIsSearchFocused] = useState(false);
 
+    const navigate = useNavigate();
+    const { cartItems } = useCart();
+
     const searchRef = useRef();
     const searchPopupRef = useRef();
 
-    // Handle clicking outside search OR dropdown
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -43,7 +46,6 @@ function TopPartOfPage() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // Filter suggestions as the user types
     useEffect(() => {
         if (searchQuery.trim() === '') {
             setFilteredSuggestions(courseSuggestions);
@@ -58,21 +60,25 @@ function TopPartOfPage() {
     const handleSuggestionClick = (text) => {
         setSearchQuery('');
         setIsSearchFocused(false);
-        console.log(`User selected: ${text}`);
-        // Future: trigger search logic or redirect
+        navigate(`/courses?search=${encodeURIComponent(text)}`);
+    };
+
+    const handleEnterPress = (e) => {
+        if (e.key === 'Enter' && searchQuery.trim() !== '') {
+            navigate(`/courses?search=${encodeURIComponent(searchQuery.trim())}`);
+            setSearchQuery('');
+            setIsSearchFocused(false);
+        }
     };
 
     return (
         <>
             <div className={`topPartBox ${isSearchFocused ? 'blurred' : ''}`}>
-                {/* Logo */}
                 <Link to="/" className="homeLogoButton">
                     <img src={Logo} className="homeLogo" alt="logo" />
                 </Link>
 
-                {/* Icons */}
                 <div id="LoginAndCartButtons">
-                    {/* Search */}
                     <div className="cartLoginBt">
                         <button
                             className="searchIconButton"
@@ -82,14 +88,15 @@ function TopPartOfPage() {
                         </button>
                     </div>
 
-                    {/* Cart */}
-                    <Link to="/cart" className="cartLoginBt">
+                    <Link to="/cart" className="cartLoginBt cart-icon-wrapper">
                         <button>
                             <img src={Cart} alt="cart" />
+                            {cartItems.length > 0 && (
+                                <span className="cart-badge">{cartItems.length}</span>
+                            )}
                         </button>
                     </Link>
 
-                    {/* Login */}
                     <Link to="/login" className="cartLoginBt">
                         <button>
                             <img src={Login} alt="login" />
@@ -98,7 +105,6 @@ function TopPartOfPage() {
                 </div>
             </div>
 
-            {/* Search Popup */}
             {isSearchFocused && (
                 <div className="overlay-blur" ref={searchRef}>
                     <div className="search-popup" ref={searchPopupRef}>
@@ -107,13 +113,7 @@ function TopPartOfPage() {
                             placeholder="Search for courses"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    if (filteredSuggestions.length > 0) {
-                                        handleSuggestionClick(filteredSuggestions[0]);
-                                    }
-                                }
-                            }}
+                            onKeyDown={handleEnterPress}
                             autoFocus
                             style={{
                                 width: '100%',

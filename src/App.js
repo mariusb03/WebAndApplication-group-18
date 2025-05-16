@@ -1,11 +1,9 @@
 import './App.css';
-import 'react-refresh/runtime';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
 import BottomPart from "./components/bottomPartOfPage/BottomPart";
-
 
 import LandingPage from './pages/LandingPage/LandingPage';
 import AllCoursesPage from './pages/AllCoursesPage/AllCoursesPage';
@@ -16,10 +14,13 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import CartPage from "./pages/CartPage/CartPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
+import {CartProvider} from "./context/CartContext";
+
 import 'react-refresh/runtime';
 
 function App() {
     return (
+        <CartProvider>
         <div className="App">
             <Router>
                 <TopPartOfPage />
@@ -36,6 +37,7 @@ function App() {
                 <BottomPart />
             </Router>
         </div>
+        </CartProvider>
     );
 }
 
