@@ -17,7 +17,7 @@ const ProfilePage = () => {
             <UserInfo
                 name="John Doe"
                 email="john@example.com"
-                profilePicture="/assets/defaultProfile.png"
+                profilePicture="/assets/logos/profilePic.svg"
             />
 
             <h2 className="section-title">Enrolled Courses</h2>
