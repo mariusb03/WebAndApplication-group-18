@@ -1,0 +1,19 @@
+body {
+  background-color: #fff9db;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.error-topPart {
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  background-color: #d18f00;
+  top: 0;
+  left: 0;
+}
+
+.main-body {
+  text-align: center;
+}
