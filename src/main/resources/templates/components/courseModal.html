@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Course Modal</title>
+    <link rel="stylesheet" href="../../static/css/components/CourseModal.css" />
+</head>
+<body>
+<div class="course-modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="course-modal-content" id="modalContent" onclick="event.stopPropagation()">
+        <button class="close-button" onclick="closeModal()">×</button>
+        <img src="" alt="Course image" class="modal-image" id="modalImage" />
+        <div class="modal-details">
+            <h2 id="modalTitle">Course Title</h2>
+            <p id="modalDescription">Description here...</p>
+            <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+            <p><strong>Difficulty:</strong> <span id="modalDifficulty"></span></p>
+            <p><strong>Topic:</strong> <span id="modalTopic"></span></p>
+            <p><strong>Session:</strong> <span id="modalSession"></span></p>
+            <p><strong>Course ID:</strong> <span id="modalID"></span></p>
+            <button class="add-to-cart-button" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/components/CourseModal.js"></script>
+</body>
+</html>
