@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>page</title>
+  <meta charset="UTF-8" />
+  <title>Learniverse Connect</title>
+  <link rel="stylesheet" href="../static/css/components/TopPartStyle.css" />
+  <link rel="stylesheet" href="../static/css/components/BottomPartStyle.css" />
+  <link rel="stylesheet" href="../static/css/pages/LandingPage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
 </head>
 <body>
-<h1>Home Page</h1>
+
+<!-- Top Navigation -->
+<div id="topPart">
+  <div class="topPartBox">
+    <a href="index.html" class="homeLogoButton">
+      <img src="../static/img/logo.svg" class="homeLogo" alt="logo" />
+    </a>
+
+    <div id="LoginAndCartButtons">
+      <div class="cartLoginBt">
+        <button class="searchIconButton" onclick="toggleSearchPopup()">
+          <img src="../static/img/searchSymbol.svg" class="searchIconImage" alt="search" />
+        </button>
+      </div>
+
+      <a href= "../templates/pages/cartPage.html" class="cartLoginBt cart-icon-wrapper">
+        <button>
+          <img src="../static/img/cartLogo.svg" alt="cart" />
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </button>
+      </a>
+
+      <a href="../templates/pages/loginPage.html" class="cartLoginBt">
+        <button>
+          <img src="../static/img/profilePic.svg" alt="login" />
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Optional Search Popup -->
+<div id="searchPopup" class="overlay-blur" style="display: none;">
+  <div class="search-popup">
+    <input type="text" id="searchInput" placeholder="Search for courses..." onkeydown="handleSearchEnter(event)" />
+  </div>
+</div>
+
+<!-- Landing Header -->
+<div class="landing-container">
+  <div class="landing-header">
+    <h1>
+      Welcome to <br />
+      <span>Learniverse Connect!</span>
+    </h1>
+  </div>
+
+  <!-- Hero Carousel -->
+  <div class="hero-carousel" id="carouselContainer"></div>
+
+  <!-- Browse Button -->
+  <div class="landing-browse-section">
+    <a href="../templates/pages/allCoursesPage.html" class="browse-button">Browse Courses</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="bottomBox">
+  <button class="homeLogoButton" onclick="navigateHome()">
+    <img src="../static/img/logo.svg" alt="Home" class="homeLogo" />
+  </button>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="../static/js/context/CartContext.js"></script>
+<script src="../static/js/components/TopPartOfPage.js"></script>
+<script src="../static/js/components/BottomPart.js"></script>
+<script src="../static/js/components/HeroCarousel.js"></script>
 </body>
 </html>

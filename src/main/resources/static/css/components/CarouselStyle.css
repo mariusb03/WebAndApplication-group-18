@@ -1,0 +1,38 @@
+.hero-carousel {
+    width: 100%;
+    height: 40vh; /* was 80vh */
+    border-bottom: 4px solid #ffe600;
+    border-top: 4px solid #ffe600;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-slide {
+    height: 40vh; /* match above */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.carousel-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem 1.5rem; /* reduced padding */
+    margin: 1.5rem;       /* slightly smaller margin */
+    color: white;
+    border-radius: 12px;
+    max-width: 500px;
+    text-shadow: 1px 1px 5px black;
+}
+
+.carousel-content h1 {
+    font-size: 1.8rem; /* was 2.5rem */
+
+}
+
+.carousel-content p {
+    font-size: 1rem; /* was 1.2rem */
+}
