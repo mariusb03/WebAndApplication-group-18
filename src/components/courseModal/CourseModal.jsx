@@ -1,7 +1,7 @@
 import React from 'react';
 import './CourseModal.css';
 import { useCart } from '../../context/CartContext';
-import 'react-refresh/runtime';
+
 
 const CourseModal = ({ course, onClose }) => {
     const { addToCart } = useCart();

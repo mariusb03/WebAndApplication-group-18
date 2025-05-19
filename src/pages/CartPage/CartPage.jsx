@@ -2,12 +2,12 @@ import React from 'react';
 import './CartPage.css';
 import { useCart } from '../../context/CartContext';
 
-import 'react-refresh/runtime';
+
 
 const CartPage = () => {
     const { cartItems } = useCart();
     const totalPrice = cartItems.reduce(
-        (sum, item) => sum + parseInt(item.price.replace(/\D/g, '')),
+        (sum, item) => sum + Number(item.price),
         0
     );
 

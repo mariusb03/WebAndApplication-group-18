@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProfilePage.css';
-import 'react-refresh/runtime';
+
 
 import UserInfo from '../../components/Profile/UserInfo';
 import CourseList from '../../components/Profile/CourseList';

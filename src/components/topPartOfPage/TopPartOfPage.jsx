@@ -6,7 +6,7 @@ import Cart from '../../assets/logos/cartLogo.svg';
 import Logo from '../../assets/logos/homeLogo.svg';
 import SearchIcon from '../../assets/logos/search symbol.png';
 import './TopPartStyle.css';
-import 'react-refresh/runtime';
+
 
 const courseSuggestions = [
     'Web Development',

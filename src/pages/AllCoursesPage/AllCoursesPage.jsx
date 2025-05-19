@@ -2,58 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CourseModal from '../../components/courseModal/CourseModal';
 import './AllCoursesPage.css';
-import 'react-refresh/runtime';
-
-import AWS from '../../assets/coursPictures/AWS.png';
-import Azure from '../../assets/coursPictures/Azure.png';
-import Business from '../../assets/coursPictures/businessStrategy.png';
-import Databricks from '../../assets/coursPictures/Databricks.png';
-import ImageRec from '../../assets/coursPictures/ImageRecognition.jpg';
-import Java from '../../assets/coursPictures/JavaLogo.png';
-import ML from '../../assets/coursPictures/machineLearning.jpg';
-import NET from '../../assets/coursPictures/NET.jpg';
-import SEO from '../../assets/coursPictures/SEO.png';
-import Social from '../../assets/coursPictures/SocialMediaMarketing.jpg';
-import SQL from '../../assets/coursPictures/SQL.jpg';
-
-const dummyCourses = [
-    {
-        id: 'C001',
-        title: 'AWS Fundamentals',
-        image: AWS,
-        description: 'Learn core services and architecture of AWS.',
-        price: '$99',
-        difficulty: 'Beginner',
-        topic: 'Cloud Computing',
-        sessions: '4 weeks, self-paced'
-    },
-    {
-        id: 'C002',
-        title: 'Java Programming',
-        image: Java,
-        description: 'Master Java programming from scratch.',
-        price: '$89',
-        difficulty: 'Intermediate',
-        topic: 'Programming',
-        sessions: '6 weeks, instructor-led'
-    },
-];
 
 const AllCoursesPage = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const searchParam = params.get('search') || '';
 
+    const [courses, setCourses] = useState([]);
     const [searchQuery, setSearchQuery] = useState(searchParam);
     const [selectedCourse, setSelectedCourse] = useState(null);
-
-    const filteredCourses = dummyCourses.filter(course =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
 
     useEffect(() => {
         setSearchQuery(searchParam);
     }, [searchParam]);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/courses')
+            .then(response => response.json())
+            .then(data => {
+                setCourses(data);
+            })
+            .catch(error => {
+                console.error('Error fetching courses:', error);
+            });
+    }, []);
+
+    const filteredCourses = courses.filter(course =>
+        course.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="courses-page">
@@ -75,14 +51,15 @@ const AllCoursesPage = () => {
                             className="course-card"
                             onClick={() => setSelectedCourse(course)}
                         >
-                            <img src={course.image} alt={course.title} />
+                            {/* You may want to set course.image dynamically */}
+                            <img src={`/static/img/coursPictures/${course.title.replace(/\s+/g, '')}.jpg`} alt={course.title} />
                             <h3 className="course-title">{course.title}</h3>
                             <p className="course-description">{course.description}</p>
-                            <p><strong>Price:</strong> {course.price}</p>
+                            <p><strong>Price:</strong> {course.price} NOK</p>
                             <p><strong>Difficulty:</strong> {course.difficulty}</p>
-                            <p><strong>Topic:</strong> {course.topic}</p>
-                            <p><strong>Session:</strong> {course.sessions}</p>
-                            <p><strong>ID:</strong> {course.id}</p>
+                            <p><strong>Topic:</strong> {course.category}</p>
+                            <p><strong>Session:</strong> {course.session}</p>
+                            <p><strong>ID:</strong> {course.courseId}</p>
                         </div>
                     ))
                 ) : (

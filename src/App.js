@@ -16,7 +16,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import {CartProvider} from "./context/CartContext";
 
-import 'react-refresh/runtime';
+
 
 function App() {
     return (
@@ -28,7 +28,7 @@ function App() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/courses" element={<AllCoursesPage />} />
                     <Route path="/about" element={<AboutUsPage />} />
-                    <Route path="/login" element={<ProfilePage />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="*" element={<NotFound />} />

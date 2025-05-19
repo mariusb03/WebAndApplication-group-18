@@ -1,6 +1,8 @@
 package webApp.controller.course;
 
 import java.util.Optional;
+
+import org.springframework.web.bind.annotation.*;
 import webApp.model.coursesdb.Courses;
 import webApp.service.courses.CoursesService;
 import org.slf4j.Logger;
@@ -8,25 +10,26 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller for managing courses.
  */
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/api/courses") // 👈 Updated
+@CrossOrigin(origins = "*")
 public class CoursesController {
-  private ControllerCommonResponse response;
+  private final CoursesService service;
   private final Logger logger = LoggerFactory.getLogger("CoursesController");
-  @Autowired
-  private CoursesService service;
+
+  public CoursesController(CoursesService service) {
+    this.service = service;
+  }
+
+  @GetMapping
+  public Iterable<Courses> getAllCourses() {
+    logger.info("Fetching all courses for /api/courses");
+    return service.getAll();
+  }
 
   /**
    * Retrieves all courses from the database.
@@ -38,6 +41,9 @@ public class CoursesController {
     logger.info("Retrieving all courses");
     return this.service.getAll();
   }
+
+
+
 
   /**
    * Retrieves course by ID.
