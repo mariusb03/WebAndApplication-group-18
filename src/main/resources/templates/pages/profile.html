@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <title>Profile - Learniverse Connect</title>
-    <link rel="stylesheet" href="../../static/css/pages/ProfilePage.css" />
-    <link rel="stylesheet" href="../../static/css/components/UserInfo.css" />
-    <link rel="stylesheet" href="../../static/css/components/CourseList.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages/Profile.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components/UserInfo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components/CourseList.css}">
     <script src="../../static/js/pages/ProfilePage.js" defer></script>
 </head>
 <body>
 <div class="profile-page-container">
     <div class="user-info">
-        <img src="../../static/img/profilePic.svg" alt="Profile" class="profile-pic" />
+        <img src="/img/profilePic.svg" alt="Profile" class="profile-pic" />
         <div class="user-details">
             <h2 id="userName">John Doe</h2>
             <p id="userEmail">john@example.com</p>

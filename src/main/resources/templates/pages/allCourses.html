@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>All Courses</title>
-    <link rel="stylesheet" href="../../static/css/pages/AllCoursesPage.css" />
+  <meta charset="UTF-8" />
+  <title>All Courses</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/pages/AllCourses.css}">
+  <script src="/js/pages/AllCoursesPage.js"></script>
 </head>
 <body>
 <div class="courses-page">
@@ -19,7 +20,6 @@
     <div class="course-grid" id="courseGrid"></div>
 </div>
 
-<!-- Course Modal -->
 <div id="modalOverlay" class="course-modal-overlay" style="display: none;">
     <div class="course-modal-content" id="modalContent">
         <button class="close-button" onclick="closeModal()">×</button>
@@ -36,7 +36,5 @@
         </div>
     </div>
 </div>
-
-<script src="../../static/js/pages/AllCoursesPage.js"></script>
 </body>
 </html>

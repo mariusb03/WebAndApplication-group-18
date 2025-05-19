@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroCarousel from '../../components/heroCarousel/HeroCarousel';
-import './LandingPage.css';
+import './Landing.css';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {

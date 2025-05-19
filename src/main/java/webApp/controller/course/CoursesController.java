@@ -118,6 +118,10 @@ public class CoursesController {
     return ResponseEntity.ok("Provider added to course");
   }
 
+  //TODO: add method for getting all providers of a course
+
+  //TODO: add method for getting all topics of a course
+
   /**
    * Deletes a course from the database.
    */

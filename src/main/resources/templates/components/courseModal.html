@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Course Modal</title>
-    <link rel="stylesheet" href="../../static/css/components/CourseModal.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components/CourseModal.css}">
+    <script src="/js/components/CourseModal.js"></script>
 </head>
 <body>
 <div class="course-modal-overlay" id="modalOverlay" onclick="closeModal()">
@@ -22,7 +23,5 @@
         </div>
     </div>
 </div>
-
-<script src="../../static/js/components/CourseModal.js"></script>
 </body>
 </html>

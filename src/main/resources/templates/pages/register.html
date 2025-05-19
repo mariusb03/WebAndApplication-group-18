@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register - Learniverse Connect</title>
-    <link rel="stylesheet" href="../../static/css/pages/RegisterPage.css" />
-    <script src="../../static/js/pages/RegisterPage.js" defer></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages/Register.css}">
+    <script src="/js/pages/RegisterPage.js" defer></script>
 </head>
 <body>
 <div class="register-container">
@@ -37,7 +37,7 @@
             </div>
 
             <p class="login-redirect">
-                Already have an account? <a href="../pages/loginPage.html">Log in here</a>
+                Already have an account? <a href="login">Log in here</a>
             </p>
         </form>
     </div>

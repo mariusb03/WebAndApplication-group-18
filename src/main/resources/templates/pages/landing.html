@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Learniverse Connect</title>
-    <link rel="stylesheet" href="../../static/css/pages/LandingPage.css">
-    <link rel="stylesheet" href="../../static/css/components/CarouselStyle.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages/Landing.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components/CarouselStyle.css}">
+    <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="/js/components/HeroCarousel.js"></script>
 </head>
 <body>
 
@@ -21,13 +26,8 @@
     <div id="carousel-root"></div>
 
     <div class="landing-browse-section">
-        <a href="../../templates/pages/allCoursesPage.html" class="browse-button">Browse Courses</a>
+        <a href="allCourses" class="browse-button">Browse Courses</a>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script src="../../static/js/components/HeroCarousel.js"></script>
-
 </body>
 </html>
