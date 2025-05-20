@@ -1,4 +1,4 @@
-package webApp.controller;
+package webApp.controller.dbController;
 
 import java.util.Optional;
 import org.slf4j.Logger;
