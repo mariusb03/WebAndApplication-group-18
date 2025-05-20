@@ -1,3 +1,5 @@
+@import '../../pages/AllCoursesPage/AllCoursesPage.css';
+
 .course-list {
     margin-top: 1rem;
     display: flex;
