@@ -11,6 +11,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
+import webApp.service.UserService;
 
 /**
  * Entity class for courses.
@@ -58,7 +59,7 @@ public class Courses {
       inverseJoinColumns = @JoinColumn(name = "user_id")
   )
   @JsonIgnore
-  private Set<Users> user = new HashSet<>();
+  private Set<Users> users = new HashSet<>();
 
   /**
    * default constructor for courses.
@@ -194,8 +195,8 @@ public class Courses {
    *
    * @return users.
    */
-  public Set<Users> getUser() {
-    return this.user;
+  public Set<Users> getUsers() {
+    return this.users;
   }
 
   /**
@@ -309,8 +310,8 @@ public class Courses {
    *
    * @param user of the course.
    */
-  public void setUser(Set<Users> user) {
-    this.user = user;
+  public void setUsers(Set<Users> user) {
+    this.users = user;
   }
 
   /**

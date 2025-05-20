@@ -78,12 +78,13 @@ public class CoursesService {
      */
   public void addUserToCourse(Integer courseId, Integer userId) {
     logger.info("Adding user to course: userId={}, courseId={}", userId, courseId);
+
     Courses course = courseRepo.findById(courseId)
         .orElseThrow(() -> new RuntimeException("Course not found"));
-    Providers provider = providerRepo.findById(userId)
+    Users user = userRepo.findById(userId)
         .orElseThrow(() -> new RuntimeException("user not found"));
 
-    course.getProviders().add(provider);
+    course.getUsers().add(user);
     courseRepo.save(course);
   }
 
@@ -126,7 +127,7 @@ public class CoursesService {
   public Iterable<Courses> getAllCoursesOfUser(Integer userId) {
     logger.info("Fetching all courses with user with ID {}", userId);
 
-    return courseRepo.findCourseWhitUser_UserId(userId);
+    return courseRepo.findCourseWithUser_UserId(userId);
   }
 
   /**
@@ -162,7 +163,7 @@ public class CoursesService {
   /**
    * Get all courses of a user.
    *
-   * @param userId The ID of the user.
+   * @param courseId The ID of the course.
    * @return All courses of the user.
    */
   public Iterable<Users> getAllUsersOfCourse(Integer courseId) {

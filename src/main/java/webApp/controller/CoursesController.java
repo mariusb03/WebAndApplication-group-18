@@ -189,7 +189,7 @@ public class CoursesController {
    * @param userId of the provider
    * @return ResponseEntity with a message indicating success or failure
    */
-  @GetMapping("/User/{userId}")
+  @GetMapping("/user/{userId}")
   public ResponseEntity<Iterable<Courses>> getAllCoursesOfUser(@PathVariable
                                                                 Integer userId) {
     logger.info("Retrieving all courses with user ID: {}", userId);

@@ -89,7 +89,7 @@ public class UserService {
    * Update a user in the database.
    *
    * @param id the id of the user to update.
-   * @param User the user to update.
+   * @param user the user to update.
    *
    * @return true if the user was updated, false if not.
    */
@@ -98,7 +98,9 @@ public class UserService {
 
     return repository.findById(id).map(existing -> {
       if (user.isValid(existing)) {
-        existing.setTopicName(topics.getTopicName());
+        existing.setName(user.getName());
+        existing.setEmail(user.getEmail());
+        existing.setPassword(user.getPassword());
         repository.save(existing);
         logger.info("Updated topic with ID {}", id);
         return true;

@@ -21,7 +21,7 @@ public interface CoursesRepository extends CrudRepository<Courses, Integer> {
   Iterable<Courses> findCourseWhitTopic_TopicId(Integer topicId);
 
   @Query("SELECT c FROM Courses c JOIN c.users p WHERE p.userId = :userId")
-  Iterable<Courses> findCourseWhitUser_UserId(Integer userId);
+  Iterable<Courses> findCourseWithUser_UserId(Integer userId);
 
   @Query("SELECT p FROM Providers p JOIN p.courses c WHERE c.courseId = :courseId")
   Iterable<Providers> findProvidersForACourse(int courseId);
@@ -29,6 +29,6 @@ public interface CoursesRepository extends CrudRepository<Courses, Integer> {
   @Query("SELECT p FROM Topics p JOIN p.courses c WHERE c.courseId = :courseId")
   Iterable<Topics> findTopicForACourse(Integer courseId);
 
-  @Query("SELECT p FROM Topics p JOIN p.courses c WHERE c.courseId = :courseId")
+  @Query("SELECT p FROM Users p JOIN p.courses c WHERE c.courseId = :courseId")
   Iterable<Users> findUsersForACourse(Integer courseId);
 }

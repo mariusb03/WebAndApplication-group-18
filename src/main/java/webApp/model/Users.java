@@ -13,15 +13,17 @@ import java.util.Set;
  */
 @Entity
 public class Users {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer userId;
+
   private String name;
   private String email;
   private String password;
   private String role;
 
-  @ManyToMany(mappedBy = "Users")
+  @ManyToMany(mappedBy = "users")
   private Set<Courses> courses = new HashSet<>();
 
   /**
@@ -33,12 +35,14 @@ public class Users {
   /**
    * Create a user.
    *
-   * @param userId The id of the user
+   * @param name the name of the user
+   * @param email The email of the user
+   * @param password The password of the user
+   * @param role The role of the user
    */
-  public Users(Integer userId, String firstName, String email,
+  public Users(String name, String email,
                String password, String role) {
-    this.userId = userId;
-    this.name = firstName;
+    this.name = name;
     this.email = email;
     this.password = password;
     this.role = role;
