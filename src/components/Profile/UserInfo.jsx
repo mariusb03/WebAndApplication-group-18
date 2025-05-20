@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserInfo.css';
 
-const UserInfo = ({ name, email, profilePicture }) => {
+const UserInfo = ({ name, email}) => {
     return (
         <div className="userInfo">
 

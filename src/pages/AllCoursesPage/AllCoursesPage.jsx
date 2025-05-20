@@ -64,6 +64,7 @@ const AllCoursesPage = () => {
                             <p><strong>Topic:</strong> {course.category}</p>
                             <p><strong>Session:</strong> {course.session}</p>
                             <p><strong>ID:</strong> {course.courseId}</p>
+                            //TODO: hide/show id for user/provider
                         </div>
                     ))
                 ) : (

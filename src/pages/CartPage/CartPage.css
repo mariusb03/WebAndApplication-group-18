@@ -89,3 +89,28 @@
     font-size: 1.2rem;
     color: #666;
 }
+
+.checkout-box {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover:not(:disabled) {
+    background-color: #005fa3;
+}
+
+.checkout-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

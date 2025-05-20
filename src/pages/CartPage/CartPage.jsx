@@ -52,9 +52,21 @@ const CartPage = () => {
                                 {course.title} : {course.price}
                             </p>
                         ))}
+
                         <div className="total-box">
                             <span className="label">Total price:</span>
                             <span className="price">{totalPrice.toLocaleString()} NOK</span>
+                        </div>
+
+                        <div className="checkout-box">
+                            <button
+                                className="checkout-button"
+                                onClick={() => alert('Thank you for your purchase! ' +
+                                    'See enrolled courses in you profile!')}
+                                disabled={cartItems.length === 0}
+                            >
+                                Proceed to Checkout
+                            </button>
                         </div>
                     </div>
                 </>

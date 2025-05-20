@@ -33,6 +33,7 @@ const CourseModal = ({ course, onClose }) => {
                     <p><strong>Topic:</strong> {course.category}</p>
                     <p><strong>Session:</strong> {course.session}</p>
                     <p><strong>Course ID:</strong> {course.courseId}</p>
+                    //TODO: hide/show id for user/provider
 
                     {!isInCart && (
                         <button className="add-to-cart-button" onClick={handleAddToCart}>
