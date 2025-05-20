@@ -26,7 +26,9 @@ const LoginPage = () => {
                         <button type="button" className="btn register">Register</button>
                         </Link>
 
+                        <Link to="/profile">
                         <button type="submit" className="btn login">Log in</button>
+                        </Link>
 
                     </div>
                 </form>

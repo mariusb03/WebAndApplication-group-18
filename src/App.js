@@ -30,8 +30,9 @@ function App() {
                     <Route path="/about" element={<AboutUsPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/cart" element={<CartPage />} />
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="/error" element={<NotFound />} />
                 </Routes>
 
                 <BottomPart />

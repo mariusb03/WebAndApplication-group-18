@@ -52,9 +52,13 @@ const AllCoursesPage = () => {
                             onClick={() => setSelectedCourse(course)}
                         >
                             {/* You may want to set course.image dynamically */}
-                            <img src={`/static/img/coursPictures/${course.title.replace(/\s+/g, '')}.jpg`} alt={course.title} />
+                            <img
+                                src={`/img/${course.courseId}.svg`}
+                                alt={`Course ${course.title}`}
+                                onError={(e) => { e.target.src = '/static/img/default.svg'; }}
+                            />
                             <h3 className="course-title">{course.title}</h3>
-                            <p className="course-description">{course.description}</p>
+
                             <p><strong>Price:</strong> {course.price} NOK</p>
                             <p><strong>Difficulty:</strong> {course.difficulty}</p>
                             <p><strong>Topic:</strong> {course.category}</p>
