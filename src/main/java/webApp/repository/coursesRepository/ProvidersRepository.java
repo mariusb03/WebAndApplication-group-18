@@ -8,5 +8,4 @@ import org.springframework.data.repository.CrudRepository;
  * Spring will auto-generate the necessary methods.
  */
 public interface ProvidersRepository extends CrudRepository<Providers, Integer> {
-
 }

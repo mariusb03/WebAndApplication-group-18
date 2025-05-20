@@ -2,6 +2,8 @@ package webApp.controller.course;
 
 import java.util.Optional;
 import webApp.model.coursesdb.Courses;
+import webApp.model.coursesdb.Providers;
+import webApp.model.coursesdb.Topics;
 import webApp.service.courses.CoursesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,9 +120,89 @@ public class CoursesController {
     return ResponseEntity.ok("Provider added to course");
   }
 
-  //TODO: add method for getting all providers of a course
+  /**
+   * get all courses of a provider.
+   *
+   * @param providerId of the provider
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/provider/{providerId}")
+  public ResponseEntity<Iterable<Courses>> getAllCoursesOfProvider(@PathVariable
+                                                                     Integer providerId) {
+    logger.info("Retrieving all courses of provider with ID: {}", providerId);
 
-  //TODO: add method for getting all topics of a course
+    ResponseEntity<Iterable<Courses>> response;
+    Iterable<Courses> courses = this.service.getAllCoursesOfProvider(providerId);
+    if (courses != null) {
+    response = ResponseEntity.ok(courses);
+    } else {
+    response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
+
+  /**
+   * get all courses of a topic.
+   *
+   * @param topicId of the provider
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/topic/{topicId}")
+  public ResponseEntity<Iterable<Courses>> getAllCoursesOfTopic(@PathVariable
+                                                                   Integer topicId) {
+    logger.info("Retrieving all courses with topic ID: {}", topicId);
+
+    ResponseEntity<Iterable<Courses>> response;
+    Iterable<Courses> courses = this.service.getAllCoursesOfTopic(topicId);
+    if (courses != null) {
+      response = ResponseEntity.ok(courses);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
+
+  /**
+   * get all providers of a course.
+   *
+   * @param courseId of the course
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/getProviderForCourse/{courseId}")
+  public ResponseEntity<Iterable<Providers>> getAllProvidersOfCourse(@PathVariable
+                                                                    Integer courseId) {
+    logger.info("Retrieving all providers related to a course with ID: {}", courseId);
+
+    ResponseEntity<Iterable<Providers>> response;
+    Iterable<Providers> providers = this.service.getAllProvidersOfCourse(courseId);
+    if (providers != null) {
+      response = ResponseEntity.ok(providers);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
+
+  /**
+   * get all topics of a course.
+   *
+   * @param courseId of the course
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/getTopicsForCourse/{courseId}")
+  public ResponseEntity<Iterable<Topics>> getAllTopicsOfCourse(@PathVariable
+                                                                     Integer courseId) {
+    logger.info("Retrieving all topics related to a course with ID: {}", courseId);
+
+    ResponseEntity<Iterable<Topics>> response;
+    Iterable<Topics> topics = this.service.getAllTopicsOfCourse(courseId);
+    if (topics != null) {
+      response = ResponseEntity.ok(topics);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
 
   /**
    * Deletes a course from the database.

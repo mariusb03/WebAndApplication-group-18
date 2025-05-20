@@ -46,8 +46,6 @@ public class CoursesService {
 
     course.getTopics().add(topic);
     courseRepo.save(course);
-
-    logger.info("Topic added to course: topicId={}, courseId={}", topicId, courseId);
   }
 
   /**
@@ -66,8 +64,66 @@ public class CoursesService {
 
     course.getProviders().add(provider);
     courseRepo.save(course);
+  }
 
-    logger.info("Provider added to course: providerId={}, courseId={}", providerId, courseId);
+  /**
+   * get all courses of a provider.
+   *
+   * @param providerId The ID of the provider.
+   * @return All courses of the provider.
+   */
+  public Iterable<Courses> getAllCoursesOfProvider(int providerId) {
+    logger.info("Fetching all courses of provider with ID {}", providerId);
+
+    Providers provider = providerRepo.findById(providerId)
+        .orElseThrow(() -> new RuntimeException("provider not found"));
+
+    return courseRepo.findCoursesByProvider_ProvidersId(providerId);
+  }
+
+  /**
+   * Get all courses of a topic.
+   *
+   * @param topicId The ID of the topic.
+   * @return All courses of the topic.
+   */
+  public Iterable<Courses> getAllCoursesOfTopic(Integer topicId) {
+    logger.info("Fetching all courses with topic with ID {}", topicId);
+
+    Topics topic = topicRepo.findById(topicId)
+        .orElseThrow(() -> new RuntimeException("provider not found"));
+
+    return courseRepo.findCourseWhitTopic_TopicId(topicId);
+  }
+
+  /**
+   * get all providers of a course.
+   *
+   * @param courseId The ID of the course.
+   * @return All providers of the course.
+   */
+  public Iterable<Providers> getAllProvidersOfCourse(int courseId) {
+    logger.info("Fetching all providers of course with ID {}", courseId);
+
+    Courses course = courseRepo.findById(courseId)
+        .orElseThrow(() -> new RuntimeException("course not found"));
+
+    return courseRepo.findProvidersForACourse(courseId);
+  }
+
+  /**
+   * get all topics of a course.
+   *
+   * @param courseId The ID of the course.
+   * @return All topics of the course.
+   */
+  public Iterable<Topics> getAllTopicsOfCourse(Integer courseId) {
+    logger.info("Fetching all topics of course with ID {}", courseId);
+
+    Courses course = courseRepo.findById(courseId)
+        .orElseThrow(() -> new RuntimeException("course not found"));
+
+    return courseRepo.findTopicForACourse(courseId);
   }
 
   /**
