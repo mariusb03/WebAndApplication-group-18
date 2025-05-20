@@ -1,4 +1,4 @@
-package webApp.model.coursesdb;
+package webApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -51,6 +51,15 @@ public class Courses {
   @JsonIgnore
   private Set<Providers> providers = new HashSet<>();
 
+  @ManyToMany
+  @JoinTable(
+      name = "course_user",
+      joinColumns = @JoinColumn(name = "course_id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id")
+  )
+  @JsonIgnore
+  private Set<Users> user = new HashSet<>();
+
   /**
    * default constructor for courses.
    */
@@ -77,7 +86,7 @@ public class Courses {
   /**
    * get the id of the course.
    *
-   * @return id of the course.
+   * @return id of course.
    */
   public Integer getCourseId() {
     return this.courseId;
@@ -178,6 +187,15 @@ public class Courses {
    */
   public Set<Topics> getTopics() {
     return this.topics;
+  }
+
+  /**
+   * get the users of the course.
+   *
+   * @return users.
+   */
+  public Set<Users> getUser() {
+    return this.user;
   }
 
   /**
@@ -284,6 +302,15 @@ public class Courses {
    */
   public void setProviders(Set<Providers> providers) {
     this.providers = providers;
+  }
+
+  /**
+   * set the users of the course.
+   *
+   * @param user of the course.
+   */
+  public void setUser(Set<Users> user) {
+    this.user = user;
   }
 
   /**

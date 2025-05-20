@@ -1,4 +1,4 @@
-package webApp.model.coursesdb;
+package webApp.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -53,15 +53,6 @@ public class Providers {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * set the id of the course provider.
-   *
-   * @param id course providers id.
-   */
-  public void setProvidersId(Integer id) {
-    this.providersId = id;
   }
 
   /**

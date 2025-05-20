@@ -1,6 +1,6 @@
-package webApp.repository.coursesRepository;
+package webApp.repository;
 
-import webApp.model.coursesdb.Topics;
+import webApp.model.Topics;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,10 +1,11 @@
-package webApp.controller.course;
+package webApp.controller;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Courses;
-import webApp.model.coursesdb.Providers;
-import webApp.model.coursesdb.Topics;
-import webApp.service.courses.CoursesService;
+import webApp.model.Courses;
+import webApp.model.Providers;
+import webApp.model.Topics;
+import webApp.model.Users;
+import webApp.service.CoursesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class CoursesController {
   }
 
   /**
-   * Adds a new courses to the database.
+   * Adds new courses to the database.
    *
    * @param courses The courses to add.
    */
@@ -121,6 +122,47 @@ public class CoursesController {
   }
 
   /**
+   * Adds a user to a course.
+   *
+   * @param courseId of course, that will associate with the topic
+   * @param userId of the user that will be associated with the course
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @PostMapping("/{courseId}/user/{userId}")
+  public ResponseEntity<String> addUserToCourse(@PathVariable Integer courseId,
+                                                 @PathVariable Integer userId) {
+    logger.info("Adding user with ID: {} to course with ID: {}", userId, courseId);
+    try {
+      service.addUserToCourse(courseId, userId);
+    } catch (IllegalArgumentException e) {
+      logger.error("Failed to add user to course: {}", e.getMessage());
+      return ResponseEntity.badRequest().body("Invalid course or user ID");
+    }
+    return ResponseEntity.ok("user added to course");
+  }
+
+  /**
+   * get all courses of a topic.
+   *
+   * @param topicId of the provider
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/topic/{topicId}")
+  public ResponseEntity<Iterable<Courses>> getAllCoursesOfTopic(@PathVariable
+                                                                Integer topicId) {
+    logger.info("Retrieving all courses with topic ID: {}", topicId);
+
+    ResponseEntity<Iterable<Courses>> response;
+    Iterable<Courses> courses = this.service.getAllCoursesOfTopic(topicId);
+    if (courses != null) {
+      response = ResponseEntity.ok(courses);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
+
+  /**
    * get all courses of a provider.
    *
    * @param providerId of the provider
@@ -142,18 +184,18 @@ public class CoursesController {
   }
 
   /**
-   * get all courses of a topic.
+   * get all courses of a User.
    *
-   * @param topicId of the provider
+   * @param userId of the provider
    * @return ResponseEntity with a message indicating success or failure
    */
-  @GetMapping("/topic/{topicId}")
-  public ResponseEntity<Iterable<Courses>> getAllCoursesOfTopic(@PathVariable
-                                                                   Integer topicId) {
-    logger.info("Retrieving all courses with topic ID: {}", topicId);
+  @GetMapping("/User/{userId}")
+  public ResponseEntity<Iterable<Courses>> getAllCoursesOfUser(@PathVariable
+                                                                Integer userId) {
+    logger.info("Retrieving all courses with user ID: {}", userId);
 
     ResponseEntity<Iterable<Courses>> response;
-    Iterable<Courses> courses = this.service.getAllCoursesOfTopic(topicId);
+    Iterable<Courses> courses = this.service.getAllCoursesOfUser(userId);
     if (courses != null) {
       response = ResponseEntity.ok(courses);
     } else {
@@ -205,6 +247,27 @@ public class CoursesController {
   }
 
   /**
+   * get all users that are registered to a course.
+   *
+   * @param courseId of the course
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @GetMapping("/getUsersForCourse/{courseId}")
+  public ResponseEntity<Iterable<Users>> getAllUsersOfCourse(@PathVariable
+                                                               Integer courseId) {
+    logger.info("Retrieving all users that is registered to a course with ID: {}", courseId);
+
+    ResponseEntity<Iterable<Users>> response;
+    Iterable<Users> users = this.service.getAllUsersOfCourse(courseId);
+    if (users != null) {
+      response = ResponseEntity.ok(users);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
+  }
+
+  /**
    * Deletes a course from the database.
    */
   @DeleteMapping("/delete/{id}")
@@ -222,10 +285,10 @@ public class CoursesController {
   /**
    * Update a course in the database.
    *
-   * @param id The ID of the course to update.
-   * @param course The course object to update.
+   * @param id ID of course to update.
+   * @param course The course objects to update.
    *
-   * @return 200 OK if update was successful, 400 BAD REQUEST if not
+   * @return 200 OK if the update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/Update/{id}")
   public ResponseEntity<String> update(@PathVariable Integer id ,@RequestBody Courses course) {

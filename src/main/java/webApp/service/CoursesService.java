@@ -1,12 +1,14 @@
-package webApp.service.courses;
+package webApp.service;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Courses;
-import webApp.model.coursesdb.Providers;
-import webApp.model.coursesdb.Topics;
-import webApp.repository.coursesRepository.CoursesRepository;
-import webApp.repository.coursesRepository.ProvidersRepository;
-import webApp.repository.coursesRepository.TopicRepository;
+import webApp.model.Courses;
+import webApp.model.Providers;
+import webApp.model.Topics;
+import webApp.model.Users;
+import webApp.repository.CoursesRepository;
+import webApp.repository.ProvidersRepository;
+import webApp.repository.TopicRepository;
+import webApp.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,9 @@ public class CoursesService {
 
   @Autowired
   private ProvidersRepository providerRepo;
-  private CoursesRepository coursesRepository;
+
+  @Autowired
+  private UserRepository userRepo;
 
   /**
    * Add a topic to a course.
@@ -66,6 +70,23 @@ public class CoursesService {
     courseRepo.save(course);
   }
 
+    /**
+     * add a user to a course.
+     *
+     * @param courseId The ID of the course.
+     * @param userId The ID of the user.
+     */
+  public void addUserToCourse(Integer courseId, Integer userId) {
+    logger.info("Adding user to course: userId={}, courseId={}", userId, courseId);
+    Courses course = courseRepo.findById(courseId)
+        .orElseThrow(() -> new RuntimeException("Course not found"));
+    Providers provider = providerRepo.findById(userId)
+        .orElseThrow(() -> new RuntimeException("user not found"));
+
+    course.getProviders().add(provider);
+    courseRepo.save(course);
+  }
+
   /**
    * get all courses of a provider.
    *
@@ -91,9 +112,21 @@ public class CoursesService {
     logger.info("Fetching all courses with topic with ID {}", topicId);
 
     Topics topic = topicRepo.findById(topicId)
-        .orElseThrow(() -> new RuntimeException("provider not found"));
+        .orElseThrow(() -> new RuntimeException("topic not found"));
 
     return courseRepo.findCourseWhitTopic_TopicId(topicId);
+  }
+
+  /**
+   * get all courses of a user.
+   *
+   * @param userId The ID of the user.
+   * @return All courses of the user.
+   */
+  public Iterable<Courses> getAllCoursesOfUser(Integer userId) {
+    logger.info("Fetching all courses with user with ID {}", userId);
+
+    return courseRepo.findCourseWhitUser_UserId(userId);
   }
 
   /**
@@ -124,6 +157,21 @@ public class CoursesService {
         .orElseThrow(() -> new RuntimeException("course not found"));
 
     return courseRepo.findTopicForACourse(courseId);
+  }
+
+  /**
+   * Get all courses of a user.
+   *
+   * @param userId The ID of the user.
+   * @return All courses of the user.
+   */
+  public Iterable<Users> getAllUsersOfCourse(Integer courseId) {
+    logger.info("Fetching all users of course with ID {}", courseId);
+
+    Courses course = courseRepo.findById(courseId)
+        .orElseThrow(() -> new RuntimeException("course not found"));
+
+    return courseRepo.findUsersForACourse(courseId);
   }
 
   /**

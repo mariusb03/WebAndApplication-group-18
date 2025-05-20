@@ -1,8 +1,8 @@
-package webApp.controller.course;
+package webApp.controller;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Providers;
-import webApp.service.courses.ProviderService;
+import webApp.model.Providers;
+import webApp.service.ProviderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package webApp.service.courses;
+package webApp.service;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Topics;
-import webApp.repository.coursesRepository.TopicRepository;
+import webApp.model.Topics;
+import webApp.repository.TopicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +56,9 @@ public class TopicService {
       try {
         repository.save(topicToAdd);
         success = true;
-        logger.info("Provider added successfully");
+        logger.info("Topic added successfully");
       } catch (Exception e) {
-        logger.error("Error adding provider: {}", e.getMessage());
+        logger.error("Error adding topic: {}", e.getMessage());
       }
     }
     return success;
@@ -104,10 +104,10 @@ public class TopicService {
       if (topics.isValid(existing)) {
         existing.setTopicName(topics.getTopicName());
         repository.save(existing);
-        logger.info("Updated course with ID {}", id);
+        logger.info("Updated topic with ID {}", id);
         return true;
       } else {
-        logger.error("Failed to update course with ID {}", id);
+        logger.error("Failed to update topic with ID {}", id);
         return false;
       }
     }).orElse(false);

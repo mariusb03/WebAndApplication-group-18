@@ -1,8 +1,8 @@
-package webApp.controller.course;
+package webApp.controller;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Topics;
-import webApp.service.courses.TopicService;
+import webApp.model.Topics;
+import webApp.service.TopicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +60,7 @@ public class TopicsController {
   /**
    * Adds a new topic to the database.
    *
-   * @param topic The course provider to add.
+   * @param topic The topic to add.
    */
   @PostMapping("/add")
   public ResponseEntity<String> add(@RequestBody Topics topic) {
@@ -95,7 +95,7 @@ public class TopicsController {
    * @param id The ID of the topic to update.
    * @param topic The topic object to update.
    *
-   * @return 200 OK if update was successful, 400 BAD REQUEST if not
+   * @return 200 OK if the update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/update/{id}")
   public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Topics topic) {

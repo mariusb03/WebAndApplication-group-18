@@ -1,8 +1,8 @@
-package webApp.service.courses;
+package webApp.service;
 
 import java.util.Optional;
-import webApp.model.coursesdb.Providers;
-import webApp.repository.coursesRepository.ProvidersRepository;
+import webApp.model.Providers;
+import webApp.repository.ProvidersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,10 +100,10 @@ public class ProviderService {
       if (providers.isValid(existing)) {
         existing.setName(providers.getName());
         repository.save(existing);
-        logger.info("Updated course with ID {}", id);
+        logger.info("Updated provider with ID {}", id);
         return true;
       } else {
-        logger.error("Invalid course data");
+        logger.error("Invalid provider data");
         return false;
       }
     }).orElse(false);

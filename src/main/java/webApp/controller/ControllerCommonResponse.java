@@ -1,4 +1,4 @@
-package webApp.controller.course;
+package webApp.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

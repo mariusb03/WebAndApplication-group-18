@@ -1,4 +1,4 @@
-package webApp.model.coursesdb;
+package webApp.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -70,15 +70,6 @@ public class Topics {
    */
   public void setTopicName(String topic) {
     this.topicName = topic;
-  }
-
-  /**
-   * Set the courses that are related to this topic.
-   *
-   * @param courses The courses that are related to this topic
-   */
-  public void setRelatedCourses(Set<Courses> courses) {
-    this.courses = courses;
   }
 
   /**
