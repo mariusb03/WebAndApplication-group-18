@@ -97,7 +97,7 @@ function TopPartOfPage() {
                         </button>
                     </Link>
 
-                    <Link to="/login" className="cartLoginBt">
+                    <Link to={localStorage.getItem('user') ? "/profile" : "/login"} className="cartLoginBt">
                         <button>
                             <img src={Login} alt="login" />
                         </button>

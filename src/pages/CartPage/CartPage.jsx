@@ -2,10 +2,33 @@ import React, { useState } from 'react';
 import './CartPage.css';
 import { useCart } from '../../context/CartContext';
 import CourseModal from '../../components/courseModal/CourseModal';
+import { useNavigate } from 'react-router-dom';
+import CheckoutModal from "../../components/CheckoutModal/CheckoutModal";
 
 const CartPage = () => {
-    const { cartItems } = useCart();
+    const { cartItems, clearCart } = useCart();
     const [selectedCourse, setSelectedCourse] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
+
+    const handleCheckout = async () => {
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        if (!storedUser) return;
+
+        try {
+            for (const course of cartItems) {
+                await fetch(`http://localhost:8081/api/courses/${course.courseId}/user/${storedUser.userId}`, {
+                    method: 'POST',
+                });
+            }
+
+            clearCart();
+            setShowPopup(true);
+        } catch (error) {
+            console.error('Checkout failed:', error);
+            alert('Checkout failed. Please try again.');
+        }
+    };
 
     const totalPrice = cartItems.reduce(
         (sum, item) => sum + Number(item.price),
@@ -61,8 +84,7 @@ const CartPage = () => {
                         <div className="checkout-box">
                             <button
                                 className="checkout-button"
-                                onClick={() => alert('Thank you for your purchase! ' +
-                                    'See enrolled courses in you profile!')}
+                                onClick={handleCheckout}
                                 disabled={cartItems.length === 0}
                             >
                                 Proceed to Checkout
@@ -76,6 +98,16 @@ const CartPage = () => {
                 course={selectedCourse}
                 onClose={() => setSelectedCourse(null)}
             />
+
+            {showPopup && (
+                <CheckoutModal
+                    message="Thank you for your purchase! The courses have been added to your enrolled courses list in your profile."
+                    onClose={() => {
+                        setShowPopup(false);
+                        navigate('/profile');
+                    }}
+                />
+            )}
         </div>
     );
 };

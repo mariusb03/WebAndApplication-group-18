@@ -1,15 +1,17 @@
 package webApp.tool;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import webApp.model.coursesdb.Courses;
-import webApp.model.coursesdb.Providers;
-import webApp.model.coursesdb.Topics;
-import webApp.repository.coursesRepository.CoursesRepository;
-import webApp.repository.coursesRepository.ProvidersRepository;
-import webApp.repository.coursesRepository.TopicRepository;
+import webApp.model.Courses;
+import webApp.model.Providers;
+import webApp.model.Topics;
+import webApp.model.Users;
+import webApp.repository.CoursesRepository;
+import webApp.repository.ProvidersRepository;
+import webApp.repository.TopicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import webApp.repository.UserRepository;
 
 /**
  * class that Initializer the database with existing courses.
@@ -29,13 +32,14 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
 	private ProvidersRepository providersRepository;
 	@Autowired
 	private TopicRepository topicRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	private final Logger logger = LoggerFactory.getLogger("create a preset of courses");
 
 	/**
 	 * a method to create a present of courses.
 	 */
-	//by removing te "//" in the next line you activate the initialization of the database.
 	@Override
 	@Transactional
 	public void onApplicationEvent(ApplicationReadyEvent event) {
@@ -46,7 +50,9 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
 		initializeCourses();
 		initializeTopics();
 		initializeProviders();
+		initializeUsers();
 		initializeCourseTopicRelations();
+		initializeCourseProviderRelations();
 	}
 
 	/**
@@ -118,6 +124,24 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
 		));
 
 		logger.info("Topics initialized to database");
+	}
+
+	/**
+	 * initializes the user relations in the database.
+	 */
+	public void initializeUsers() {
+		logger.info("Initializing users to database...");
+
+		Users regularUser = new Users("Dave", "dave@davidson.no",
+				"Dangerous2024", "user");
+		Users admin = new Users("Chuck", "world@chuck.norris",
+				"Nunchucks2024", "admin");
+
+		userRepository.saveAll(List.of(
+				admin, regularUser
+		));
+
+		logger.info("Users initialized to database");
 	}
 
 	/**

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CourseModal from '../../components/courseModal/CourseModal';
 import './AllCoursesPage.css';
+import {Link} from 'react-router-dom';
 
 const AllCoursesPage = () => {
     const location = useLocation();
@@ -17,7 +18,7 @@ const AllCoursesPage = () => {
     }, [searchParam]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/courses')
+        fetch('http://localhost:8081/api/courses/getAll')
             .then(response => response.json())
             .then(data => {
                 setCourses(data);
@@ -27,9 +28,11 @@ const AllCoursesPage = () => {
             });
     }, []);
 
-    const filteredCourses = courses.filter(course =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredCourses = Array.isArray(courses)
+        ? courses.filter(course =>
+            course.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        : [];
 
     return (
         <div className="courses-page">
