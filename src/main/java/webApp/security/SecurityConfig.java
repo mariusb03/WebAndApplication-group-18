@@ -48,7 +48,7 @@ public class SecurityConfig {
             .includeSubDomains(true)
             .maxAgeInSeconds(31536000)
         )
-        );
+      );
 
     return http.build();
   }
