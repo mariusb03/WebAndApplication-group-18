@@ -132,7 +132,7 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
   }
 
   /**
-   * files the database with courses that are already created.
+   * files the database with courses that are already created e.
    */
   public void initializeCourses() {
     logger.info("Initializing courses to database...");
