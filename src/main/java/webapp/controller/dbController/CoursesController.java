@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-<<<<<<< HEAD:src/main/java/webApp/controller/dbController/CoursesController.java
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,21 +23,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import webApp.controller.ControllerCommonResponse;
-import webApp.model.Courses;
-import webApp.model.Providers;
-import webApp.model.Topics;
-import webApp.model.Users;
-import webApp.service.CoursesService;
-=======
-import org.springframework.web.bind.annotation.*;
 import webapp.controller.ControllerCommonResponse;
 import webapp.model.Courses;
 import webapp.model.Providers;
 import webapp.model.Topics;
 import webapp.model.Users;
 import webapp.service.CoursesService;
->>>>>>> 6406712774db04062ba851c1990d4cf85ba9ef44:src/main/java/webapp/controller/dbController/CoursesController.java
 
 /**
  * Controller for managing courses.
