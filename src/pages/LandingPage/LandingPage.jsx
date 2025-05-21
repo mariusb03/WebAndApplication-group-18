@@ -7,13 +7,6 @@ import { useNavigate, Link } from 'react-router-dom';
 const LandingPage = () => {
     return (
         <div className="landing-container">
-            <div className="landing-header">
-                <h1>
-                    Welcome to <br />
-                    <span>Learniverse Connect!</span>
-                </h1>
-            </div>
-
             <HeroCarousel />
 
             <div className="landing-browse-section">
