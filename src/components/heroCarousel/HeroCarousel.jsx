@@ -9,18 +9,23 @@ import { Link } from 'react-router-dom';
 const slides = [
     {
         image: personTakingCourse,
-        headline: 'Master Data Analytics with Databricks',
-        subtext: 'Learn from the best in the field — practical, project-based, and powerful.',
+        headline: 'Build Tech Skills with IT Courses',
+        subtext: 'Master Java, SQL, .NET, AWS & Azure — industry tools for the modern developer.',
     },
     {
         image: 'https://miro.medium.com/v2/resize:fit:1358/1*cG6U1qstYDijh9bPL42e-Q.jpeg',
-        headline: 'AI & Machine Learning with Python',
-        subtext: 'Beginner-friendly, real-world projects, and job-ready skills.',
+        headline: 'Excel in Digital Marketing',
+        subtext: 'Learn SEO, Social Media, and analytics to grow brands in the digital age.',
     },
     {
         image: 'https://digitaltransformation.org.au/sites/default/files/2022-01/azure.png',
-        headline: 'Azure Certified in Weeks',
-        subtext: 'Cloud skills are in demand. Start your journey with Learniverse Connect.',
+        headline: 'Strategize Like a Pro',
+        subtext: 'Business and entrepreneurship skills for future leaders and innovators.',
+    },
+    {
+        image: 'https://cdn.analyticsvidhya.com/wp-content/uploads/2023/04/Databricks.jpg',
+        headline: 'Decode Data Science & AI',
+        subtext: 'Use Python, ML & Databricks to analyze, predict, and transform industries.',
     }
 ];
 
