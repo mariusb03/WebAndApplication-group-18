@@ -61,6 +61,17 @@ public class Courses {
   @JsonIgnore
   private Set<Users> users = new HashSet<>();
 
+  @Column(nullable = false)
+  private boolean hidden = false;
+
+  public boolean isHidden() {
+    return hidden;
+  }
+
+  public void setHidden(boolean hidden) {
+    this.hidden = hidden;
+  }
+
   /**
    * default constructor for courses.
    */

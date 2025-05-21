@@ -26,6 +26,17 @@ public class Users {
     @ManyToMany(mappedBy = "users")
     private Set<Courses> courses = new HashSet<>();
 
+    @ManyToMany
+    private Set<Courses> favourites = new HashSet<>();
+
+    public Set<Courses> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(Set<Courses> favourites) {
+        this.favourites = favourites;
+    }
+
     /**
      * default constructor for users.
      */
@@ -145,7 +156,7 @@ public class Users {
      * @return true if the user is valid.
      */
     public boolean isValid(Users userToAdd) {
-        return this.userId != null && this.name != null && this.email != null
+        return this.name != null && this.email != null
                 && this.password != null && this.role != null;
     }
 }

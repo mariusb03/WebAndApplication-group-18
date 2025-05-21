@@ -5,7 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import webApp.model.Courses;
 import webApp.model.Users;
+import webApp.repository.CoursesRepository;
 import webApp.repository.UserRepository;
 
 @Service
@@ -28,6 +30,36 @@ public class UserService {
 
     public Optional<Users> findByNameAndPassword(String name, String password) {
         return repository.findByNameAndPassword(name, password);
+    }
+
+
+    @Autowired
+    private CoursesRepository coursesRepository;
+
+    public boolean addFavourite(Integer userId, Integer courseId) {
+        Optional<Users> userOpt = repository.findById(userId);
+        Optional<Courses> courseOpt = coursesRepository.findById(courseId);
+
+        if (userOpt.isPresent() && courseOpt.isPresent()) {
+            Users user = userOpt.get();
+            user.getFavourites().add(courseOpt.get());
+            repository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeFavourite(Integer userId, Integer courseId) {
+        Optional<Users> userOpt = repository.findById(userId);
+        Optional<Courses> courseOpt = coursesRepository.findById(courseId);
+
+        if (userOpt.isPresent() && courseOpt.isPresent()) {
+            Users user = userOpt.get();
+            user.getFavourites().remove(courseOpt.get());
+            repository.save(user);
+            return true;
+        }
+        return false;
     }
 
     /**

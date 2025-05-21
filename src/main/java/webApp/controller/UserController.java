@@ -1,6 +1,8 @@
 package webApp.controller;
 
 import java.util.Optional;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import webApp.model.Courses;
 import webApp.model.Users;
 import webApp.service.UserService;
 
@@ -51,6 +54,31 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid credentials");
         }
+    }
+
+    @PostMapping("/{userId}/favourite/{courseId}")
+    public ResponseEntity<String> addFavourite(@PathVariable Integer userId, @PathVariable Integer courseId) {
+        if (service.addFavourite(userId, courseId)) {
+            return ResponseEntity.ok("Favourite added");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to add favourite");
+        }
+    }
+
+    @DeleteMapping("/{userId}/favourite/{courseId}")
+    public ResponseEntity<String> removeFavourite(@PathVariable Integer userId, @PathVariable Integer courseId) {
+        if (service.removeFavourite(userId, courseId)) {
+            return ResponseEntity.ok("Favourite removed");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to remove favourite");
+        }
+    }
+
+    @GetMapping("/{userId}/favourites")
+    public ResponseEntity<Set<Courses>> getFavourites(@PathVariable Integer userId) {
+        Optional<Users> user = service.getById(userId);
+        return user.map(u -> ResponseEntity.ok(u.getFavourites()))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     /**

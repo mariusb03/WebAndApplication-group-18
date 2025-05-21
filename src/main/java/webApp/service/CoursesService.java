@@ -70,6 +70,17 @@ public class CoursesService {
     courseRepo.save(course);
   }
 
+  @Autowired
+  private CoursesRepository coursesRepository;
+
+  public boolean toggleCourseVisibility(Integer courseId) {
+    return coursesRepository.findById(courseId).map(course -> {
+      course.setHidden(!course.isHidden());
+      coursesRepository.save(course); // must use lowercase instance!
+      return true;
+    }).orElse(false);
+  }
+
   /**
    * add a user to a course.
    *

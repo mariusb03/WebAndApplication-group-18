@@ -1,15 +1,25 @@
 import React from 'react';
 import './CourseModal.css';
 import { useCart } from '../../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const CourseModal = ({ course, onClose }) => {
     const { addToCart, cartItems } = useCart();
+    const navigate = useNavigate();
+
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const userRole = storedUser?.role || null;
 
     if (!course) return null;
 
     const isInCart = cartItems.some(item => item.courseId === course.courseId);
 
     const handleAddToCart = () => {
+        if (!storedUser) {
+            navigate('/login');
+            return;
+        }
+
         addToCart(course);
         onClose();
     };
@@ -32,8 +42,11 @@ const CourseModal = ({ course, onClose }) => {
                     <p><strong>Difficulty:</strong> {course.difficulty}</p>
                     <p><strong>Topic:</strong> {course.category}</p>
                     <p><strong>Session:</strong> {course.session}</p>
-                    <p><strong>Course ID:</strong> {course.courseId}</p>
-                    //TODO: hide/show id for user/provider
+
+                    {/* Only show ID to admins */}
+                    {userRole === 'admin' && (
+                        <p><strong>Course ID:</strong> {course.courseId}</p>
+                    )}
 
                     {!isInCart && (
                         <button className="add-to-cart-button" onClick={handleAddToCart}>

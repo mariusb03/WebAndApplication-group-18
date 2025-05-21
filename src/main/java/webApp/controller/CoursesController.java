@@ -1,6 +1,11 @@
 package webApp.controller;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import org.springframework.web.bind.annotation.*;
 import webApp.model.Courses;
 import webApp.model.Providers;
 import webApp.model.Topics;
@@ -11,14 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller for managing courses.
@@ -37,9 +34,24 @@ public class CoursesController {
    * @return An iterable collection of all courses.
    */
   @GetMapping("/getAll")
-  public Iterable<Courses> getAll() {
-    logger.info("Retrieving all courses");
-    return this.service.getAll();
+  public ResponseEntity<Iterable<Courses>> getAllCourses(
+          @RequestHeader(value = "userRole", required = false) String userRole) {
+
+    logger.info("Retrieving all courses, user role: {}", userRole);
+
+    Iterable<Courses> allCourses = service.getAll();
+    List<Courses> visibleCourses;
+
+    if ("admin".equalsIgnoreCase(userRole)) {
+      visibleCourses = StreamSupport.stream(allCourses.spliterator(), false)
+              .collect(Collectors.toList());
+    } else {
+      visibleCourses = StreamSupport.stream(allCourses.spliterator(), false)
+              .filter(course -> !course.isHidden())
+              .collect(Collectors.toList());
+    }
+
+    return ResponseEntity.ok(visibleCourses);
   }
 
   /**
@@ -301,4 +313,15 @@ public class CoursesController {
     }
     return response;
   }
+
+  @PutMapping("{courseId}/toggleVisibility")
+  public ResponseEntity<String> toggleCourseVisibility(@PathVariable Integer courseId) {
+    logger.info("Toggling visibility for course with ID: {}", courseId);
+    if (service.toggleCourseVisibility(courseId)) {
+      return ResponseEntity.ok("Visibility toggled.");
+    } else {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found.");
+    }
+  }
 }
+

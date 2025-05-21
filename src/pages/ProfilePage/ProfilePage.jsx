@@ -7,12 +7,14 @@ import { useNavigate } from 'react-router-dom';
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
+    const [favouriteCourses, setFavouriteCourses] = useState([]);
     const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('user');
         setUser(null);
         setEnrolledCourses([]);
+        setFavouriteCourses([]);
         navigate('/login');
     };
 
@@ -25,7 +27,13 @@ const ProfilePage = () => {
             fetch(`http://localhost:8081/api/courses/user/${storedUser.userId}`)
                 .then(res => res.json())
                 .then(data => setEnrolledCourses(data))
-                .catch(err => console.error(err));
+                .catch(err => console.error('Error fetching enrolled courses:', err));
+
+            // Fetch favourited courses
+            fetch(`http://localhost:8081/user/${storedUser.userId}/favourites`)
+                .then(res => res.json())
+                .then(data => setFavouriteCourses(data))
+                .catch(err => console.error('Error fetching favourite courses:', err));
         }
     }, []);
 
@@ -40,6 +48,9 @@ const ProfilePage = () => {
 
             <h2 className="section-title">Enrolled Courses</h2>
             <CourseList courses={enrolledCourses} />
+
+            <h2 className="section-title">Favourited Courses</h2>
+            <CourseList courses={favouriteCourses} />
 
             <button className="logout-button" onClick={handleLogout}>
                 Log Out
