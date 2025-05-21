@@ -133,9 +133,9 @@ public class CoursesInitializer implements ApplicationListener<ApplicationReadyE
     logger.info("Initializing users to database...");
 
     Users regularUser = new Users("Dave", "dave@davidson.no",
-        "Dangerous2024", "user");
+        "Dangerous2024", "USER");
     Users admin = new Users("Chuck", "world@chuck.norris",
-        "Nunchucks2024", "admin");
+        "Nunchucks2024", "ADMIN");
 
     userRepository.saveAll(List.of(
         admin, regularUser

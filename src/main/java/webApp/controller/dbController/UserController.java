@@ -40,8 +40,10 @@ public class UserController {
    *
    * @return An iterable collection of all users.
    */
-  @Operation(summary = "Get all users", description =
-      "Retrieves a list of all users in the database.")
+  @Operation(
+      summary = "Get all users",
+      description = "Retrieves a list of all users in the database."
+  )
   @ApiResponses(value = {
     @ApiResponse(responseCode = "200", description = "Successfully retrieved list of users",
       content = @Content(mediaType = "application/json",
@@ -66,8 +68,10 @@ public class UserController {
    * @param id The ID of the user to retrieve.
    * @return user with the specified ID.
    */
-  @Operation(summary = "Get user by ID", description =
-      "Retrieves a user by their unique ID.")
+  @Operation(
+      summary = "Get user by ID",
+      description = "Retrieves a user by their unique ID."
+  )
   @ApiResponses(value = {
     @ApiResponse(responseCode = "200", description = "Successfully retrieved user",
       content = @Content(mediaType = "application/json",
@@ -82,7 +86,8 @@ public class UserController {
   @GetMapping("/getById/{id}")
   @PreAuthorize("hasRole('USER')")
   public ResponseEntity<Optional<Users>> getById(
-      @Parameter(description = "ID for the User to retrieve")@PathVariable int id) {
+      @Parameter(description = "ID for the User to retrieve")
+      @PathVariable int id) {
     logger.info("Retrieving user with ID: {}", id);
     ResponseEntity<Optional<Users>> response;
     Optional<Users> user = this.service.getById(id);
@@ -99,8 +104,10 @@ public class UserController {
    *
    * @param user The user to add.
    */
-  @Operation(summary = "Get user by username", description =
-      "Retrieves a user by their unique username.")
+  @Operation(
+      summary = "Get user by username",
+      description = "Retrieves a user by their unique username."
+  )
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Successfully retrieved user",
           content = @Content(mediaType = "application/json",
@@ -114,7 +121,8 @@ public class UserController {
   })
   @PostMapping("/add")
   public ResponseEntity<String> add(
-      @Parameter(description = "User object to add")@RequestBody Users user) {
+      @Parameter(description = "User object to add")
+      @RequestBody Users user) {
     logger.info("Adding new user: {}", user);
     ResponseEntity<String> response;
     if (this.service.add(user)) {
@@ -128,7 +136,10 @@ public class UserController {
   /**
    * Deletes a user from the database.
    */
-  @Operation(summary = "Delete a user", description = "Deletes a user by their ID.")
+  @Operation(
+      summary = "Delete a user",
+      description = "Deletes a user by their ID."
+  )
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "User deleted successfully"),
       @ApiResponse(responseCode = "404", description = "User not found"),
@@ -139,7 +150,8 @@ public class UserController {
   @DeleteMapping("/delete/{id}")
   @PreAuthorize("hasRole('USER')")
   public ResponseEntity<String> delete(
-      @Parameter(description = "ID of the user to delete")@PathVariable int id) {
+      @Parameter(description = "ID of the user to delete")
+      @PathVariable int id) {
     logger.info("Deleting user with ID: {}", id);
     ResponseEntity<String> response;
     if (this.service.delete(id)) {
@@ -158,7 +170,10 @@ public class UserController {
    *
    * @return 200 OK if the update was successful, 400 BAD REQUEST if not
    */
-  @Operation(summary = "Update a user", description = "Updates an existing user by their ID.")
+  @Operation(
+      summary = "Update a user",
+      description = "Updates an existing user by their ID."
+  )
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "User updated successfully"),
       @ApiResponse(responseCode = "400", description = "Invalid user data or user not found"),
@@ -170,8 +185,10 @@ public class UserController {
   @PutMapping("/update/{id}")
   @PreAuthorize("hasRole('USER')")
   public ResponseEntity<String> update(
-      @Parameter(description = "ID of the user to be updated")@PathVariable Integer id,
-      @Parameter(description = "Update user object")@RequestBody Users user) {
+      @Parameter(description = "ID of the user to be updated")
+      @PathVariable Integer id,
+      @Parameter(description = "Update user object")
+      @RequestBody Users user) {
     logger.info("Updating user: {}", user);
     ResponseEntity<String> response;
     if (this.service.update(user, id) && user.isValid(user)) {
