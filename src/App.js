@@ -1,10 +1,7 @@
-import './App.css';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { CartProvider } from "./context/CartContext";
 import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
 import BottomPart from "./components/bottomPartOfPage/BottomPart";
-
 import LandingPage from './pages/LandingPage/LandingPage';
 import AllCoursesPage from './pages/AllCoursesPage/AllCoursesPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
@@ -13,10 +10,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import CartPage from "./pages/CartPage/CartPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-
-import {CartProvider} from "./context/CartContext";
-
-
+import './App.css';
 
 function App() {
     return (
@@ -32,7 +26,7 @@ function App() {
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/cart" element={<CartPage />} />
-                        <Route path="/error" element={<NotFound />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
 
                     <BottomPart />
