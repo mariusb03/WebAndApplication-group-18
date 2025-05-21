@@ -21,14 +21,14 @@ document.addEventListener('mousedown', (event) => {
 
 function toggleSearchPopup() {
     isSearchFocused = !isSearchFocused;
-    document.getElementById('searchOverlay').style.display = isSearchFocused ? 'flex' : 'none';
+    document.getElementById('searchPopup').style.display = isSearchFocused ? 'flex' : 'none';
     document.getElementById('searchInput').value = '';
     updateSuggestions('');
 }
 
 function hideSearchPopup() {
     isSearchFocused = false;
-    document.getElementById('searchOverlay').style.display = 'none';
+    document.getElementById('searchPopup').style.display = 'none';
     document.getElementById('searchInput').value = '';
 }
 

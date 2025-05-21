@@ -14,17 +14,16 @@ import java.util.Set;
 @Entity
 public class Users {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer userId;
+  private String name;
+  private String email;
+  private String password;
+  private String role;
 
-    private String name;
-    private String email;
-    private String password;
-    private String role;
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Courses> courses = new HashSet<>();
+  @ManyToMany(mappedBy = "users")
+  private Set<Courses> courses = new HashSet<>();
 
     @ManyToMany
     private Set<Courses> favourites = new HashSet<>();
@@ -43,120 +42,120 @@ public class Users {
     public Users() {
     }
 
-    /**
-     * Create a user.
-     *
-     * @param name the name of the user
-     * @param email The email of the user
-     * @param password The password of the user
-     * @param role The role of the user
-     */
-    public Users(String name, String email,
-                 String password, String role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
+  /**
+   * Create a user.
+   *
+   * @param name the name of the user
+   * @param email The email of the user
+   * @param password The password of the user
+   * @param role The role of the user
+   */
+  public Users(String name, String email,
+               String password, String role) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.role = role;
+  }
 
-    /**
-     * Get the id of the user.
-     *
-     * @return userId.
-     */
-    public Integer getUserId() {
-        return userId;
-    }
+  /**
+   * Get the id of the user.
+   *
+   * @return userId.
+   */
+  public Integer getUserId() {
+    return userId;
+  }
 
-    /**
-     * get the first name of the user.
-     *
-     * @return first name of the user.
-     */
-    public String getName() {
-        return name;
-    }
+  /**
+   * get the first name of the user.
+   *
+   * @return first name of the user.
+   */
+  public String getName() {
+    return name;
+  }
 
-    /**
-     * get the email of the user.
-     *
-     * @return email of the user.
-     */
-    public String getEmail() {
-        return email;
-    }
+  /**
+   * get the email of the user.
+   *
+   * @return email of the user.
+   */
+  public String getEmail() {
+    return email;
+  }
 
-    /**
-     * get the password of the user.
-     *
-     * @return password of the user.
-     */
-    public String getPassword() {
-        return password;
-    }
+  /**
+   * get the password of the user.
+   *
+   * @return password of the user.
+   */
+  public String getPassword() {
+    return password;
+  }
 
-    /**
-     * get the role of the user.
-     *
-     * @return role of the user.
-     */
-    public String getRole() {
-        return role;
-    }
+  /**
+   * get the role of the user.
+   *
+   * @return role of the user.
+   */
+  public String getRole() {
+    return role;
+  }
 
-    /**
-     * set the id of the user.
-     *
-     * @param userId The id of the user
-     */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+  /**
+   * set the id of the user.
+   *
+   * @param userId The id of the user
+   */
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
 
-    /**
-     * ser name of the user.
-     *
-     * @param name The name of the user
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+  /**
+   * ser name of the user.
+   *
+   * @param name The name of the user
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
 
 
-    /**
-     * set the email of the user.
-     *
-     * @param email The email of the user
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  /**
+   * set the email of the user.
+   *
+   * @param email The email of the user
+   */
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    /**
-     * set the password of the user.
-     *
-     * @param password The password of the user
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  /**
+   * set the password of the user.
+   *
+   * @param password The password of the user
+   */
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    /**
-     * set the role of the user.
-     *
-     * @param role The role of the user
-     */
-    public void setRole(String role) {
-        this.role = role;
-    }
+  /**
+   * set the role of the user.
+   *
+   * @param role The role of the user
+   */
+  public void setRole(String role) {
+    this.role = role;
+  }
 
-    /**
-     * check if is a valid user.
-     *
-     * @return true if the user is valid.
-     */
-    public boolean isValid(Users userToAdd) {
-        return this.name != null && this.email != null
-                && this.password != null && this.role != null;
-    }
+  /**
+   * check if is a valid user.
+   *
+   * @return true if the user is valid.
+   */
+  public boolean isValid(Users userToAdd) {
+    return this.name != null && this.email != null
+        && this.password != null && this.role != null;
+  }
 }

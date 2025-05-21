@@ -1,10 +1,10 @@
 package webApp.repository;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import webApp.model.Courses;
 import webApp.model.Providers;
-import org.springframework.data.repository.CrudRepository;
 import webApp.model.Topics;
 import webApp.model.Users;
 
@@ -14,21 +14,57 @@ import webApp.model.Users;
  */
 public interface CoursesRepository extends CrudRepository<Courses, Integer> {
 
-    @Query("SELECT c FROM Courses c JOIN c.providers p WHERE p.providersId = :providerId")
-    Iterable<Courses> findCoursesByProvider_ProvidersId(@Param("providerId") int providerId);
+  /**
+   * Find all courses by provider ID.
+   *
+   * @param providerId The ID of the provider.
+   * @return An iterable collection of courses associated with the given provider ID.
+   */
+  @Query("SELECT c FROM Courses c JOIN c.providers p WHERE p.providersId = :providerId")
+  Iterable<Courses> findCoursesByProviderProvidersId(@Param("providerId") int providerId);
 
-    @Query("SELECT c FROM Courses c JOIN c.topics p WHERE p.topicId = :topicId")
-    Iterable<Courses> findCourseWhitTopic_TopicId(Integer topicId);
+  /**
+   * Find all courses by topic ID.
+   *
+   * @param topicId The ID of the topic.
+   * @return An iterable collection of courses associated with the given topic ID.
+   */
+  @Query("SELECT c FROM Courses c JOIN c.topics p WHERE p.topicId = :topicId")
+  Iterable<Courses> findCourseWhitTopicTopicId(Integer topicId);
 
-    @Query("SELECT c FROM Courses c JOIN c.users p WHERE p.userId = :userId")
-    Iterable<Courses> findCourseWithUser_UserId(Integer userId);
+  /**
+   * Find all courses by user ID.
+   *
+   * @param userId The ID of the user.
+   * @return An iterable collection of courses associated with the given user ID.
+   */
+  @Query("SELECT c FROM Courses c JOIN c.users p WHERE p.userId = :userId")
+  Iterable<Courses> findCourseWithUserUserId(Integer userId);
 
-    @Query("SELECT p FROM Providers p JOIN p.courses c WHERE c.courseId = :courseId")
-    Iterable<Providers> findProvidersForACourse(int courseId);
+  /**
+   * Find all providers for a specific course.
+   *
+   * @param courseId The ID of the course.
+   * @return An iterable collection of providers associated with the given course ID.
+   */
+  @Query("SELECT p FROM Providers p JOIN p.courses c WHERE c.courseId = :courseId")
+  Iterable<Providers> findProvidersForCourse(int courseId);
 
-    @Query("SELECT p FROM Topics p JOIN p.courses c WHERE c.courseId = :courseId")
-    Iterable<Topics> findTopicForACourse(Integer courseId);
+  /**
+   * Find all topics for a specific course.
+   *
+   * @param courseId The ID of the course.
+   * @return An iterable collection of topics associated with the given course ID.
+   */
+  @Query("SELECT p FROM Topics p JOIN p.courses c WHERE c.courseId = :courseId")
+  Iterable<Topics> findTopicForCourse(Integer courseId);
 
-    @Query("SELECT p FROM Users p JOIN p.courses c WHERE c.courseId = :courseId")
-    Iterable<Users> findUsersForACourse(Integer courseId);
+  /**
+   * Find all users for a specific course.
+   *
+   * @param courseId The ID of the course.
+   * @return An iterable collection of users associated with the given course ID.
+   */
+  @Query("SELECT p FROM Users p JOIN p.courses c WHERE c.courseId = :courseId")
+  Iterable<Users> findUsersForCourse(Integer courseId);
 }

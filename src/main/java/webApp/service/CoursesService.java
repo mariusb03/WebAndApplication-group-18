@@ -1,6 +1,11 @@
 package webApp.service;
 
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import webApp.model.Courses;
 import webApp.model.Providers;
 import webApp.model.Topics;
@@ -9,11 +14,6 @@ import webApp.repository.CoursesRepository;
 import webApp.repository.ProvidersRepository;
 import webApp.repository.TopicRepository;
 import webApp.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service class for managing courses.
@@ -44,9 +44,9 @@ public class CoursesService {
   public void addTopicToCourse(Integer courseId, Integer topicId) {
     logger.info("Adding topic to course: topicId={}, courseId={}", topicId, courseId);
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("Course not found"));
+        .orElseThrow(() -> new RuntimeException("Course not found"));
     Topics topic = topicRepo.findById(topicId)
-            .orElseThrow(() -> new RuntimeException("Topic not found"));
+        .orElseThrow(() -> new RuntimeException("Topic not found"));
 
     course.getTopics().add(topic);
     courseRepo.save(course);
@@ -62,9 +62,9 @@ public class CoursesService {
   public void addProviderToCourse(Integer courseId, Integer providerId) {
     logger.info("Adding provider to course: providerId={}, courseId={}", providerId, courseId);
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("Course not found"));
+        .orElseThrow(() -> new RuntimeException("Course not found"));
     Providers provider = providerRepo.findById(providerId)
-            .orElseThrow(() -> new RuntimeException("provider not found"));
+        .orElseThrow(() -> new RuntimeException("provider not found"));
 
     course.getProviders().add(provider);
     courseRepo.save(course);
@@ -91,9 +91,9 @@ public class CoursesService {
     logger.info("Adding user to course: userId={}, courseId={}", userId, courseId);
 
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("Course not found"));
+        .orElseThrow(() -> new RuntimeException("Course not found"));
     Users user = userRepo.findById(userId)
-            .orElseThrow(() -> new RuntimeException("user not found"));
+        .orElseThrow(() -> new RuntimeException("user not found"));
 
     course.getUsers().add(user);
     courseRepo.save(course);
@@ -109,7 +109,7 @@ public class CoursesService {
     logger.info("Fetching all courses of provider with ID {}", providerId);
 
     Providers provider = providerRepo.findById(providerId)
-            .orElseThrow(() -> new RuntimeException("provider not found"));
+        .orElseThrow(() -> new RuntimeException("provider not found"));
 
     return courseRepo.findCoursesByProvider_ProvidersId(providerId);
   }
@@ -124,7 +124,7 @@ public class CoursesService {
     logger.info("Fetching all courses with topic with ID {}", topicId);
 
     Topics topic = topicRepo.findById(topicId)
-            .orElseThrow(() -> new RuntimeException("topic not found"));
+        .orElseThrow(() -> new RuntimeException("topic not found"));
 
     return courseRepo.findCourseWhitTopic_TopicId(topicId);
   }
@@ -151,7 +151,7 @@ public class CoursesService {
     logger.info("Fetching all providers of course with ID {}", courseId);
 
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("course not found"));
+        .orElseThrow(() -> new RuntimeException("course not found"));
 
     return courseRepo.findProvidersForACourse(courseId);
   }
@@ -166,7 +166,7 @@ public class CoursesService {
     logger.info("Fetching all topics of course with ID {}", courseId);
 
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("course not found"));
+        .orElseThrow(() -> new RuntimeException("course not found"));
 
     return courseRepo.findTopicForACourse(courseId);
   }
@@ -181,7 +181,7 @@ public class CoursesService {
     logger.info("Fetching all users of course with ID {}", courseId);
 
     Courses course = courseRepo.findById(courseId)
-            .orElseThrow(() -> new RuntimeException("course not found"));
+        .orElseThrow(() -> new RuntimeException("course not found"));
 
     return courseRepo.findUsersForACourse(courseId);
   }

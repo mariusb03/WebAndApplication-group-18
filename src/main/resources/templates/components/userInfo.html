@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>User Info</title>
-    <link rel="stylesheet" href="../../static/css/components/UserInfo.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/components/UserInfo.css}">
+    <script src="/js/components/UserInfo.js"></script>
 </head>
 <body>
 
 <div class="user-info">
-    <img src="../../static/img/profilePic.svg" alt="Profile" class="profile-pic" id="profilePicture" />
+    <img src="/img/profilePic.svg" alt="Profile" class="profile-pic" id="profilePicture" />
     <div class="user-details">
         <h2 id="userName">John Doe</h2>
         <p id="userEmail">john@example.com</p>
     </div>
     <button class="edit-button" onclick="handleEditProfile()">Edit Profile</button>
 </div>
-
-<script src="../../static/js/components/UserInfo.js"></script>
 
 </body>
 </html>

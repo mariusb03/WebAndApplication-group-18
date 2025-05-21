@@ -36,27 +36,27 @@ public class Courses {
 
   @ManyToMany
   @JoinTable(
-          name = "course_topics",
-          joinColumns = @JoinColumn(name = "course_id"),
-          inverseJoinColumns = @JoinColumn(name = "topic_id")
+      name = "course_topics",
+      joinColumns = @JoinColumn(name = "course_id"),
+      inverseJoinColumns = @JoinColumn(name = "topic_id")
   )
   @JsonIgnore
   private Set<Topics> topics = new HashSet<>();
 
   @ManyToMany
   @JoinTable(
-          name = "course_providers",
-          joinColumns = @JoinColumn(name = "courses_id"),
-          inverseJoinColumns = @JoinColumn(name = "providers_id")
+      name = "course_providers",
+      joinColumns = @JoinColumn(name = "courses_id"),
+      inverseJoinColumns = @JoinColumn(name = "providers_id")
   )
   @JsonIgnore
   private Set<Providers> providers = new HashSet<>();
 
   @ManyToMany
   @JoinTable(
-          name = "course_user",
-          joinColumns = @JoinColumn(name = "course_id"),
-          inverseJoinColumns = @JoinColumn(name = "user_id")
+      name = "course_user",
+      joinColumns = @JoinColumn(name = "course_id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id")
   )
   @JsonIgnore
   private Set<Users> users = new HashSet<>();
@@ -333,8 +333,8 @@ public class Courses {
   @JsonIgnore
   public boolean isValid() {
     return  !"".equals(title) && !"".equals(difficulty)
-            && !"".equals(session) && (size == 0 || size > 0) && (hoursPerWeek == 0 || hoursPerWeek > 0)
-            && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description)
-            && (category != null || !"".equals(category));
+        && !"".equals(session) && (size == 0 || size > 0) && (hoursPerWeek == 0 || hoursPerWeek > 0)
+        && (price == 0 || price > 0) && !"".equals(relatedCourses) && !"".equals(description)
+        && (category != null || !"".equals(category));
   }
 }
