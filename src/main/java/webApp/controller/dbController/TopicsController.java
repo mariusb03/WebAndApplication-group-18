@@ -1,6 +1,7 @@
 package webApp.controller.dbController;
 
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 import webApp.model.Topics;
 import webApp.service.TopicService;
 import org.slf4j.Logger;
@@ -63,6 +64,7 @@ public class TopicsController {
    * @param topic The topic to add.
    */
   @PostMapping("/add")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> add(@RequestBody Topics topic) {
     logger.info("Adding new topic: {}", topic);
     ResponseEntity<String> response;
@@ -78,6 +80,7 @@ public class TopicsController {
    * Deletes a topic from the database.
    */
   @DeleteMapping("/delete/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> delete(@PathVariable int id) {
     logger.info("Deleting topic with ID: {}", id);
     ResponseEntity<String> response;
@@ -98,6 +101,7 @@ public class TopicsController {
    * @return 200 OK if the update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/update/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Topics topic) {
     logger.info("Updating topic: {}", topic);
     ResponseEntity<String> response;

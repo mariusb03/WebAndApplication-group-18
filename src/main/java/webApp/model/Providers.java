@@ -68,7 +68,7 @@ public class Providers {
    * check if is a valid course provider.
    * checks if the name is not null, empty, String and is not blank.
    */
-    public boolean isValid(Providers provider) {
-      return name != null && !name.isEmpty() && !name.isBlank();
-    }
+  public boolean isValid(Providers provider) {
+    return name != null && !name.isEmpty() && !name.isBlank();
+  }
 }

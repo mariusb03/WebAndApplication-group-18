@@ -1,7 +1,7 @@
 package webApp.repository;
 
-import webApp.model.Providers;
 import org.springframework.data.repository.CrudRepository;
+import webApp.model.Providers;
 
 /**
  * Repository interface for accessing Providers data in the database.

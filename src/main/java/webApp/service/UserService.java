@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import webApp.model.Users;
 import webApp.repository.UserRepository;
 
+/**
+ * Service class for managing users.
+ * This class provides methods to perform CRUD operations on users.
+ */
 @Service
 public class UserService {
   private final Logger logger = LoggerFactory.getLogger("UserService");

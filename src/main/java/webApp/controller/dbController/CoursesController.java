@@ -1,6 +1,7 @@
 package webApp.controller.dbController;
 
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 import webApp.controller.ControllerCommonResponse;
 import webApp.model.Courses;
 import webApp.model.Providers;
@@ -68,6 +69,7 @@ public class CoursesController {
    * @param courses The courses to add.
    */
   @PostMapping("/add")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> addCourse(@RequestBody Courses courses)  {
     logger.info("Adding new course: {}", courses);
     ResponseEntity<String> response;
@@ -89,6 +91,7 @@ public class CoursesController {
    * @return ResponseEntity with a message indicating success or failure
    */
   @PostMapping("/{courseId}/topics/{topicId}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> addTopicToCourse(@PathVariable Integer courseId,
                                                   @PathVariable Integer topicId) {
     logger.info("Adding topic with ID: {} to course with ID: {}", topicId, courseId);
@@ -110,6 +113,7 @@ public class CoursesController {
    * @return ResponseEntity with a message indicating success or failure
    */
   @PostMapping("/{courseId}/provider/{providerId}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> addProviderToCourse(@PathVariable Integer courseId,
                                                     @PathVariable Integer providerId) {
     logger.info("Adding provider with ID: {} to course with ID: {}", providerId, courseId);
@@ -130,6 +134,7 @@ public class CoursesController {
    * @return ResponseEntity with a message indicating success or failure
    */
   @PostMapping("/{courseId}/user/{userId}")
+  @PreAuthorize("hasRole('USER')")
   public ResponseEntity<String> addUserToCourse(@PathVariable Integer courseId,
                                                  @PathVariable Integer userId) {
     logger.info("Adding user with ID: {} to course with ID: {}", userId, courseId);
@@ -191,6 +196,7 @@ public class CoursesController {
    * @return ResponseEntity with a message indicating success or failure
    */
   @GetMapping("/user/{userId}")
+  @PreAuthorize("hasRole('USER')")
   public ResponseEntity<Iterable<Courses>> getAllCoursesOfUser(@PathVariable
                                                                 Integer userId) {
     logger.info("Retrieving all courses with user ID: {}", userId);
@@ -272,6 +278,7 @@ public class CoursesController {
    * Deletes a course from the database.
    */
   @DeleteMapping("/delete/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> delete(@PathVariable int id) {
     logger.info("Deleting course with ID: {}", id);
     ResponseEntity<String> response;
@@ -292,6 +299,7 @@ public class CoursesController {
    * @return 200 OK if the update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/Update/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> update(@PathVariable Integer id ,@RequestBody Courses course) {
     logger.info("Updating course with ID: {}", course);
     ResponseEntity<String> response;

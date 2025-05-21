@@ -1,6 +1,7 @@
 package webApp.controller.dbController;
 
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 import webApp.model.Providers;
 import webApp.service.ProviderService;
 import org.slf4j.Logger;
@@ -63,6 +64,7 @@ public class ProviderController {
    * @param provider The course provider to add.
    */
   @PostMapping("/add")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> add(@RequestBody Providers provider) {
     logger.info("Adding new course provider: {}", provider);
     ResponseEntity<String> response;
@@ -78,6 +80,7 @@ public class ProviderController {
    * Deletes a course provider from the database.
    */
   @DeleteMapping("/delete/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> delete(@PathVariable int id) {
     logger.info("Deleting course provider with ID: {}", id);
     ResponseEntity<String> response;
@@ -98,6 +101,7 @@ public class ProviderController {
    * @return 200 OK if update was successful, 400 BAD REQUEST if not
    */
   @PutMapping("/update/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody Providers provider) {
     logger.info("Updating course provider: {}", provider);
     ResponseEntity<String> response;

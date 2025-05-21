@@ -1,5 +1,6 @@
 package webApp.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,6 @@ public class Users {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer userId;
-
   private String name;
   private String email;
   private String password;
@@ -145,7 +145,7 @@ public class Users {
    * @return true if the user is valid.
    */
   public boolean isValid(Users userToAdd) {
-    return this.userId != null && this.name != null && this.email != null
+    return this.name != null && this.email != null
         && this.password != null && this.role != null;
   }
 }
