@@ -1,4 +1,4 @@
-package webApp.controller.page;
+package webApp.controller.Page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
