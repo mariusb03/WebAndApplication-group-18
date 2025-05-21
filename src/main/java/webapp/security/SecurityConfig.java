@@ -41,14 +41,14 @@ public class SecurityConfig {
       )
         .headers((headers) -> headers
         .contentSecurityPolicy((csp) -> csp
-            .policyDirectives("default-src 'self'; script-src 'self'")
+          .policyDirectives("default-src 'self'; script-src 'self'")
         )
-            .frameOptions((frame) -> frame.deny())
-            .httpStrictTransportSecurity((hsts) -> hsts
-            .includeSubDomains(true)
-            .maxAgeInSeconds(31536000)
+          .frameOptions((frame) -> frame.deny())
+          .httpStrictTransportSecurity((hsts) -> hsts
+          .includeSubDomains(true)
+          .maxAgeInSeconds(31536000)
         )
-      );
+        );
 
     return http.build();
   }
