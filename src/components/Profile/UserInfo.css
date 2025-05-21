@@ -1,0 +1,28 @@
+.user-info {
+    display: flex;
+    align-items: center;
+    background: #fff9db;
+    padding: 1.5rem;
+    border: 2px solid #ffe600;
+    border-radius: 10px;
+    gap: 1.5rem;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-details h2 {
+    margin: 0;
+}
+
+.edit-button {
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+    background: #ffe600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

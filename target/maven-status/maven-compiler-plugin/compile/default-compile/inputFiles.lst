@@ -1,20 +1,20 @@
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\course\ControllerCommonResponse.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\course\CoursesController.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\course\ProviderController.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\course\TopicsController.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\Page\MainController.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\controller\user\UserController.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\DemoApplication.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\model\coursesdb\Courses.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\model\coursesdb\Providers.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\model\coursesdb\Topics.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\model\userdb\User.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\repository\coursesRepository\CoursesRepository.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\repository\coursesRepository\ProvidersRepository.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\repository\coursesRepository\TopicRepository.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\repository\userRepository\UserRepository.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\service\courses\CoursesService.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\service\courses\ProviderService.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\service\courses\TopicService.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\service\user\userService.java
-C:\Users\Sivert\Skole\semester 4\test\demo\src\main\java\webApp\tool\CoursesInitializer.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/DemoApplication.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/course/ControllerCommonResponse.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/course/CoursesController.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/course/ProviderController.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/course/TopicsController.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/page/MainController.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/controller/user/UserController.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/model/coursesdb/Courses.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/model/coursesdb/Providers.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/model/coursesdb/Topics.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/model/userdb/User.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/repository/coursesRepository/CoursesRepository.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/repository/coursesRepository/ProvidersRepository.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/repository/coursesRepository/TopicRepository.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/repository/userRepository/UserRepository.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/service/courses/CoursesService.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/service/courses/ProviderService.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/service/courses/TopicService.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/service/user/UserService.java
+/Users/mariusbr/Library/Mobile Documents/com~apple~CloudDocs/Data ingeniør/4. Semester/AppDev&WebTech/gruppe oppgave/WebAndApplication-group-18/src/main/java/webApp/tool/CoursesInitializer.java

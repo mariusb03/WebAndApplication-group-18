@@ -7,13 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lib-website-monolith" />
-        <module name="demo" />
+        <module name="WebAndApplication-group-18" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo" options="-parameters" />
+      <module name="WebAndApplication-group-18" options="-parameters" />
       <module name="lib-website-monolith" options="-parameters" />
     </option>
   </component>
