@@ -17,9 +17,10 @@ import webApp.repository.UserRepository;
 @Service
 public class UserService {
   private final Logger logger = LoggerFactory.getLogger("UserService");
-
   @Autowired
   private UserRepository repository;
+  @Autowired
+  private CoursesRepository coursesRepository;
 
   /**
    * Get all users.
@@ -32,50 +33,68 @@ public class UserService {
     return repository.findAll();
   }
 
-
+  /**
+   * Get a user by name and password.
+   *
+   * @param name of the user to find.
+   * @param password of the user to find.
+   * @return Optional of the user.
+   */
   public Optional<Users> findByNameAndPassword(String name, String password) {
-      return repository.findByNameAndPassword(name, password);
+    return repository.findByNameAndPassword(name, password);
   }
 
+  /**
+   * Get a user by name.
+   *
+   * @param userId for the user adding the course to favourites.
+   * @param courseId for the course to be added to favourites.
+   * @return Optional of the user.
+   */
+  public boolean addFavourite(Integer userId, Integer courseId) {
+    Optional<Users> userOpt = repository.findById(userId);
+    Optional<Courses> courseOpt = coursesRepository.findById(courseId);
 
-    @Autowired
-    private CoursesRepository coursesRepository;
-
-    public boolean addFavourite(Integer userId, Integer courseId) {
-        Optional<Users> userOpt = repository.findById(userId);
-        Optional<Courses> courseOpt = coursesRepository.findById(courseId);
-
-        if (userOpt.isPresent() && courseOpt.isPresent()) {
-            Users user = userOpt.get();
-            user.getFavourites().add(courseOpt.get());
-            repository.save(user);
-            return true;
-        }
-        return false;
+    boolean favourite = false;
+    if (userOpt.isPresent() && courseOpt.isPresent()) {
+      Users user = userOpt.get();
+      user.getFavourites().add(courseOpt.get());
+      repository.save(user);
+      favourite = true;
     }
+    return favourite;
+  }
 
-    public boolean removeFavourite(Integer userId, Integer courseId) {
-        Optional<Users> userOpt = repository.findById(userId);
-        Optional<Courses> courseOpt = coursesRepository.findById(courseId);
+  /**
+   * Remove a course from the user's favourites.
+   *
+   * @param userId for the user removing the course from favourites.
+   * @param courseId for the course to be removed from favourites.
+   * @return true if the course was removed, false if not.
+   */
+  public boolean removeFavourite(Integer userId, Integer courseId) {
+    Optional<Users> userOpt = repository.findById(userId);
+    Optional<Courses> courseOpt = coursesRepository.findById(courseId);
 
-        if (userOpt.isPresent() && courseOpt.isPresent()) {
-            Users user = userOpt.get();
-            user.getFavourites().remove(courseOpt.get());
-            repository.save(user);
-            return true;
-        }
-        return false;
+    boolean removed = false;
+    if (userOpt.isPresent() && courseOpt.isPresent()) {
+      Users user = userOpt.get();
+      user.getFavourites().remove(courseOpt.get());
+      repository.save(user);
+      removed = true;
     }
+    return removed;
+  }
 
-    /**
-     * Get a user by id.
-     *
-     * @param id id of the user.
-     *
-     * @return Users
-     */
-    public Optional<Users> getById(int id) {
-        logger.info("Fetching user by id {}", id);
+  /**
+   * Get a user by id.
+   *
+   * @param id id of the user.
+   *
+   * @return Users
+   */
+  public Optional<Users> getById(int id) {
+    logger.info("Fetching user by id {}", id);
 
     return repository.findById(id);
   }

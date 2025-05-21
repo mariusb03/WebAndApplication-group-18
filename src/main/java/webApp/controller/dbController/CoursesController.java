@@ -4,19 +4,25 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import webApp.controller.ControllerCommonResponse;
 import webApp.model.Courses;
 import webApp.model.Providers;
@@ -51,7 +57,8 @@ public class CoursesController {
   })
   @GetMapping("/getAll")
   public ResponseEntity<Iterable<Courses>> getAllCourses(
-          @RequestHeader(value = "userRole", required = false) String userRole) {
+      @Parameter(description = "User role for filtering courses")
+      @RequestHeader(value = "userRole", required = false) String userRole) {
 
     logger.info("Retrieving all courses, user role: {}", userRole);
 
@@ -90,15 +97,15 @@ public class CoursesController {
   public ResponseEntity<Optional<Courses>> getById(
       @Parameter(description = "Id of the course to retrieve", required = true)
       @PathVariable int id) {
-      logger.info("Retrieving course with ID: {}", id);
-      ResponseEntity<Optional<Courses>> response;
-      Optional<Courses> courses = this.service.getById(id);
-      if (courses.isPresent()) {
-        response = ResponseEntity.ok(courses);
-      } else {
-        response = ResponseEntity.notFound().build();
-      }
-      return response;
+    logger.info("Retrieving course with ID: {}", id);
+    ResponseEntity<Optional<Courses>> response;
+    Optional<Courses> courses = this.service.getById(id);
+    if (courses.isPresent()) {
+      response = ResponseEntity.ok(courses);
+    } else {
+      response = ResponseEntity.notFound().build();
+    }
+    return response;
   }
 
   /**
@@ -461,7 +468,7 @@ public class CoursesController {
     if (this.service.delete(id)) {
       response = new ResponseEntity<>("Course deleted", HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>("Could not delete course",HttpStatus.NOT_FOUND);
+      response = new ResponseEntity<>("Could not delete course", HttpStatus.NOT_FOUND);
     }
     return response;
   }
@@ -503,10 +510,26 @@ public class CoursesController {
     return response;
   }
 
-
-
+  /**
+   * Toggles the visibility of a course.
+   *
+   * @param courseId ID of the course to toggle visibility for.
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @Operation(
+      summary = "Toggle course visibility",
+      description = "Toggles the visibility of a course."
+  )
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Successfully toggled course visibility"),
+      @ApiResponse(responseCode = "404", description = "Course not found"),
+      @ApiResponse(responseCode = "500",
+          description = "Internal Server Error - An unexpected error occurred")
+  })
   @PutMapping("{courseId}/toggleVisibility")
-  public ResponseEntity<String> toggleCourseVisibility(@PathVariable Integer courseId) {
+  public ResponseEntity<String> toggleCourseVisibility(
+      @Parameter(description = "Id of the course to toggle visibility for")
+      @PathVariable Integer courseId) {
     logger.info("Toggling visibility for course with ID: {}", courseId);
     if (service.toggleCourseVisibility(courseId)) {
       return ResponseEntity.ok("Visibility toggled.");

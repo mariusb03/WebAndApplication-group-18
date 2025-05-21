@@ -25,22 +25,22 @@ public class Users {
   @ManyToMany(mappedBy = "users")
   private Set<Courses> courses = new HashSet<>();
 
-    @ManyToMany
-    private Set<Courses> favourites = new HashSet<>();
+  @ManyToMany
+  private Set<Courses> favourites = new HashSet<>();
 
-    public Set<Courses> getFavourites() {
-        return favourites;
-    }
+  public Set<Courses> getFavourites() {
+    return favourites;
+  }
 
-    public void setFavourites(Set<Courses> favourites) {
-        this.favourites = favourites;
-    }
+  public void setFavourites(Set<Courses> favourites) {
+    this.favourites = favourites;
+  }
 
-    /**
-     * default constructor for users.
-     */
-    public Users() {
-    }
+  /**
+   * default constructor for users.
+   */
+  public Users() {
+  }
 
   /**
    * Create a user.

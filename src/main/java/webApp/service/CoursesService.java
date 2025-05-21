@@ -70,13 +70,16 @@ public class CoursesService {
     courseRepo.save(course);
   }
 
-  @Autowired
-  private CoursesRepository coursesRepository;
-
+  /**
+   * Toggle the visibility of a course.
+   *
+   * @param courseId The ID of the course.
+   * @return true if the visibility was toggled successfully, false otherwise.
+   */
   public boolean toggleCourseVisibility(Integer courseId) {
-    return coursesRepository.findById(courseId).map(course -> {
+    return courseRepo.findById(courseId).map(course -> {
       course.setHidden(!course.isHidden());
-      coursesRepository.save(course); // must use lowercase instance!
+      courseRepo.save(course);
       return true;
     }).orElse(false);
   }
