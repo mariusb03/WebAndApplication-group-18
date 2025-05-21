@@ -1,4 +1,4 @@
-package webapp.controller.dbController;
+package webapp.controller.dbcontroller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
