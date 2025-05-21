@@ -32,18 +32,10 @@ public class UserService {
     return repository.findAll();
   }
 
-  /**
-   * Get a user by id.
-   *
-   * @param id id of the user.
-   *
-   * @return Users
-   */
-  public Optional<Users> getById(int id) {
-    logger.info("Fetching user by id {}", id);
-    public Optional<Users> findByNameAndPassword(String name, String password) {
-        return repository.findByNameAndPassword(name, password);
-    }
+
+  public Optional<Users> findByNameAndPassword(String name, String password) {
+      return repository.findByNameAndPassword(name, password);
+  }
 
 
     @Autowired

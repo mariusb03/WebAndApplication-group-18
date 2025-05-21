@@ -111,7 +111,7 @@ public class CoursesService {
     Providers provider = providerRepo.findById(providerId)
         .orElseThrow(() -> new RuntimeException("provider not found"));
 
-    return courseRepo.findCoursesByProvider_ProvidersId(providerId);
+    return courseRepo.findCoursesByProviderProvidersId(providerId);
   }
 
   /**
@@ -126,7 +126,7 @@ public class CoursesService {
     Topics topic = topicRepo.findById(topicId)
         .orElseThrow(() -> new RuntimeException("topic not found"));
 
-    return courseRepo.findCourseWhitTopic_TopicId(topicId);
+    return courseRepo.findCourseWhitTopicTopicId(topicId);
   }
 
   /**
@@ -138,7 +138,7 @@ public class CoursesService {
   public Iterable<Courses> getAllCoursesOfUser(Integer userId) {
     logger.info("Fetching all courses with user with ID {}", userId);
 
-    return courseRepo.findCourseWithUser_UserId(userId);
+    return courseRepo.findCourseWithUserUserId(userId);
   }
 
   /**
@@ -153,7 +153,7 @@ public class CoursesService {
     Courses course = courseRepo.findById(courseId)
         .orElseThrow(() -> new RuntimeException("course not found"));
 
-    return courseRepo.findProvidersForACourse(courseId);
+    return courseRepo.findProvidersForCourse(courseId);
   }
 
   /**
@@ -168,7 +168,7 @@ public class CoursesService {
     Courses course = courseRepo.findById(courseId)
         .orElseThrow(() -> new RuntimeException("course not found"));
 
-    return courseRepo.findTopicForACourse(courseId);
+    return courseRepo.findTopicForCourse(courseId);
   }
 
   /**
@@ -183,7 +183,7 @@ public class CoursesService {
     Courses course = courseRepo.findById(courseId)
         .orElseThrow(() -> new RuntimeException("course not found"));
 
-    return courseRepo.findUsersForACourse(courseId);
+    return courseRepo.findUsersForCourse(courseId);
   }
 
   /**
