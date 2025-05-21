@@ -1,0 +1,45 @@
+import './App.css';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
+import BottomPart from "./components/bottomPartOfPage/BottomPart";
+
+import LandingPage from './pages/LandingPage/LandingPage';
+import AllCoursesPage from './pages/AllCoursesPage/AllCoursesPage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import NotFound from './pages/NotFoundPage/NotFound';
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import CartPage from "./pages/CartPage/CartPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+
+import {CartProvider} from "./context/CartContext";
+
+
+
+function App() {
+    return (
+        <CartProvider>
+            <div className="App">
+                <Router>
+                    <TopPartOfPage />
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/courses" element={<AllCoursesPage />} />
+                        <Route path="/about" element={<AboutUsPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route path="/error" element={<NotFound />} />
+                    </Routes>
+
+                    <BottomPart />
+                </Router>
+            </div>
+        </CartProvider>
+    );
+}
+
+export default App;
