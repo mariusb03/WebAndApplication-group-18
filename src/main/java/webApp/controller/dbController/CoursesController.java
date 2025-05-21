@@ -461,7 +461,7 @@ public class CoursesController {
     if (this.service.delete(id)) {
       response = new ResponseEntity<>("Course deleted", HttpStatus.OK);
     } else {
-      response = new ResponseEntity<>("Could not delete course", HttpStatus.NOT_FOUND);
+      response = new ResponseEntity<>("Could not delete course",HttpStatus.NOT_FOUND);
     }
     return response;
   }
@@ -501,5 +501,17 @@ public class CoursesController {
       response = new ResponseEntity<>("Could not update course", HttpStatus.BAD_REQUEST);
     }
     return response;
+  }
+
+
+
+  @PutMapping("{courseId}/toggleVisibility")
+  public ResponseEntity<String> toggleCourseVisibility(@PathVariable Integer courseId) {
+    logger.info("Toggling visibility for course with ID: {}", courseId);
+    if (service.toggleCourseVisibility(courseId)) {
+      return ResponseEntity.ok("Visibility toggled.");
+    } else {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found.");
+    }
   }
 }
