@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/WebAndApplication-group-19/static/css/main.1af52394.css",
-    "main.js": "/WebAndApplication-group-19/static/js/main.708d7698.js",
-    "static/media/school.png": "/WebAndApplication-group-19/static/media/school.7d60d1523510efadb9ac.png",
-    "static/media/8.svg": "/WebAndApplication-group-19/static/media/8.4536e0dbb50487048b66a3a1a2139993.svg",
-    "static/media/11.svg": "/WebAndApplication-group-19/static/media/11.93ad2876ec04f3a58cda44019f25327d.svg",
-    "static/media/business.png": "/WebAndApplication-group-19/static/media/business.20abe353433b5558c717.png",
-    "static/media/personTakingCourse.jpg": "/WebAndApplication-group-19/static/media/personTakingCourse.0b70613bd76461832885.jpg",
-    "static/media/homeLogo.svg": "/WebAndApplication-group-19/static/media/homeLogo.a38121928bffa47e0d5bdd16c22ca065.svg",
-    "static/media/search symbol.png": "/WebAndApplication-group-19/static/media/search symbol.a7d83320b9d688691233.png",
-    "static/media/cartLogo.svg": "/WebAndApplication-group-19/static/media/cartLogo.0ce90910e3a2d32fb4ed9ceafc49db76.svg",
-    "static/media/slick.svg": "/WebAndApplication-group-19/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/WebAndApplication-group-19/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/WebAndApplication-group-19/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/WebAndApplication-group-19/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/profilePic.svg": "/WebAndApplication-group-19/static/media/profilePic.01ce70093c992987fcda3671b2360e1c.svg",
-    "index.html": "/WebAndApplication-group-19/index.html",
-    "main.1af52394.css.map": "/WebAndApplication-group-19/static/css/main.1af52394.css.map",
-    "main.708d7698.js.map": "/WebAndApplication-group-19/static/js/main.708d7698.js.map"
+    "main.css": "/static/css/main.c2cb6f7e.css",
+    "main.js": "/static/js/main.070ca3a5.js",
+    "static/media/school.png": "/static/media/school.7d60d1523510efadb9ac.png",
+    "static/media/8.svg": "/static/media/8.4536e0dbb50487048b66a3a1a2139993.svg",
+    "static/media/11.svg": "/static/media/11.93ad2876ec04f3a58cda44019f25327d.svg",
+    "static/media/business.png": "/static/media/business.20abe353433b5558c717.png",
+    "static/media/personTakingCourse.jpg": "/static/media/personTakingCourse.0b70613bd76461832885.jpg",
+    "static/media/homeLogo.svg": "/static/media/homeLogo.a38121928bffa47e0d5bdd16c22ca065.svg",
+    "static/media/search symbol.png": "/static/media/search symbol.a7d83320b9d688691233.png",
+    "static/media/cartLogo.svg": "/static/media/cartLogo.0ce90910e3a2d32fb4ed9ceafc49db76.svg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/profilePic.svg": "/static/media/profilePic.01ce70093c992987fcda3671b2360e1c.svg",
+    "index.html": "/index.html",
+    "main.c2cb6f7e.css.map": "/static/css/main.c2cb6f7e.css.map",
+    "main.070ca3a5.js.map": "/static/js/main.070ca3a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.1af52394.css",
-    "static/js/main.708d7698.js"
+    "static/css/main.c2cb6f7e.css",
+    "static/js/main.070ca3a5.js"
   ]
 }
