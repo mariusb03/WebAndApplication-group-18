@@ -21,7 +21,7 @@ const AllCoursesPage = () => {
         if (storedUser) {
             setUser(storedUser);
 
-            fetch(`http://localhost:8082/user/${storedUser.userId}/favourites`)
+            fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//user/${storedUser.userId}/favourites`)
                 .then(res => res.json())
                 .then(data => {
                     const favIds = data.map(course => course.courseId);
@@ -36,7 +36,7 @@ const AllCoursesPage = () => {
     }, [searchParam]);
 
     useEffect(() => {
-        fetch('http://localhost:8082/api/courses/getAll', {
+        fetch('http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/getAll', {
             headers: {
                 'userRole': user?.role || 'guest'
             }
@@ -47,7 +47,7 @@ const AllCoursesPage = () => {
 
                 // Fetch price ranges for each course
                 data.forEach(course => {
-                    fetch(`http://localhost:8082/api/courses/getPrice/${course.courseId}`)
+                    fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/getPrice/${course.courseId}`)
                         .then(res => res.json())
                         .then(priceData => {
                             const prices = priceData.map(p => p.price).filter(p => p != null);
@@ -71,7 +71,7 @@ const AllCoursesPage = () => {
         const isFav = favourites.includes(courseId);
         const method = isFav ? 'DELETE' : 'POST';
 
-        fetch(`http://localhost:8082/user/${user.userId}/favourite/${courseId}`, {
+        fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//user/${user.userId}/favourite/${courseId}`, {
             method,
         })
             .then(res => {
@@ -124,10 +124,10 @@ const AllCoursesPage = () => {
                                     className="toggle-visibility-btn"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        fetch(`http://localhost:8082/api/courses/${course.courseId}/toggleVisibility`, {
+                                        fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/${course.courseId}/toggleVisibility`, {
                                             method: 'PUT',
                                         })
-                                            .then(() => fetch('http://localhost:8082/api/courses/getAll', {
+                                            .then(() => fetch('http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/getAll', {
                                                 headers: {
                                                     'userRole': user?.role || 'user'
                                                 }

@@ -17,7 +17,7 @@ const CartPage = () => {
 
         try {
             for (const course of cartItems) {
-                await fetch(`http://localhost:8082/api/courses/${course.courseId}/user/${storedUser.userId}`, {
+                await fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/${course.courseId}/user/${storedUser.userId}`, {
                     method: 'POST',
                 });
             }

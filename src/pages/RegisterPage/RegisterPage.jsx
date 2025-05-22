@@ -39,13 +39,13 @@ const RegisterPage = () => {
 
         try {
             // Step 1: Fetch all users to count
-            const userResponse = await fetch('http://localhost:8082/user/getAll');
+            const userResponse = await fetch('http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//user/getAll');
             const users = await userResponse.json();
 
             const newUserId = (Array.isArray(users) ? users.length : 0) + 1;
 
             // Step 2: Send registration request
-            const registerResponse = await fetch('http://localhost:8082/user/add', {
+            const registerResponse = await fetch('http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//user/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
