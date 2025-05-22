@@ -11,58 +11,38 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-/**
- * Security configuration class.
- * This class configures the security settings for the web application.
- * It defines the security filter chain, user details service, and password encoder.
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-  /**
-   * Configures the security filter chain for the application.
-   *
-   * @param http the HttpSecurity object
-   * @return the configured SecurityFilterChain
-   * @throws Exception if an error occurs during configuration
-   */
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-        .authorizeHttpRequests((requests) -> requests
-            .anyRequest().permitAll()
-        )
-        .httpBasic((basic) -> basic.disable()) // 👈 now properly closed
-        .formLogin((form) -> form.disable())
-        .logout((logout) -> logout.disable())
-        .csrf((csrf) -> csrf.disable())
-        .headers((headers) -> headers
-        .contentSecurityPolicy((csp) -> csp
-                .policyDirectives(
-                        "default-src 'self'; " +
-                                "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; " +
-                                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-                                "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; " +
-                                "font-src 'self' https://fonts.gstatic.com; " +
-                                "frame-src https://www.google.com https://maps.googleapis.com;"
-                )
-        )
-          .frameOptions((frame) -> frame.deny())
-          .httpStrictTransportSecurity((hsts) -> hsts
-          .includeSubDomains(true)
-          .maxAgeInSeconds(31536000)
-        )
+        .authorizeHttpRequests(requests -> requests.anyRequest().permitAll())
+        .httpBasic().disable()
+        .formLogin().disable()
+        .logout().disable()
+        .csrf().disable()
+        .headers(headers -> headers
+            .contentSecurityPolicy(csp -> csp.policyDirectives(
+                "default-src 'self'; " +
+                    "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; " +
+                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+                    "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; " +
+                    "font-src 'self' https://fonts.gstatic.com; " +
+                    "frame-src https://www.google.com https://maps.googleapis.com; " +
+                    "connect-src 'self' http://129.241.236.99:8082;"
+            ))
+            .frameOptions().deny()
+            .httpStrictTransportSecurity(hsts -> hsts
+                .includeSubDomains(true)
+                .maxAgeInSeconds(31536000)
+            )
         );
 
     return http.build();
   }
 
-  /**
-   * Configures the user details service for the application.
-   *
-   * @return the configured UserDetailsService
-   */
   @Bean
   public UserDetailsService userDetailsService() {
     InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -77,11 +57,6 @@ public class SecurityConfig {
     return manager;
   }
 
-  /**
-   * Configures the password encoder for the application.
-   *
-   * @return the configured PasswordEncoder
-   */
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
