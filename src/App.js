@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CartProvider } from "./context/CartContext";
-import TopPartOfPage from "./components/topPartOfPage/TopPartOfPage";
-import BottomPart from "./components/bottomPartOfPage/BottomPart";
-import LandingPage from './pages/LandingPage/LandingPage';
-import AllCoursesPage from './pages/AllCoursesPage/AllCoursesPage';
-import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import NotFound from './pages/NotFoundPage/NotFound';
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import CartPage from "./pages/CartPage/CartPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import { CartProvider } from "./frontend/context/CartContext";
+import TopPartOfPage from "./frontend/components/topPartOfPage/TopPartOfPage";
+import BottomPart from "./frontend/components/bottomPartOfPage/BottomPart";
+import LandingPage from './frontend/pages/LandingPage/LandingPage';
+import AllCoursesPage from './frontend/pages/AllCoursesPage/AllCoursesPage';
+import AboutUsPage from './frontend/pages/AboutUsPage/AboutUsPage';
+import NotFound from './frontend/pages/NotFoundPage/NotFound';
+import LoginPage from "./frontend/pages/LoginPage/LoginPage";
+import RegisterPage from "./frontend/pages/RegisterPage/RegisterPage";
+import CartPage from "./frontend/pages/CartPage/CartPage";
+import ProfilePage from "./frontend/pages/ProfilePage/ProfilePage";
 import './App.css';
 
 function App() {
