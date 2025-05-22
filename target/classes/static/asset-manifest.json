@@ -1,7 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.dca7853d.css",
-    "main.js": "/static/js/main.136be158.js",
+    "main.css": "/static/css/main.c2cb6f7e.css",
+    "main.js": "/static/js/main.051981f6.js",
+    "static/media/school.png": "/static/media/school.7d60d1523510efadb9ac.png",
+    "static/media/8.svg": "/static/media/8.4536e0dbb50487048b66a3a1a2139993.svg",
+    "static/media/11.svg": "/static/media/11.93ad2876ec04f3a58cda44019f25327d.svg",
+    "static/media/business.png": "/static/media/business.20abe353433b5558c717.png",
     "static/media/personTakingCourse.jpg": "/static/media/personTakingCourse.0b70613bd76461832885.jpg",
     "static/media/homeLogo.svg": "/static/media/homeLogo.a38121928bffa47e0d5bdd16c22ca065.svg",
     "static/media/search symbol.png": "/static/media/search symbol.a7d83320b9d688691233.png",
@@ -12,11 +16,11 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "static/media/profilePic.svg": "/static/media/profilePic.01ce70093c992987fcda3671b2360e1c.svg",
     "index.html": "/index.html",
-    "main.dca7853d.css.map": "/static/css/main.dca7853d.css.map",
-    "main.136be158.js.map": "/static/js/main.136be158.js.map"
+    "main.c2cb6f7e.css.map": "/static/css/main.c2cb6f7e.css.map",
+    "main.051981f6.js.map": "/static/js/main.051981f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.dca7853d.css",
-    "static/js/main.136be158.js"
+    "static/css/main.c2cb6f7e.css",
+    "static/js/main.051981f6.js"
   ]
 }

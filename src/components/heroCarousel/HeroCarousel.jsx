@@ -4,26 +4,35 @@ import './CarouselStyle.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import personTakingCourse from '../../assets/carouselPictures/personTakingCourse.jpg';
+import digitalMarketing from '../../assets/carouselPictures/8.svg';
+import business from '../../assets/carouselPictures/business.png';
+import ai from '../../assets/carouselPictures/11.svg';
+import school from '../../assets/carouselPictures/school.png';
 import { Link } from 'react-router-dom';
 
 const slides = [
+    {
+        image: school ,
+        headline: 'Welcome to Learniverse Connect!' ,
+        subtext: 'The website for all your learning needs!',
+    },
     {
         image: personTakingCourse,
         headline: 'Build Tech Skills with IT Courses',
         subtext: 'Master Java, SQL, .NET, AWS & Azure — industry tools for the modern developer.',
     },
     {
-        image: 'https://miro.medium.com/v2/resize:fit:1358/1*cG6U1qstYDijh9bPL42e-Q.jpeg',
+        image: digitalMarketing,
         headline: 'Excel in Digital Marketing',
         subtext: 'Learn SEO, Social Media, and analytics to grow brands in the digital age.',
     },
     {
-        image: 'https://digitaltransformation.org.au/sites/default/files/2022-01/azure.png',
+        image: business,
         headline: 'Strategize Like a Pro',
         subtext: 'Business and entrepreneurship skills for future leaders and innovators.',
     },
     {
-        image: 'https://cdn.analyticsvidhya.com/wp-content/uploads/2023/04/Databricks.jpg',
+        image: ai,
         headline: 'Decode Data Science & AI',
         subtext: 'Use Python, ML & Databricks to analyze, predict, and transform industries.',
     }
