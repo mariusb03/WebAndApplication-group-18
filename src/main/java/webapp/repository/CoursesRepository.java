@@ -1,5 +1,6 @@
 package webapp.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -67,4 +68,14 @@ public interface CoursesRepository extends CrudRepository<Courses, Integer> {
    */
   @Query("SELECT p FROM Users p JOIN p.courses c WHERE c.courseId = :courseId")
   Iterable<Users> findUsersForCourse(Integer courseId);
+
+  /**
+   * Find all prices for a specific course.
+   *
+   * @param courseId The ID of the course.
+   * @return A list of objects containing the provider name and price for the given course ID.
+   */
+  @Query(value = "SELECT providers_id, price FROM course_providers WHERE courses_id = :courseId",
+      nativeQuery = true)
+  List<Object[]> findPricesByCourseId(@Param("courseId") Integer courseId);
 }

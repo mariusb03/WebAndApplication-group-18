@@ -1,6 +1,10 @@
 package webapp.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -212,6 +216,21 @@ public class CoursesService {
     return courseRepo.findById(id);
   }
 
+  /**
+   * Get the price of a course.
+   *
+   * @param courseId The ID of the course.
+   * @return The price of the course.
+   */
+  public List<Map<String, Object>> getCoursePrice(Integer courseId) {
+    List<Object[]> rows = courseRepo.findPricesByCourseId(courseId);
+    return rows.stream().map(row -> {
+      Map<String, Object> map = new HashMap<>();
+      map.put("providerId", row[0]);
+      map.put("price", row[1] != null ? ((Number) row[1]).doubleValue() : null);
+      return map;
+    }).collect(Collectors.toList());
+  }
 
   /**
    * Add a new course.
@@ -242,7 +261,7 @@ public class CoursesService {
    * @return true if the course was deleted successfully, false otherwise.
    */
   public boolean delete(int id) {
-    logger.info("Deleting topic with ID {}", id);
+    logger.info("Deleting course with ID {}", id);
 
     boolean success = false;
     if (courseRepo.existsById(id)) {

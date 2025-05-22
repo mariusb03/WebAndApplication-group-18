@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.dca7853d.css",
-    "main.js": "/static/js/main.136be158.js",
+    "main.css": "/static/css/main.7149b73c.css",
+    "main.js": "/static/js/main.3023a8a6.js",
     "static/media/personTakingCourse.jpg": "/static/media/personTakingCourse.0b70613bd76461832885.jpg",
-    "static/media/homeLogo.svg": "/static/media/homeLogo.a38121928bffa47e0d5bdd16c22ca065.svg",
+    "static/media/homeLogo.svg": "/static/media/homeLogo.d8397b9e78fce0b5c140409a092c9a35.svg",
     "static/media/search symbol.png": "/static/media/search symbol.a7d83320b9d688691233.png",
-    "static/media/cartLogo.svg": "/static/media/cartLogo.0ce90910e3a2d32fb4ed9ceafc49db76.svg",
+    "static/media/cartLogo.svg": "/static/media/cartLogo.4e3e82a0da055b5a0ca4d68965a5430c.svg",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/profilePic.svg": "/static/media/profilePic.01ce70093c992987fcda3671b2360e1c.svg",
+    "static/media/profilePic.svg": "/static/media/profilePic.a202d00307cd8469c556e49aa3917021.svg",
     "index.html": "/index.html",
-    "main.dca7853d.css.map": "/static/css/main.dca7853d.css.map",
-    "main.136be158.js.map": "/static/js/main.136be158.js.map"
+    "main.7149b73c.css.map": "/static/css/main.7149b73c.css.map",
+    "main.3023a8a6.js.map": "/static/js/main.3023a8a6.js.map"
   },
   "entrypoints": [
-    "static/css/main.dca7853d.css",
-    "static/js/main.136be158.js"
+    "static/css/main.7149b73c.css",
+    "static/js/main.3023a8a6.js"
   ]
 }

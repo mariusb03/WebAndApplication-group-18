@@ -32,22 +32,20 @@ public class SecurityConfig {
     http
         .authorizeHttpRequests((requests) -> requests
             .anyRequest().permitAll()
-      )
-        .formLogin((form) -> form.disable()
-      )
-        .logout((logout) -> logout.disable()
-      )
-        .csrf((csrf) -> csrf.disable()
-      )
+        )
+        .httpBasic((basic) -> basic.disable()) // 👈 now properly closed
+        .formLogin((form) -> form.disable())
+        .logout((logout) -> logout.disable())
+        .csrf((csrf) -> csrf.disable())
         .headers((headers) -> headers
-        .contentSecurityPolicy((csp) -> csp
-          .policyDirectives("default-src 'self'; script-src 'self'")
-        )
-          .frameOptions((frame) -> frame.deny())
-          .httpStrictTransportSecurity((hsts) -> hsts
-          .includeSubDomains(true)
-          .maxAgeInSeconds(31536000)
-        )
+            .contentSecurityPolicy((csp) -> csp
+                .policyDirectives("default-src 'self'; script-src 'self'")
+            )
+            .frameOptions((frame) -> frame.deny())
+            .httpStrictTransportSecurity((hsts) -> hsts
+                .includeSubDomains(true)
+                .maxAgeInSeconds(31536000)
+            )
         );
 
     return http.build();

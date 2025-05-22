@@ -26,7 +26,7 @@ import webapp.service.TopicService;
  * Controller for managing topics.
  */
 @RestController
-@RequestMapping("/topics")
+@RequestMapping("/api/topics")
 public class TopicsController {
   private final Logger logger = LoggerFactory.getLogger("TopicsController");
   @Autowired

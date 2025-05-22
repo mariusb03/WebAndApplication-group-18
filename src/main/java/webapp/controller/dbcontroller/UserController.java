@@ -31,7 +31,7 @@ import webapp.service.UserService;
  * This class handles HTTP requests related to user operations.
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
   private final Logger logger = LoggerFactory.getLogger("userController");
   @Autowired

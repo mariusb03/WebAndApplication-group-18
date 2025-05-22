@@ -26,7 +26,7 @@ import webapp.service.ProviderService;
  * Controller for managing course providers.
  */
 @RestController
-@RequestMapping("/providers")
+@RequestMapping("/api/providers")
 public class ProviderController {
   private final Logger logger = LoggerFactory.getLogger("ProviderController");
   @Autowired

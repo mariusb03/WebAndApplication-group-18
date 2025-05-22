@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -443,6 +444,39 @@ public class CoursesController {
       response = ResponseEntity.notFound().build();
     }
     return response;
+  }
+
+  /**
+   * get the price of a course.
+   *
+   * @param courseId of the course
+   * @return ResponseEntity with a message indicating success or failure
+   */
+  @Operation(
+      summary = "Get the price of a course",
+      description = "Retrieves the price of a specific course."
+  )
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Successfully retrieved course price"),
+      @ApiResponse(responseCode = "404", description = "Course not found"),
+      @ApiResponse(responseCode = "400", description = "Bad Request - Invalid course ID"),
+      @ApiResponse(responseCode = "403", description = "Forbidden - User lacks USER role"),
+      @ApiResponse(responseCode = "401", description = "Unauthorized - User not authenticated"),
+      @ApiResponse(responseCode = "500",
+          description = "Internal Server Error - An unexpected error occurred")
+  })
+  @GetMapping("/getPrice/{courseId}")
+  public ResponseEntity<List<Map<String, Object>>> getCoursePrice(
+      @Parameter(description = "Id of the course to retrieve price for", required = true)
+      @PathVariable Integer courseId) {
+    logger.info("Retrieving price for course with ID: {}", courseId);
+
+    List<Map<String, Object>> prices = this.service.getCoursePrice(courseId);
+    if (prices != null && !prices.isEmpty()) {
+      return ResponseEntity.ok(prices);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
   /**
