@@ -19,7 +19,6 @@ const CourseList = ({ courses }) => {
                         onError={(e) => { e.target.src = '/static/img/default.svg'; }}
                     />
                     <h3 className="course-title">{course.title}</h3>
-                    <p><strong>Price:</strong> {course.price} NOK</p>
                     <p><strong>Difficulty:</strong> {course.difficulty}</p>
                     <p><strong>Topic:</strong> {course.category}</p>
                     <p><strong>Session:</strong> {course.session}</p>

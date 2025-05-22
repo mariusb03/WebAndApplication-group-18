@@ -224,10 +224,21 @@ public class CoursesService {
    */
   public List<Map<String, Object>> getCoursePrice(Integer courseId) {
     List<Object[]> rows = courseRepo.findPricesByCourseId(courseId);
+
     return rows.stream().map(row -> {
       Map<String, Object> map = new HashMap<>();
-      map.put("providerId", row[0]);
-      map.put("price", row[1] != null ? ((Number) row[1]).doubleValue() : null);
+      Integer providerId = (Integer) row[0];
+      Double price = row[1] != null ? ((Number) row[1]).doubleValue() : null;
+
+      // Get provider name
+      String providerName = providerRepo.findById(providerId)
+              .map(p -> p.getName())
+              .orElse("Unknown");
+
+      map.put("providerId", providerId);
+      map.put("providerName", providerName);
+      map.put("price", price);
+
       return map;
     }).collect(Collectors.toList());
   }

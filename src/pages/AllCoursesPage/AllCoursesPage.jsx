@@ -14,6 +14,8 @@ const AllCoursesPage = () => {
     const [user, setUser] = useState(null);
     const [favourites, setFavourites] = useState([]);
 
+    const [coursePrices, setCoursePrices] = useState({});
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
@@ -40,7 +42,26 @@ const AllCoursesPage = () => {
             }
         })
             .then(response => response.json())
-            .then(data => setCourses(data))
+            .then(data => {
+                setCourses(data);
+
+                // Fetch price ranges for each course
+                data.forEach(course => {
+                    fetch(`http://localhost:8082/api/courses/getPrice/${course.courseId}`)
+                        .then(res => res.json())
+                        .then(priceData => {
+                            const prices = priceData.map(p => p.price).filter(p => p != null);
+                            if (prices.length > 0) {
+                                const min = Math.min(...prices);
+                                const max = Math.max(...prices);
+                                setCoursePrices(prev => ({
+                                    ...prev,
+                                    [course.courseId]: min === max ? `${min} NOK` : `${min} - ${max} NOK`
+                                }));
+                            }
+                        });
+                });
+            })
             .catch(error => console.error('Error fetching courses:', error));
     }, [user]);
 
@@ -131,7 +152,7 @@ const AllCoursesPage = () => {
                                 </span>
                             )}
 
-                            <p><strong>Price:</strong> {course.price} NOK</p>
+                            <p><strong>Price:</strong> {coursePrices[course.courseId] || 'Loading...'}</p>
                             <p><strong>Difficulty:</strong> {course.difficulty}</p>
                             <p><strong>Topic:</strong> {course.category}</p>
                             <p><strong>Session:</strong> {course.session}</p>

@@ -10,12 +10,20 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
-    const addToCart = (course) => {
-        setCartItems((prev) => [...prev, course]);
+    const addToCart = (course, provider) => {
+        const courseWithProvider = {
+            ...course,
+            selectedProvider: provider
+        };
+        setCartItems((prev) => [...prev, courseWithProvider]);
     };
 
-    const removeFromCart = (id) => {
-        setCartItems((prev) => prev.filter(item => item.id !== id));
+    const removeFromCart = (courseId, providerId) => {
+        setCartItems((prev) =>
+            prev.filter(item =>
+                item.courseId !== courseId || item.selectedProvider.providerId !== providerId
+            )
+        );
     };
 
     const clearCart = () => setCartItems([]);

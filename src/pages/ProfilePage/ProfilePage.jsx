@@ -46,15 +46,16 @@ const ProfilePage = () => {
                 email={user.email}
             />
 
-            <h2 className="section-title">Enrolled Courses</h2>
-            <CourseList courses={enrolledCourses} />
+            <button className="logout-button" onClick={handleLogout}>
+                Log Out
+            </button>
 
             <h2 className="section-title">Favourited Courses</h2>
             <CourseList courses={favouriteCourses} />
 
-            <button className="logout-button" onClick={handleLogout}>
-                Log Out
-            </button>
+            <h2 className="section-title">Enrolled Courses</h2>
+            <CourseList courses={enrolledCourses} />
+
         </div>
     );
 };

@@ -31,7 +31,7 @@ const CartPage = () => {
     };
 
     const totalPrice = cartItems.reduce(
-        (sum, item) => sum + Number(item.price),
+        (sum, item) => sum + Number(item.selectedProvider?.price || 0),
         0
     );
 
@@ -62,7 +62,8 @@ const CartPage = () => {
                                 <div className="course-info">
                                     <h3>{course.title}</h3>
                                     <div className="tag">Topics: {course.category}</div>
-                                    <div className="tag">Price: {course.price}</div>
+                                    <div className="tag">Provider: {course.selectedProvider.providerName}</div>
+                                    <div className="tag">Price: {course.selectedProvider.price} NOK</div>
                                     <div className="tag">Schedule: {course.session}</div>
                                 </div>
                             </div>
@@ -71,9 +72,9 @@ const CartPage = () => {
 
                     <div className="price-summary-box">
                         {cartItems.map((course, index) => (
-                            <p key={index}>
-                                {course.title} : {course.price}
-                            </p>
+                            <div key={index}>
+                                <p>{course.title} ({course.selectedProvider.providerName}) : {course.selectedProvider.price} NOK</p>
+                            </div>
                         ))}
 
                         <div className="total-box">
