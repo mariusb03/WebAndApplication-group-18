@@ -15,7 +15,7 @@ const CourseModal = ({ course, onClose }) => {
 
     useEffect(() => {
         if (course) {
-            fetch(`http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/courses/getPrice/${course.courseId}`)
+            fetch(`http://129.241.236.99:8082/api/courses/getPrice/${course.courseId}`)
                 .then(res => res.json())
                 .then(data => {
                     setProviders(data);

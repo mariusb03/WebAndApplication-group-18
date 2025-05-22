@@ -9,15 +9,12 @@ import './TopPartStyle.css';
 
 
 const courseSuggestions = [
-    'Web Development',
-    'AI & Machine Learning',
-    'Cloud & DevOps',
-    'Digital Marketing',
-    'Business Analytics',
-    'Cybersecurity',
-    'UI/UX Design',
-    'Python Programming',
-    'Data Science',
+    'Java',
+    'Azure',
+    'Social Media',
+    'Business',
+    'Databricks',
+    'Image recognition',
 ];
 
 function TopPartOfPage() {

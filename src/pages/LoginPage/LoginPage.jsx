@@ -18,7 +18,7 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://http://[2001:700:300:6018:f816:3eff:feb9:e1db]:8082//api/user/login', {
+            const response = await fetch('http://129.241.236.99:8082/api/user/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, password })
