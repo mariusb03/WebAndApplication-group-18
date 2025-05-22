@@ -41,7 +41,14 @@ public class SecurityConfig {
       )
         .headers((headers) -> headers
         .contentSecurityPolicy((csp) -> csp
-          .policyDirectives("default-src 'self'; script-src 'self'")
+                .policyDirectives(
+                        "default-src 'self'; " +
+                                "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; " +
+                                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+                                "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; " +
+                                "font-src 'self' https://fonts.gstatic.com; " +
+                                "frame-src https://www.google.com https://maps.googleapis.com;"
+                )
         )
           .frameOptions((frame) -> frame.deny())
           .httpStrictTransportSecurity((hsts) -> hsts

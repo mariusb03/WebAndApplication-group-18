@@ -3,6 +3,7 @@
     height: 50vh; /* increased height for better visibility */
     border-bottom: 4px solid #ffe600;
     border-top: 4px solid #ffe600;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     margin: 0;
     padding: 0;
