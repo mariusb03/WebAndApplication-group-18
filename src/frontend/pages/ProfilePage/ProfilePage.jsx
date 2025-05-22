@@ -24,13 +24,13 @@ const ProfilePage = () => {
             setUser(storedUser);
 
             // Fetch enrolled courses
-            fetch(`http://localhost:8082/api/courses/user/${storedUser.userId}`)
+            fetch(`http://129.241.236.99:8082/api/courses/user/${storedUser.userId}`)
                 .then(res => res.json())
                 .then(data => setEnrolledCourses(data))
                 .catch(err => console.error('Error fetching enrolled courses:', err));
 
             // Fetch favourited courses
-            fetch(`http://localhost:8082/user/${storedUser.userId}/favourites`)
+            fetch(`http://129.241.236.99:8082/user/${storedUser.userId}/favourites`)
                 .then(res => res.json())
                 .then(data => setFavouriteCourses(data))
                 .catch(err => console.error('Error fetching favourite courses:', err));
@@ -46,15 +46,16 @@ const ProfilePage = () => {
                 email={user.email}
             />
 
-            <h2 className="section-title">Enrolled Courses</h2>
-            <CourseList courses={enrolledCourses} />
+            <button className="logout-button" onClick={handleLogout}>
+                Log Out
+            </button>
 
             <h2 className="section-title">Favourited Courses</h2>
             <CourseList courses={favouriteCourses} />
 
-            <button className="logout-button" onClick={handleLogout}>
-                Log Out
-            </button>
+            <h2 className="section-title">Enrolled Courses</h2>
+            <CourseList courses={enrolledCourses} />
+
         </div>
     );
 };

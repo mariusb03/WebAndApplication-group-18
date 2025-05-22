@@ -14,12 +14,14 @@ const AllCoursesPage = () => {
     const [user, setUser] = useState(null);
     const [favourites, setFavourites] = useState([]);
 
+    const [coursePrices, setCoursePrices] = useState({});
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
             setUser(storedUser);
 
-            fetch(`http://localhost:8082/user/${storedUser.userId}/favourites`)
+            fetch(`http://129.241.236.99:8082/user/${storedUser.userId}/favourites`)
                 .then(res => res.json())
                 .then(data => {
                     const favIds = data.map(course => course.courseId);
@@ -34,13 +36,32 @@ const AllCoursesPage = () => {
     }, [searchParam]);
 
     useEffect(() => {
-        fetch('http://localhost:8082/api/courses/getAll', {
+        fetch('http://129.241.236.99:8082/api/courses/getAll', {
             headers: {
                 'userRole': user?.role || 'guest'
             }
         })
             .then(response => response.json())
-            .then(data => setCourses(data))
+            .then(data => {
+                setCourses(data);
+
+                // Fetch price ranges for each course
+                data.forEach(course => {
+                    fetch(`http://129.241.236.99:8082/api/courses/getPrice/${course.courseId}`)
+                        .then(res => res.json())
+                        .then(priceData => {
+                            const prices = priceData.map(p => p.price).filter(p => p != null);
+                            if (prices.length > 0) {
+                                const min = Math.min(...prices);
+                                const max = Math.max(...prices);
+                                setCoursePrices(prev => ({
+                                    ...prev,
+                                    [course.courseId]: min === max ? `${min} NOK` : `${min} - ${max} NOK`
+                                }));
+                            }
+                        });
+                });
+            })
             .catch(error => console.error('Error fetching courses:', error));
     }, [user]);
 
@@ -50,7 +71,7 @@ const AllCoursesPage = () => {
         const isFav = favourites.includes(courseId);
         const method = isFav ? 'DELETE' : 'POST';
 
-        fetch(`http://localhost:8082/user/${user.userId}/favourite/${courseId}`, {
+        fetch(`http://129.241.236.99:8082/user/${user.userId}/favourite/${courseId}`, {
             method,
         })
             .then(res => {
@@ -103,10 +124,10 @@ const AllCoursesPage = () => {
                                     className="toggle-visibility-btn"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        fetch(`http://localhost:8082/api/courses/${course.courseId}/toggleVisibility`, {
+                                        fetch(`http://129.241.236.99:8082/api/courses/${course.courseId}/toggleVisibility`, {
                                             method: 'PUT',
                                         })
-                                            .then(() => fetch('http://localhost:8082/api/courses/getAll', {
+                                            .then(() => fetch('http://129.241.236.99:8082/api/courses/getAll', {
                                                 headers: {
                                                     'userRole': user?.role || 'user'
                                                 }
@@ -131,7 +152,7 @@ const AllCoursesPage = () => {
                                 </span>
                             )}
 
-                            <p><strong>Price:</strong> {course.price} NOK</p>
+                            <p><strong>Price:</strong> {coursePrices[course.courseId] || 'Loading...'}</p>
                             <p><strong>Difficulty:</strong> {course.difficulty}</p>
                             <p><strong>Topic:</strong> {course.category}</p>
                             <p><strong>Session:</strong> {course.session}</p>

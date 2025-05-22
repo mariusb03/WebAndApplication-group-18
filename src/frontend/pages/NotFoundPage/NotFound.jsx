@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
-
+import './NotFoundPage.css';
 
 const NotFoundPage = () => {
     return (
-        <div style={{ padding: '2rem' }}>
-            <h1>Page not found</h1>
-            <p>not created yet</p>
+        <div className="not-found-container">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>Oops! The page you're looking for doesn't exist.</p>
+            <Link to="/" className="back-home-button">
+                ⬅️ Go back to Home
+            </Link>
         </div>
     );
 };

@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/static/css/main.c2cb6f7e.css",
-    "main.js": "/static/js/main.33397758.js",
+    "main.js": "/static/js/main.2a7c1014.js",
     "static/media/school.png": "/static/media/school.7d60d1523510efadb9ac.png",
-    "static/media/8.svg": "/static/media/8.33a2823e1318c4b05d2ca9538b905dee.svg",
-    "static/media/11.svg": "/static/media/11.62c5b19a7b13847505c419318cf558c3.svg",
+    "static/media/8.svg": "/static/media/8.4536e0dbb50487048b66a3a1a2139993.svg",
+    "static/media/11.svg": "/static/media/11.93ad2876ec04f3a58cda44019f25327d.svg",
     "static/media/business.png": "/static/media/business.20abe353433b5558c717.png",
     "static/media/personTakingCourse.jpg": "/static/media/personTakingCourse.0b70613bd76461832885.jpg",
-    "static/media/homeLogo.svg": "/static/media/homeLogo.d8397b9e78fce0b5c140409a092c9a35.svg",
+    "static/media/homeLogo.svg": "/static/media/homeLogo.a38121928bffa47e0d5bdd16c22ca065.svg",
     "static/media/search symbol.png": "/static/media/search symbol.a7d83320b9d688691233.png",
-    "static/media/cartLogo.svg": "/static/media/cartLogo.4e3e82a0da055b5a0ca4d68965a5430c.svg",
+    "static/media/cartLogo.svg": "/static/media/cartLogo.0ce90910e3a2d32fb4ed9ceafc49db76.svg",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/profilePic.svg": "/static/media/profilePic.a202d00307cd8469c556e49aa3917021.svg",
+    "static/media/profilePic.svg": "/static/media/profilePic.01ce70093c992987fcda3671b2360e1c.svg",
     "index.html": "/index.html",
     "main.c2cb6f7e.css.map": "/static/css/main.c2cb6f7e.css.map",
-    "main.33397758.js.map": "/static/js/main.33397758.js.map"
+    "main.2a7c1014.js.map": "/static/js/main.2a7c1014.js.map"
   },
   "entrypoints": [
     "static/css/main.c2cb6f7e.css",
-    "static/js/main.33397758.js"
+    "static/js/main.2a7c1014.js"
   ]
 }
