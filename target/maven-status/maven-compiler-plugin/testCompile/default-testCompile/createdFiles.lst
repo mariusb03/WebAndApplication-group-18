@@ -1,0 +1,5 @@
+backend/WebAppStarterTest.class
+backend/model/ProvidersTest.class
+backend/model/UsersTest.class
+backend/model/TopicsTest.class
+backend/model/CoursesTest.class
