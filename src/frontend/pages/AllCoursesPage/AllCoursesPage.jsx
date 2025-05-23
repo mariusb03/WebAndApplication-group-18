@@ -21,7 +21,7 @@ const AllCoursesPage = () => {
         if (storedUser) {
             setUser(storedUser);
 
-            fetch(`http://129.241.236.99:8082/user/${storedUser.userId}/favourites`)
+            fetch(`http://localhost:8082/user/${storedUser.userId}/favourites`)
                 .then(res => res.json())
                 .then(data => {
                     const favIds = data.map(course => course.courseId);
@@ -36,7 +36,7 @@ const AllCoursesPage = () => {
     }, [searchParam]);
 
     useEffect(() => {
-        fetch('http://129.241.236.99:8082/api/courses/getAll', {
+        fetch('http://localhost:8082/api/courses/getAll', {
             headers: {
                 'userRole': user?.role || 'guest'
             }
@@ -46,7 +46,7 @@ const AllCoursesPage = () => {
                 setCourses(data);
 
                 data.forEach(course => {
-                    fetch(`http://129.241.236.99:8082/api/courses/getPrice/${course.courseId}`)
+                    fetch(`http://localhost:8082/api/courses/getPrice/${course.courseId}`)
                         .then(res => res.json())
                         .then(priceData => {
                             const prices = priceData.map(p => p.price).filter(p => p != null);
@@ -70,7 +70,7 @@ const AllCoursesPage = () => {
         const isFav = favourites.includes(courseId);
         const method = isFav ? 'DELETE' : 'POST';
 
-        fetch(`http://129.241.236.99:8082/user/${user.userId}/favourite/${courseId}`, {
+        fetch(`http://localhost:8082/user/${user.userId}/favourite/${courseId}`, {
             method,
         })
             .then(res => {
@@ -123,10 +123,10 @@ const AllCoursesPage = () => {
                                     className="toggle-visibility-btn"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        fetch(`http://129.241.236.99:8082/api/courses/${course.courseId}/toggleVisibility`, {
+                                        fetch(`http://localhost:8082/api/courses/${course.courseId}/toggleVisibility`, {
                                             method: 'PUT',
                                         })
-                                            .then(() => fetch('http://129.241.236.99:8082/api/courses/getAll', {
+                                            .then(() => fetch('http://localhost:8082/api/courses/getAll', {
                                                 headers: {
                                                     'userRole': user?.role || 'user'
                                                 }

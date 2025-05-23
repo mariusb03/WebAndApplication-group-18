@@ -8,7 +8,7 @@ function BottomPart() {
                 <div className="footer-column links">
                     <h3>Links</h3>
                     <ul>
-                        <li><a href="https://github.com/SulbenS/WebAndApplication-group-18/tree/develop">GitHub</a></li>
+                        <li><a href="https://github.com/mariusb03/WebAndApplication-group-18/tree/develop">GitHub</a></li>
                         <li><a href="https://www.ntnu.no/">NTNU</a></li>
                         <li><Link to="/about">About Us</Link></li>
                     </ul>
@@ -18,14 +18,19 @@ function BottomPart() {
                     <h3>Contact</h3>
                     <p><a href="mailto:contact@lerniverse.com">contact@lerniverse.com</a></p>
                     <p>Main office:</p>
-                    <iframe
-                        title="NTNU Ålesund Location"
-                        className="footer-map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21631.88153727769!2d6.242524377172857!3d62.46780808675252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616dac1b03a4a8b%3A0x5df22844dd93ce98!2sNTNU%20i%20%C3%85lesund!5e1!3m2!1sen!2sno!4v1747871231022!5m2!1sen!2sno"
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    <div className="footer-map-wrapper">
+                        <iframe
+                            title="NTNU Ålesund Location"
+                            className="footer-map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21631.88153727769!2d6.24252
+                            4377172857!3d62.46780808675252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x461¨
+                            6dac1b03a4a8b%3A0x5df22844dd93ce98!2sNTNU%20i%20%C3%85lesund!5e1!3m2!1sen!2sno!4v174787
+                            1231022!5m2!1sen!2sno"
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
                 </div>
 
                 <div className="footer-column creators">
