@@ -15,7 +15,7 @@ const CourseModal = ({ course, onClose }) => {
 
     useEffect(() => {
         if (course) {
-            fetch(`http://129.241.236.99:8082/api/courses/getPrice/${course.courseId}`)
+            fetch(`https://learniverseconnect.no/api/courses/getPrice/${course.courseId}`)
                 .then(res => res.json())
                 .then(data => {
                     setProviders(data);

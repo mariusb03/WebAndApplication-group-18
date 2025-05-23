@@ -17,7 +17,7 @@ const CartPage = () => {
 
         try {
             for (const course of cartItems) {
-                await fetch(`http://129.241.236.99:8082/api/courses/${course.courseId}/user/${storedUser.userId}`, {
+                await fetch(`https://learniverseconnect.no/api/courses/${course.courseId}/user/${storedUser.userId}`, {
                     method: 'POST',
                 });
             }
