@@ -85,36 +85,41 @@ class CoursesTest {
 
   @Test
   void testIsValid_whenAllFieldsAreValid() {
-    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6, "HTML", 30, "JavaScript basics", "Web");
+    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6,
+        "HTML", 30, "JavaScript basics", "Web");
 
     assertTrue(course.isValid());
   }
 
   @Test
   void testIsValid_whenTitleIsEmpty() {
-    Courses course = new Courses("", "Easy", "Summer", 4.0, 6, "HTML", 30, "JavaScript basics", "Web");
+    Courses course = new Courses("", "Easy", "Summer", 4.0, 6,
+        "HTML", 30, "JavaScript basics", "Web");
 
     assertFalse(course.isValid());
   }
 
   @Test
   void testIsValid_whenSizeIsNegative() {
-    Courses course = new Courses("JS", "Easy", "Summer", -1.0, 6, "HTML", 30, "JavaScript basics", "Web");
+    Courses course = new Courses("JS", "Easy", "Summer", -1.0,
+        6, "HTML", 30, "JavaScript basics",
+        "Web");
 
-    // The current isValid() allows size == 0 or > 0. Negative is invalid.
     assertFalse(course.isValid());
   }
 
   @Test
   void testIsValid_whenCategoryIsNull() {
-    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6, "HTML", 30, "JavaScript basics", null);
+    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6,
+        "HTML", 30, "JavaScript basics", null);
 
     assertFalse(course.isValid());
   }
 
   @Test
   void testIsValid_whenDescriptionIsEmpty() {
-    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6, "HTML", 30, "", "Web");
+    Courses course = new Courses("JS", "Easy", "Summer", 4.0, 6,
+        "HTML", 30, "", "Web");
 
     assertFalse(course.isValid());
   }

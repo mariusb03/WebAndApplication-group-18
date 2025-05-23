@@ -29,10 +29,8 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests(requests -> requests.anyRequest().permitAll())
-        .httpBasic().disable()
-        .formLogin().disable()
-        .logout().disable()
-        .csrf().disable()
+        .securityContext(securityContext -> securityContext.requireExplicitSave(false))
+        .csrf(csrf -> csrf.disable())
         .headers(headers -> headers
             .contentSecurityPolicy(csp -> csp.policyDirectives(
                 "default-src 'self'; "
@@ -43,7 +41,7 @@ public class SecurityConfig {
                     + "frame-src https://www.google.com https://maps.googleapis.com; "
                     + "connect-src 'self' http://129.241.236.99:8082;"
             ))
-            .frameOptions().deny()
+            .frameOptions(frameOptions -> frameOptions.deny())
             .httpStrictTransportSecurity(hsts -> hsts
                 .includeSubDomains(true)
                 .maxAgeInSeconds(31536000)
