@@ -1,4 +1,3 @@
-/* Container for top section */
 .topPartBox {
   display: flex;
   align-items: center;
@@ -11,7 +10,6 @@
   position: relative;
 }
 
-/* Logo styling */
 .homeLogo {
   height: 120px;
   width: auto;
@@ -23,14 +21,12 @@
   transform: scale(1.05);
 }
 
-/* Right-side icon group */
 #LoginAndCartButtons {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Reusable icon button base */
 .cartLoginBt,
 .searchIconButton {
   width: 4em;
@@ -65,7 +61,6 @@
   outline: none;
 }
 
-/* Icon images inside buttons */
 .cartLoginBt img,
 .searchIconImage {
   width: 100%;
@@ -73,7 +68,6 @@
   object-fit: contain;
 }
 
-/* Popup overlay background */
 .overlay-blur {
   position: fixed;
   top: 0;
@@ -87,7 +81,6 @@
   align-items: center;
 }
 
-/* Search popup container */
 .search-popup {
   background: #fff9db;
   border: 2px solid #ffe600;
@@ -100,7 +93,6 @@
   text-align: center;
 }
 
-/* Optional blurred state for top bar */
 .topPartBox.blurred {
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }

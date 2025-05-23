@@ -1,7 +1,7 @@
 .footer {
   background-color: #fcc419;
   color: black;
-  padding: 2rem 1rem; /* was 3rem 2rem */
+  padding: 2rem 1rem;
   font-family: 'Segoe UI', sans-serif;
   border-top: 4px solid #ffe600;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

@@ -1,6 +1,6 @@
 .hero-carousel {
     width: 100%;
-    height: 50vh; /* increased height for better visibility */
+    height: 50vh;
     border-bottom: 4px solid #ffe600;
     border-top: 4px solid #ffe600;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -15,7 +15,7 @@
     background-position: center;
     position: relative;
     display: flex;
-    align-items: center; /* vertically center content */
+    align-items: center;
     justify-content: flex-start;
 }
 
@@ -46,7 +46,6 @@
     margin: 0;
 }
 
-/* Responsive improvements */
 @media (max-width: 768px) {
     .hero-carousel {
         height: 60vh;

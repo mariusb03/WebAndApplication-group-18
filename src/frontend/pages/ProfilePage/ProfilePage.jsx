@@ -23,13 +23,11 @@ const ProfilePage = () => {
         if (storedUser) {
             setUser(storedUser);
 
-            // Fetch enrolled courses
             fetch(`http://129.241.236.99:8082/api/courses/user/${storedUser.userId}`)
                 .then(res => res.json())
                 .then(data => setEnrolledCourses(data))
                 .catch(err => console.error('Error fetching enrolled courses:', err));
 
-            // Fetch favourited courses
             fetch(`http://129.241.236.99:8082/user/${storedUser.userId}/favourites`)
                 .then(res => res.json())
                 .then(data => setFavouriteCourses(data))

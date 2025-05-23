@@ -38,13 +38,11 @@ const RegisterPage = () => {
         setLoading(true);
 
         try {
-            // Step 1: Fetch all users to count
             const userResponse = await fetch('http://129.241.236.99:8082/user/getAll');
             const users = await userResponse.json();
 
             const newUserId = (Array.isArray(users) ? users.length : 0) + 1;
 
-            // Step 2: Send registration request
             const registerResponse = await fetch('http://129.241.236.99:8082/user/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

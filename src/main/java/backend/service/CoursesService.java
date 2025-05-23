@@ -1,5 +1,13 @@
 package backend.service;
 
+import backend.model.Courses;
+import backend.model.Providers;
+import backend.model.Topics;
+import backend.model.Users;
+import backend.repository.CoursesRepository;
+import backend.repository.ProvidersRepository;
+import backend.repository.TopicRepository;
+import backend.repository.UserRepository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,14 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import backend.model.Courses;
-import backend.model.Providers;
-import backend.model.Topics;
-import backend.model.Users;
-import backend.repository.CoursesRepository;
-import backend.repository.ProvidersRepository;
-import backend.repository.TopicRepository;
-import backend.repository.UserRepository;
 
 /**
  * Service class for managing courses.

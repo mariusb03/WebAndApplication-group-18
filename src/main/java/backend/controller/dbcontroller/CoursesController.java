@@ -1,5 +1,11 @@
 package backend.controller.dbcontroller;
 
+import backend.controller.ControllerCommonResponse;
+import backend.model.Courses;
+import backend.model.Providers;
+import backend.model.Topics;
+import backend.model.Users;
+import backend.service.CoursesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,12 +30,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import backend.controller.ControllerCommonResponse;
-import backend.model.Courses;
-import backend.model.Providers;
-import backend.model.Topics;
-import backend.model.Users;
-import backend.service.CoursesService;
 
 /**
  * Controller for managing courses.

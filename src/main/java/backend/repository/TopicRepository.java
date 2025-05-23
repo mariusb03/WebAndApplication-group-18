@@ -1,7 +1,7 @@
 package backend.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import backend.model.Topics;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * Repository interface for accessing Topic data in the database.

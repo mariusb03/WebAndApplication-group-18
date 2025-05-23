@@ -1,14 +1,14 @@
 package backend.service;
 
+import backend.model.Courses;
+import backend.model.Users;
+import backend.repository.CoursesRepository;
+import backend.repository.UserRepository;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import backend.model.Courses;
-import backend.model.Users;
-import backend.repository.CoursesRepository;
-import backend.repository.UserRepository;
 
 /**
  * Service class for managing users.

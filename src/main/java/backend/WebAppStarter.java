@@ -17,5 +17,4 @@ public class WebAppStarter {
   public static void main(String[] args) {
     SpringApplication.run(WebAppStarter.class, args);
   }
-
 }

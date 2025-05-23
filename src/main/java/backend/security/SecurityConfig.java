@@ -11,10 +11,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Security configuration class for the Spring Boot application.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+  /**
+   * Configures the security filter chain for the application.
+   *
+   * @param http The HttpSecurity object to configure.
+   * @return The configured SecurityFilterChain.
+   * @throws Exception If an error occurs during configuration.
+   */
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
@@ -25,13 +35,13 @@ public class SecurityConfig {
         .csrf().disable()
         .headers(headers -> headers
             .contentSecurityPolicy(csp -> csp.policyDirectives(
-                "default-src 'self'; " +
-                    "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; " +
-                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-                    "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; " +
-                    "font-src 'self' https://fonts.gstatic.com; " +
-                    "frame-src https://www.google.com https://maps.googleapis.com; " +
-                    "connect-src 'self' http://129.241.236.99:8082;"
+                "default-src 'self'; "
+                    + "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; "
+                    + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                    + "img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; "
+                    + "font-src 'self' https://fonts.gstatic.com; "
+                    + "frame-src https://www.google.com https://maps.googleapis.com; "
+                    + "connect-src 'self' http://129.241.236.99:8082;"
             ))
             .frameOptions().deny()
             .httpStrictTransportSecurity(hsts -> hsts
@@ -43,6 +53,11 @@ public class SecurityConfig {
     return http.build();
   }
 
+  /**
+   * Configures the in-memory user details service with two users: "user" and "admin".
+   *
+   * @return The configured UserDetailsService.
+   */
   @Bean
   public UserDetailsService userDetailsService() {
     InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -57,6 +72,11 @@ public class SecurityConfig {
     return manager;
   }
 
+  /**
+   * Configures the password encoder for the application.
+   *
+   * @return The configured PasswordEncoder.
+   */
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();

@@ -40,7 +40,6 @@ const CourseModal = ({ course, onClose }) => {
 
         if (!providerObj) return;
 
-        // Add course with selected provider & price
         addToCart(course, providerObj);
 
         onClose();
@@ -67,7 +66,6 @@ const CourseModal = ({ course, onClose }) => {
                         <p><strong>Course ID:</strong> {course.courseId}</p>
                     )}
 
-                    {/* Provider Selection */}
                     <div className="provider-selection">
                         <label><strong>Select Provider:</strong></label>
                         {providers.length > 0 ? (
@@ -87,7 +85,6 @@ const CourseModal = ({ course, onClose }) => {
                         )}
                     </div>
 
-                    {/* Add to Cart */}
                     <button
                         className="add-to-cart-button"
                         onClick={handleAddToCart}

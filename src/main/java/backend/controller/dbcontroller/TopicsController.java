@@ -1,5 +1,7 @@
 package backend.controller.dbcontroller;
 
+import backend.model.Topics;
+import backend.service.TopicService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,8 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import backend.model.Topics;
-import backend.service.TopicService;
 
 /**
  * Controller for managing topics.

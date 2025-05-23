@@ -1,12 +1,12 @@
 package backend.service;
 
+import backend.model.Topics;
+import backend.repository.TopicRepository;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import backend.model.Topics;
-import backend.repository.TopicRepository;
 
 /**
  * Service class for managing topics in the database.

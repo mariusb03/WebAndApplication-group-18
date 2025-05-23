@@ -45,7 +45,6 @@ const AllCoursesPage = () => {
             .then(data => {
                 setCourses(data);
 
-                // Fetch price ranges for each course
                 data.forEach(course => {
                     fetch(`http://129.241.236.99:8082/api/courses/getPrice/${course.courseId}`)
                         .then(res => res.json())

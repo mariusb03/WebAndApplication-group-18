@@ -1,8 +1,9 @@
 package backend.repository;
 
+import backend.model.Users;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
-import backend.model.Users;
+
 
 /**
  * Repository interface for managing user data in the database.

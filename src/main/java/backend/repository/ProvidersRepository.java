@@ -1,7 +1,7 @@
 package backend.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import backend.model.Providers;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * Repository interface for accessing Providers data in the database.

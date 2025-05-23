@@ -34,7 +34,7 @@
 .course-card img {
     width: auto;
     height: auto;
-    max-height: 200px; /* 💡 restrict very tall images like Java */
+    max-height: 200px;
     object-fit: contain;
     margin-bottom: 0.5rem;
 }

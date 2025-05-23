@@ -1,13 +1,13 @@
 package backend.repository;
 
-import java.util.List;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import backend.model.Courses;
 import backend.model.Providers;
 import backend.model.Topics;
 import backend.model.Users;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Repository interface for accessing Course data in the database.
