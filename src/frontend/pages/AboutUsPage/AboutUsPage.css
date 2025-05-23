@@ -1,0 +1,30 @@
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #2c2c2c;
+    line-height: 1.7;
+}
+
+.about-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.about-section {
+    margin-bottom: 2rem;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.about-section strong {
+    color: #d18f00;
+    font-weight: 600;
+}

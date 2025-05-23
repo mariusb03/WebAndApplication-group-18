@@ -1,40 +1,39 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from "./frontend/context/CartContext";
+import TopPartOfPage from "./frontend/components/topPartOfPage/TopPartOfPage";
+import BottomPart from "./frontend/components/bottomPartOfPage/BottomPart";
+import LandingPage from './frontend/pages/LandingPage/LandingPage';
+import AllCoursesPage from './frontend/pages/AllCoursesPage/AllCoursesPage';
+import AboutUsPage from './frontend/pages/AboutUsPage/AboutUsPage';
+import NotFound from './frontend/pages/NotFoundPage/NotFound';
+import LoginPage from "./frontend/pages/LoginPage/LoginPage";
+import RegisterPage from "./frontend/pages/RegisterPage/RegisterPage";
+import CartPage from "./frontend/pages/CartPage/CartPage";
+import ProfilePage from "./frontend/pages/ProfilePage/ProfilePage";
 import './App.css';
-import './topPartOfPage/TopPartOfPage.jsx'
-import 'react-refresh/runtime';
-import TopPartOfPage from "./topPartOfPage/TopPartOfPage";
-import BottomPart from "./bottomPartOfPage/BottomPart";
-import HeroCarousel from './heroCarousel/HeroCarousel';
 
 function App() {
     return (
-        <div className="App">
-            <TopPartOfPage />
-            <HeroCarousel />
-            <BottomPart />
-        </div>
-    );
-}
+        <CartProvider>
+            <div className="App">
+                <Router>
+                    <TopPartOfPage />
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/courses" element={<AllCoursesPage />} />
+                        <Route path="/about" element={<AboutUsPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
 
-function App1() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+                    <BottomPart />
+                </Router>
+            </div>
+        </CartProvider>
+    );
 }
 
 export default App;

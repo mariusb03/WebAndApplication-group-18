@@ -1,15 +1,15 @@
 .App {
-  text-align: center;
-  background-color: #fff9db;
-  min-height: 100vmin;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    text-align: center;
+    background-color: #fff9db;
+    min-height: 100vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: 1s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 1s;
 }

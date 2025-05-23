@@ -1,0 +1,15 @@
+@import '../../pages/AllCoursesPage/AllCoursesPage.css';
+
+.course-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.course-card {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+}
